@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Exercise 2 · Build the evidence map and source-of-truth contract · HVE workshop guide</title>
+<meta name="description" content="Turn fragmented project information into explicit, usable context.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-2 kind-core" data-page="exercise-2">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
+<nav class="toplinks" aria-label="Quick links"><a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a><a href="resources.html" class="keep">Resources</a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Exercise guide">
+<a class="side-home" href="index.html">← Guide home</a>
+<div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html" aria-current="page"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Open lab 1</span></nav>
+<header class="page-head">
+<p class="eyebrow">Exercise 2 · Open lab 1 · Core task</p>
+<h1>Build the evidence map and source-of-truth contract</h1>
+<p class="tags"><span class="tag tag-core">Core task</span><span class="tag tag-group">Open lab 1</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#toolkit">Hand-in and toolkit</a><a href="#tips">Tips</a></nav></header>
+<section class="brief" id="brief" aria-label="Brief">
+<div class="objective"><span class="label">Objective</span><p>Turn fragmented project information into explicit, usable context.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Input</dt><dd>Meeting notes, a ticket, a transcript, an architecture note and an existing backlog item</dd></div>
+<div class="meta-best"><dt>Best use</dt><dd>Core task</dd></div>
+<div class="meta-roles"><dt>Roles (suggested)</dt><dd>Product owner, auditor, agent operator</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Steps"><h2 class="mini-head">Steps</h2>
+<ol class="steps">
+<li><p>Sort the material into fact, decision, constraint, assumption and open question.</p></li>
+<li><p>Choose the project’s source of truth and define what links back to it.</p></li>
+<li><p>Write a short context manifest: sources, owners, freshness, sensitivity and allowed use.</p></li>
+<li><p>Ask an agent to identify the gaps, then accept, reject or rewrite each gap as a team.</p></li>
+</ol></section>
+<section class="handin" aria-label="Hand in"><h2 class="handin-head">Hand in</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Evidence map</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Context manifest</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Prioritised clarification questions</span></label></li>
+</ul>
+<p class="handin-note">Tick items as your team hands them in.</p></section>
+</div>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Exercise 2 · Hand-in and toolkit</p>
+<h2>Make context explicit, and decide what the agent may use</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-evidence-map" data-tpl="evidence-map">
+<div class="tpl-head"><h3>Evidence map</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Evidence map" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Item</th><th scope="col">Type</th><th scope="col">Source</th><th scope="col">Owner</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Item"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Type"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Item"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Type"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Item"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Type"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Item"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Type"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">Type: fact · decision · constraint · assumption · open question</p></div>
+<div class="tpl" id="tpl-context-manifest" data-tpl="context-manifest">
+<div class="tpl-head"><h3>Context manifest</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Context manifest" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Source</th><th scope="col">Owner</th><th scope="col">Freshness</th><th scope="col">Sensitivity</th><th scope="col">Allowed use</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Freshness"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Sensitivity"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Allowed use"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Freshness"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Sensitivity"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Allowed use"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Freshness"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Sensitivity"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Allowed use"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-clarification-questions" data-tpl="clarification-questions">
+<div class="tpl-head"><h3>Clarification questions</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Clarification questions" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">#</th><th scope="col">Question</th><th scope="col">Why it matters</th><th scope="col">Who answers</th><th scope="col">Priority</th></tr></thead>
+<tbody>
+<tr><th scope="row">1</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Question"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Why it matters"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Who answers"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Priority"></td></tr>
+<tr><th scope="row">2</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Question"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Why it matters"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Who answers"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Priority"></td></tr>
+<tr><th scope="row">3</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Question"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Why it matters"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Who answers"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Priority"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="box box-run"><p class="label">Run it with</p><ul class="run-list"><li><strong>HVE Core:</strong> <code>/rpi-research</code> finds evidence gaps without changing anything; <code>/rpi-challenger</code> exposes assumptions one question at a time; the PRD Builder asks clarifying questions before it writes.</li><li><strong>HVE-Squad:</strong> The requirements intake gate checks completeness and clarity and records a readiness verdict (Ready · Ready-With-Gaps · Not-Ready).</li><li><strong>Remember:</strong> Source documents are data, not instructions; agent notes in <code>.copilot-tracking/</code> are working memory, not the source of truth.</li></ul></div>
+<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/agents/project-planning/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Project planning<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://microsoft.github.io/hve-core/docs/rpi/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · RPI workflow<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers" target="_blank" rel="noopener noreferrer" class="ext">VS Code · MCP servers<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>Every gap the agent proposed has been accepted, rejected or rewritten by the team, with a reason.</p></div>
+<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Anonymise before anything reaches a repository folder: the tracking folder is gitignored, but gitignore is not a security control.</li><li>Name one source of truth per kind of information (requirements, work items, decisions), not “everything is in the wiki”.</li><li>Good gap analyses distinguish “the agent could not find it” from “it does not exist”.</li><li>If you connect Jira or Confluence through MCP, keep credentials outside the repository and use only approved servers.</li></ul></aside>
+<nav class="pager" aria-label="Previous and next step"><a class="prev" href="exercise-1.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Exercise 1 · Predict the lifecycle</span></a><a class="next" href="exercise-3.html" rel="next"><span class="dir">Next →</span><span class="ttl">Exercise 3 · MVE bake-off</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Hands-on workshop · Exercise guide</p><p class="muted">Links point to public documentation. HVE Core and HVE-Squad change quickly: use the versions installed for the workshop.</p></footer>
+</body>
+</html>

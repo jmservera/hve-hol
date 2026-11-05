@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Intermission C · What did we ask AI to do that a script could do? · HVE workshop guide</title>
+<meta name="description" content="Find the steps that should be deterministic, and make every step the AI keeps verifiable.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="page page-intermission-c kind-intermission" data-page="intermission-c">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
+<nav class="toplinks" aria-label="Quick links"><a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a><a href="resources.html" class="keep">Resources</a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Exercise guide">
+<a class="side-home" href="index.html">← Guide home</a>
+<div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html" aria-current="page"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Open lab 3</span></nav>
+<header class="page-head">
+<p class="eyebrow">Intermission C · While Exercise 6 executes · Open lab 3 · Parallel task</p>
+<h1>What did we ask AI to do that a script could do?</h1>
+<p class="tags"><span class="tag tag-intermission">Waiting-time task</span><span class="tag tag-group">Open lab 3</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#toolkit">Hand-in and toolkit</a><a href="#tips">Tips</a></nav></header>
+<section class="brief" id="brief" aria-label="Brief">
+<div class="objective"><span class="label">Objective</span><p>Find the steps that should be deterministic, and make every step the AI keeps verifiable.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Input</dt><dd>The <a href="exercise-6.html">Exercise 6</a> run: prompts, research, plan and change log, plus the auditor’s log</dd></div>
+<div class="meta-best"><dt>Best use</dt><dd>Waiting-time task during <a href="exercise-6.html">Ex 6</a></dd></div>
+<div class="meta-roles"><dt>Roles (suggested)</dt><dd>Architect and quality lead; agent operator supplies the run files</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Steps"><h2 class="mini-head">Steps</h2>
+<ol class="steps">
+<li><p>List every task you asked the agent to do in the Ex 6 run.</p></li>
+<li><p>Classify each: script alone · AI with a deterministic check · judgement.</p></li>
+<li><p>For each script candidate, name the tool: lint, codemod, template, schema, CI check or git hook.</p></li>
+<li><p>For tasks where AI stays, add a fixed step list and a check that fails the run if a step is skipped.</p></li>
+<li><p>Run one script or check against the Ex 6 artefacts and record what it catches that the agent missed.</p></li>
+</ol></section>
+<section class="handin" aria-label="Hand in"><h2 class="handin-head">Hand in</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Task list, classified by who should do it</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>One script or check, run on Ex 6 output</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Pass / fail check for each AI step</span></label></li>
+</ul>
+<p class="handin-note">Tick items as your team hands them in.</p></section>
+</div>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Intermission C · Hand-in and toolkit</p>
+<h2>Script it, or make the AI prove every step</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-run-audit" data-tpl="run-audit">
+<div class="tpl-head"><h3>Template 1 · Audit of the Ex 6 run</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Template 1 · Audit of the Ex 6 run" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Research</th><th scope="col">Plan</th><th scope="col">Build</th><th scope="col">Review</th><th scope="col">Follow-up</th></tr></thead>
+<tbody>
+<tr><th scope="row">Asked of the AI</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Asked of the AI, Research"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Asked of the AI, Plan"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Asked of the AI, Build"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Asked of the AI, Review"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Asked of the AI, Follow-up"></td></tr>
+<tr><th scope="row">Script instead?</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Script instead?, Research"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Script instead?, Plan"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Script instead?, Build"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Script instead?, Review"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Script instead?, Follow-up"></td></tr>
+<tr><th scope="row">Check per step</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check per step, Research"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check per step, Plan"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check per step, Build"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check per step, Review"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check per step, Follow-up"></td></tr>
+<tr><th scope="row">Decision: script, AI + check or AI</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision: script, AI + check or AI, Research"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision: script, AI + check or AI, Plan"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision: script, AI + check or AI, Build"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision: script, AI + check or AI, Review"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision: script, AI + check or AI, Follow-up"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-step-verifier" data-tpl="step-verifier">
+<div class="tpl-head"><h3>Template 2 · Step verifier</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Template 2 · Step verifier" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Step</th><th scope="col">Required output</th><th scope="col">Check (script)</th><th scope="col">Fails if…</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Step"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Required output"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check (script)"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Fails if…"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Step"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Required output"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check (script)"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Fails if…"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Step"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Required output"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Check (script)"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Fails if…"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">Example: every plan task ID (P01-T01…) appears in the change log and review record</p></div>
+<div class="box box-run"><p class="label">Run it with</p><p>The Ex 6 artefacts in <code>.copilot-tracking/</code> (research, plans, changes, reviews) · a shell or Python script, schema validation or a CI check · the same check runs in GitLab CI, Bitbucket Pipelines, Azure Pipelines or GitHub Actions</p></div>
+<div class="box box-rules"><p class="label">Rules</p><ul><li>Scripts read the artefacts, never edit them</li><li>A failed check blocks; it does not just warn</li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>At least one task moved from AI to a script, or an AI step now has a check that fails when the step is skipped.</p></div>
+<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Apply the working agreement “enforce what is deterministic” to your own run. Ask: “Which of these steps did we pay tokens for that a script would do the same way every time?”</li><li>Typical candidates: renaming and moving files, formatting, counting, schema and front-matter checks, checking that every plan task ID (P01-T01 …) appears in the change log and the review record, and that every acceptance criterion has a test.</li><li>Where AI stays (research, judgement, synthesis), make it more deterministic: a fixed step list, required output files, a schema for artefacts and a verifier that fails the run when a step is missing.</li><li>Fill Template 1 across the five phases of the Exercise 6 run: for each, what did we ask the AI to do, could a script do it instead, and which check proves the step happened.</li><li>Feed the best finding into <a href="exercise-7.html">Exercise 7</a> (control matrix) and the adoption canvas in <a href="exercise-10.html">Exercise 10</a>.</li></ul></aside>
+<nav class="pager" aria-label="Previous and next step"><a class="prev" href="intermission-b.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Intermission B · Issue to patch</span></a><a class="next" href="exercise-8.html" rel="next"><span class="dir">Next →</span><span class="ttl">Exercise 8 · Red team and recovery</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Hands-on workshop · Exercise guide</p><p class="muted">Links point to public documentation. HVE Core and HVE-Squad change quickly: use the versions installed for the workshop.</p></footer>
+</body>
+</html>

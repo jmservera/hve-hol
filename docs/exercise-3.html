@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Exercise 3 · Minimum viable experiments bake-off · HVE workshop guide</title>
+<meta name="description" content="Use cheap experiments to decide architecture or product direction on evidence.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-3 kind-parallel" data-page="exercise-3">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
+<nav class="toplinks" aria-label="Quick links"><a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a><a href="resources.html" class="keep">Resources</a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Exercise guide">
+<a class="side-home" href="index.html">← Guide home</a>
+<div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html" aria-current="page"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Open lab 1</span></nav>
+<header class="page-head">
+<p class="eyebrow">Exercise 3 · Open lab 1 (agents can run over the break) · Parallel with a long run</p>
+<h1>Minimum viable experiments bake-off</h1>
+<p class="tags"><span class="tag tag-parallel">Parallel task</span><span class="tag tag-group">Open lab 1</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#toolkit">Hand-in and toolkit</a><a href="#tips">Tips</a></nav></header>
+<section class="brief" id="brief" aria-label="Brief">
+<div class="objective"><span class="label">Objective</span><p>Use cheap experiments to decide architecture or product direction on evidence.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Input</dt><dd>A high-risk technical or product uncertainty</dd></div>
+<div class="meta-best"><dt>Best use</dt><dd>Parallel or waiting-time task</dd></div>
+<div class="meta-roles"><dt>Roles (suggested)</dt><dd>Architect and quality lead; agents generate</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Steps"><h2 class="mini-head">Steps</h2>
+<ol class="steps">
+<li><p>Name the three riskiest assumptions that could materially change the plan.</p></li>
+<li><p>Design two deliberately different minimum viable experiments (MVEs).</p></li>
+<li><p>Define success, failure and inconclusive thresholds before building.</p></li>
+<li><p>Let agents generate research or prototypes while you prepare the evaluation matrix.</p></li>
+<li><p>Compare the experiments and carry the insight into the next RPI cycle (<a href="exercise-6.html">Exercise 6</a>).</p></li>
+</ol></section>
+<section class="handin" aria-label="Hand in"><h2 class="handin-head">Hand in</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Two MVE cards</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Decision matrix</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Recorded selection and rejection rationale</span></label></li>
+</ul>
+<p class="handin-note">Tick items as your team hands them in.</p></section>
+</div>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Exercise 3 · Hand-in and toolkit</p>
+<h2>Set the thresholds first, then let the evidence decide</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-mve-card" data-tpl="mve-card">
+<div class="tpl-head"><h3>MVE card</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="MVE card" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">MVE A</th><th scope="col">MVE B</th></tr></thead>
+<tbody>
+<tr><th scope="row">Assumption tested</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Assumption tested, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Assumption tested, MVE B"></td></tr>
+<tr><th scope="row">Experiment: what we build or test</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Experiment: what we build or test, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Experiment: what we build or test, MVE B"></td></tr>
+<tr><th scope="row">Effort and time box</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Effort and time box, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Effort and time box, MVE B"></td></tr>
+<tr><th scope="row">Success if…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Success if…, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Success if…, MVE B"></td></tr>
+<tr><th scope="row">Failure if…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Failure if…, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Failure if…, MVE B"></td></tr>
+<tr><th scope="row">Inconclusive if…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Inconclusive if…, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Inconclusive if…, MVE B"></td></tr>
+<tr><th scope="row">Result</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Result, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Result, MVE B"></td></tr>
+<tr><th scope="row">Decision</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decision, MVE B"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-decision-matrix" data-tpl="decision-matrix">
+<div class="tpl-head"><h3>Decision matrix</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Decision matrix" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Criterion</th><th scope="col">MVE A</th><th scope="col">MVE B</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Criterion" data-ph="e.g. strength of evidence"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE B"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Criterion" data-ph="e.g. risk retired"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE B"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Criterion" data-ph="e.g. effort, cost, fit"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE B"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">Then record: Selected … because …  ·  Rejected … because …</p></div>
+<div class="box box-run"><p class="label">Run it with</p><ul class="run-list"><li><strong>HVE Core:</strong> DT Coach for solution-space concepts and low-fidelity prototypes; <code>/rpi-research</code> for a read-only technical spike.</li><li>Run two agent sessions in parallel, one per MVE, on separate branches.</li><li><strong>HVE-Squad:</strong> the discovery gate offers a brainstorm when nothing is written down yet; a product squad turns a business case into requirements, an experiment for the riskiest assumption and a backlog.</li></ul></div>
+<div class="box box-example"><p class="label">Example</p><p>Synthetic example (Northwind Traders, HVE-Squad workshop): a claim must reference order lines, but the order system has no API and direct database access is forbidden. MVE: 30 cases, 3 staff, paper and local only. Proposed criteria: ≥ 90% under 2 minutes; licence and run cost ≤ EUR 900 a month. Honest limit: the experiment is a plan, not a result.</p></div>
+<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/design-thinking/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Design Thinking<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/usage.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Usage<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>Thresholds were written before any agent output was seen, and the rejected option has a recorded reason.</p></div>
+<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Agents make prototypes cheap enough to throw away: build two deliberately different bets, keep the insight, discard the concept.</li><li>Write the thresholds before you see any agent output; otherwise you will rationalise whatever comes back.</li><li>No product uncertainty? Use a technical one: a library choice, an integration path, a migration approach.</li><li>Carry the winning insight into <a href="exercise-6.html">Exercise 6</a> as an explicit input to the plan.</li></ul></aside>
+<nav class="pager" aria-label="Previous and next step"><a class="prev" href="exercise-2.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Exercise 2 · Evidence map</span></a><a class="next" href="exercise-4.html" rel="next"><span class="dir">Next →</span><span class="ttl">Exercise 4 · Intake to approved backlog</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Hands-on workshop · Exercise guide</p><p class="muted">Links point to public documentation. HVE Core and HVE-Squad change quickly: use the versions installed for the workshop.</p></footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Intermission B · Close the loop: from Azure SRE Agent issue or ticket to patch · HVE workshop guide</title>
+<meta name="description" content="Route auto-generated issues or customer tickets into an automated, knowledge-grounded patch flow.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="page page-intermission-b kind-intermission" data-page="intermission-b">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
+<nav class="toplinks" aria-label="Quick links"><a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a><a href="resources.html" class="keep">Resources</a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Exercise guide">
+<a class="side-home" href="index.html">← Guide home</a>
+<div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html" aria-current="page"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Open lab 3</span></nav>
+<header class="page-head">
+<p class="eyebrow">Intermission B · While Exercise 6 executes · Open lab 3 · Parallel task</p>
+<h1>Close the loop: from Azure SRE Agent issue or ticket to patch</h1>
+<p class="tags"><span class="tag tag-intermission">Waiting-time task</span><span class="tag tag-group">Open lab 3</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#toolkit">Hand-in and toolkit</a><a href="#tips">Tips</a></nav></header>
+<section class="brief" id="brief" aria-label="Brief">
+<div class="objective"><span class="label">Objective</span><p>Route issues auto-generated by the Azure SRE Agent, or raised as customer tickets, into an automated, knowledge-grounded patch flow.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Input</dt><dd>Azure SRE Agent issues or customer tickets, Ex 6 review; instructions, skills, ADRs</dd></div>
+<div class="meta-best"><dt>Best use</dt><dd>Waiting-time task during <a href="exercise-6.html">Ex 6</a></dd></div>
+<div class="meta-roles"><dt>Roles (suggested)</dt><dd>Agent operator and architect; quality lead owns the human gate</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Steps"><h2 class="mini-head">Steps</h2>
+<ol class="steps">
+<li><p>Pick three issues: auto-raised by the Azure SRE Agent, or customer tickets.</p></li>
+<li><p>Draft a label-triggered workflow: a GitHub agentic workflow, or Jenkins/Bamboo on Bitbucket Data Center.</p></li>
+<li><p>Ground each patch in knowledge: instructions, skills and ADRs, plus Jira and Confluence via Atlassian MCP.</p></li>
+<li><p>The agent opens a draft pull request with patch, tests and issue link; a human reviews, never auto-merge.</p></li>
+<li><p>Feed the outcome back: close, reopen, or turn the failure into a new instruction or skill.</p></li>
+</ol></section>
+<section class="handin" aria-label="Hand in"><h2 class="handin-head">Hand in</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Workflow or pipeline definition</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>One draft patch PR traced to its issue</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Loop diagram with the human gate marked</span></label></li>
+</ul>
+<p class="handin-note">Tick items as your team hands them in.</p></section>
+</div>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Intermissions A–B · Hand-in and toolkit</p>
+<h2>Connect real systems, keep the human gate</h2>
+</header>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">One hand-in for Intermissions A and B</p><p>Intermission B fills the <strong>Issue</strong> and <strong>Patch</strong> columns of Template 1, and Template 2 (operations loop). This hand-in is shared by Intermissions A and B: fill Template 1 across both. Reuse the operations loop in <a href="exercise-7.html">Exercise 7</a>.</p></div></div>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-trace" data-tpl="trace" data-store="intermissions-ab:trace">
+<div class="tpl-head"><h3>Template 1 · Trace from source to artefact</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Template 1 · Trace from source to artefact" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">BRD</th><th scope="col">PRD</th><th scope="col">ADR</th><th scope="col">Issue</th><th scope="col">Patch</th></tr></thead>
+<tbody>
+<tr><th scope="row">Source (MCP)</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source (MCP), BRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source (MCP), PRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source (MCP), ADR"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source (MCP), Issue"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Source (MCP), Patch"></td></tr>
+<tr><th scope="row">Who decides</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, BRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, PRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, ADR"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Issue"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Patch"></td></tr>
+<tr><th scope="row">Gate</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, BRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, PRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, ADR"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Issue"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Patch"></td></tr>
+<tr><th scope="row">Artefact left behind</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, BRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, PRD"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, ADR"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Issue"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Patch"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="box box-run"><p class="label">Run it with</p><p>GitHub Copilot app on the team repo · MCP: Atlassian (Jira, Confluence) and WorkIQ (mail, meetings, chats) · accelerators.ms (reference architecture) · Copilot coding agent · GitHub agentic workflow, or Jenkins/Bamboo on Bitbucket Data Center</p></div>
+<div class="box box-rules"><p class="label">Rules</p><ul><li>Read-only MCP scopes; workshop data only</li><li>Draft PRs only; a human merges</li></ul></div>
+<div class="tpl" id="tpl-operations-loop" data-tpl="operations-loop" data-store="intermissions-ab:loop">
+<div class="tpl-head"><h3>Template 2 · Operations loop</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Template 2 · Operations loop" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Step</th><th scope="col">Trigger</th><th scope="col">Agent or system</th><th scope="col">Human gate</th></tr></thead>
+<tbody>
+<tr><th scope="row">1</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Trigger"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Agent or system"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Human gate"></td></tr>
+<tr><th scope="row">2</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Trigger"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Agent or system"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Human gate"></td></tr>
+<tr><th scope="row">3</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Trigger"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Agent or system"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Human gate"></td></tr>
+<tr><th scope="row">4</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Trigger"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Agent or system"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Human gate"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">Trigger: issue label · failed check · review comment · schedule</p></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>The PO approved the canvas, every BRD/PRD/ADR line has a source, and one issue reached a draft PR without manual coding.</p></div>
+<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://learn.microsoft.com/en-us/azure/sre-agent/" target="_blank" rel="noopener noreferrer" class="ext">Azure SRE Agent documentation<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://learn.microsoft.com/en-us/azure/sre-agent/overview" target="_blank" rel="noopener noreferrer" class="ext">Overview of Azure SRE Agent<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Teams on GitHub use an agentic workflow or Actions to hand labelled issues to the Copilot coding agent.</li><li>Teams on Bitbucket Data Center (on-prem) sketch the equivalent Jenkins or Bamboo job calling an agent CLI, and write the Jira update back through the Atlassian MCP server.</li><li>Keep the loop bounded: draft PRs only, a retry limit, and a human merge.</li><li>The trigger can be an issue generated automatically by the Azure SRE Agent from operational signals, or a ticket raised by a customer; the downstream flow is identical.</li><li>The loop diagram feeds <a href="exercise-7.html">Exercise 7</a> (gates and guardrails).</li></ul></aside>
+<nav class="pager" aria-label="Previous and next step"><a class="prev" href="exercise-7.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Exercise 7 · Gates and guardrails</span></a><a class="next" href="intermission-c.html" rel="next"><span class="dir">Next →</span><span class="ttl">Intermission C · AI versus script</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Hands-on workshop · Exercise guide</p><p class="muted">Links point to public documentation. HVE Core and HVE-Squad change quickly: use the versions installed for the workshop.</p></footer>
+</body>
+</html>

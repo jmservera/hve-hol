@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Same deliverables, your choice of runtime · HVE workshop guide</title>
+<meta name="description" content="HVE Core, HVE-Squad or your own orchestrator, plus a quick reference of entry points.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+</head>
+<body class="page page-how-you-run-it kind-info" data-page="how-you-run-it">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
+<nav class="toplinks" aria-label="Quick links"><a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a><a href="resources.html" class="keep">Resources</a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Exercise guide">
+<a class="side-home" href="index.html">← Guide home</a>
+<div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html" aria-current="page"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Get started</span></nav>
+<header class="page-head">
+<p class="eyebrow">How you run it</p>
+<h1>Same deliverables, your choice of runtime</h1>
+<nav class="jump" aria-label="On this page"><span>On this page</span><a href="#quick-reference">Quick reference</a><a href="#setup-pins">Setup pins</a></nav></header>
+<div class="runtimes"><div class="runtime"><div class="runtime-head"><h3>HVE Core</h3></div><p class="runtime-sub">The toolkit you drive</p><ul><li>RPI Agent, or the four phase skills: research, plan, implement, review</li><li>Specialist agents for requirements, architecture decisions, security and Responsible AI planning, a Design Thinking coach, and backlog managers for Jira, Azure DevOps and GitHub</li><li>You approve each phase</li></ul><p class="best"><span class="label">Best for</span>learning the method, one team, tight control</p></div><div class="runtime"><div class="runtime-head"><h3>HVE-Squad</h3><span class="pill pill-exp">Experimental</span></div><p class="runtime-sub">Orchestration on the same spine</p><ul><li>One request: a coordinator routes it to a cast of HVE Core agents</li><li>Autonomy modes: interactive (default) · autonomous · autopilot</li><li>Cost ceiling, decisions log and consumption ledger</li><li>Always stops before anything irreversible: deploy, push, merge, schema change</li></ul><p class="best"><span class="label">Best for</span>multi-role work, an audit trail, cost visibility per run</p></div><div class="runtime"><div class="runtime-head"><h3>Your own orchestrator</h3></div><p class="runtime-sub">Bring what you already use</p><ul><li>Welcome, if it shows the same evidence: research and plan before implementation, a review record and a decision log</li><li>Scored on the same <a href="scorecard.html">common scorecard</a></li></ul></div></div>
+<p class="banner banner-navy">HVE is the operating model. The toolkit is optional; the evidence is not.</p>
+<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>HVE-Squad is a community project built on HVE Core, at design-partner stage.</li></ul></aside>
+<header class="section-head" id="quick-reference">
+<p class="eyebrow">Quick reference</p>
+<h2>Entry points, and where the evidence lives</h2>
+</header>
+<div class="cols three ref"><div class="col"><div class="refcard"><h3>HVE Core</h3><p class="ref-sub">VS Code with GitHub Copilot Chat, or Copilot CLI</p><ul><li><strong>Agent picker →</strong> <strong>RPI Agent</strong>: describe the task; manual by default, full auto only on request</li><li><strong>Phase skills →</strong> <code>/rpi-research</code> · <code>/rpi-plan</code> · <code>/rpi-implement</code> · <code>/rpi-review</code></li><li><strong>Before acting →</strong> <code>/rpi-challenger</code> (expose assumptions) · <code>/rpi-walkthrough</code> (explain code before changing it)</li><li><strong>Specialist agents →</strong> BRD Builder · PRD Builder · ADR Creator · Security Planner · RAI Planner · DT Coach · Backlog Manager · Code Review</li><li><strong>Backlog skills →</strong> <code>/backlog-plan</code> (read-only) · <code>/backlog-execute</code> (writes to the tracker)</li><li><strong>Build your own →</strong> <code>/hve-builder</code></li></ul></div></div><div class="col"><div class="refcard"><h3>HVE-Squad</h3><ul><li><code>/squad init</code> → review and confirm the proposed team (no autopilot on setup)</li><li><code>/squad request="…"</code> → interactive by default; add <code>mode=autonomous</code> or <code>mode=autopilot</code></li><li>add <code>cost-ceiling=&lt;USD&gt;</code> → spend forecast and a stop point</li><li>add <code>routing=off | ranked | economy | manual</code> → model choice per role</li><li>ask the coordinator to run <code>squad-doctor</code> before work starts</li><li><code>/squad-governance-report</code> → governance dashboard</li><li>Copilot CLI or app: choose <strong>Squad Coordinator</strong> and send the same text without <code>/squad</code></li></ul></div></div><div class="col"><div class="refcard"><h3>Where the evidence lives</h3><pre class="tree">.copilot-tracking/
+├── research/   ← research notes
+├── plans/      ← plan
+│               (+ critique in reviews/plans/)
+├── changes/    ← change log
+├── reviews/    ← review records
+└── squad/      ← HVE-Squad state
+    ├── team.md · routing.md
+    ├── decisions.md
+    ├── history/
+    ├── consumption.md
+    └── state.json</pre></div></div></div>
+<p class="banner banner-warn">Working memory is not the source of truth: <strong>promote decisions to ADRs, requirements, docs and the backlog</strong>, and keep <code>.copilot-tracking/</code> out of main.</p>
+<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/agents/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Agents<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/usage.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Usage<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+<aside class="tips" id="tips-2" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>HVE Core no longer ships prompt files: <code>/rpi</code> is retired, so use the RPI Agent and describe the task.</li><li>The separate Azure DevOps, GitHub and Jira backlog agents are now one Backlog Manager.</li><li>The Meeting Analyst agent is experimental and needs the Work IQ MCP server, which may not be available in your organisation; use the PRD Builder’s clarifying questions or <code>/rpi-research</code> on an anonymised transcript instead.</li><li>For HVE-Squad, use a fixed, strong model for the coordinator, not Auto.</li></ul></aside>
+<header class="section-head" id="setup-pins">
+<p class="eyebrow">Setup</p>
+<h2>Pins for the day</h2>
+</header>
+<ul class="bullets pins"><li><strong>HVE Core:</strong> record the extension or plugin version installed for the workshop</li><li><strong>HVE-Squad:</strong> one pinned release tag for everyone (v0.18.1 at the time of writing; check Releases)</li><li><strong>APM CLI:</strong> exactly 0.29.0 (0.29.1 and 0.30.0 break the HVE-Squad install); the VS Code route for HVE-Squad needs it</li><li><strong>PowerShell 7+</strong> on every laptop</li><li><strong>GitHub authenticated before installing</strong> (<code>gh auth login</code> or <code>GITHUB_TOKEN</code>) to avoid rate limits</li><li><strong>Do not install the official HVE Core plugin next to the HVE-Squad plugin pair:</strong> every agent would exist twice</li><li><strong>One fixed coordinator model</strong> for all teams, not Auto</li></ul>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">Do not upgrade on the day</p><p>Use the versions installed during preparation. HVE Core and HVE-Squad change quickly.</p></div></div>
+<nav class="pager" aria-label="Previous and next step"><a class="prev" href="scenario.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Your scenario</span></a><a class="next" href="while-agents-run.html" rel="next"><span class="dir">Next →</span><span class="ttl">While agents run</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Hands-on workshop · Exercise guide</p><p class="muted">Links point to public documentation. HVE Core and HVE-Squad change quickly: use the versions installed for the workshop.</p></footer>
+</body>
+</html>
