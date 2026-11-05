@@ -220,6 +220,19 @@ def subhead(text, id_=None):
     return {"type": "h3", "text": text, "id": id_}
 
 
+def how_to_start(num, title, steps):
+    return [
+        section("how-to-start", "Exercise %s · How to start" % num, title, jump="How to start"),
+        subhead("Start here"),
+        numbered(steps, cls="compact"),
+    ]
+
+
+def round_(num, step, question, title, evidence, human):
+    return {"type": "round", "num": num, "step": step, "question": question,
+            "title": title, "evidence": evidence, "human": human}
+
+
 # ---------------------------------------------------------------------------
 # Home page
 # ---------------------------------------------------------------------------
@@ -227,7 +240,8 @@ HOME = {
     "kicker": "Advanced hands-on workshop",
     "title": "HyperVelocity Engineering",
     "title_line2": "Exercise guide",
-    "lead": "Ten team exercises to apply HVE, HVE Core and HVE-Squad to real or anonymised scenarios",
+    "lead": "Nine team exercises and an optional comparison to apply HVE, HVE Core and HVE-Squad to real or "
+            "anonymised scenarios",
     "goals_title": "What today is for",
     "goals": [
         "Experience a governed agentic lifecycle, end to end, on your own scenario",
@@ -246,11 +260,12 @@ HOME = {
         ("Open labs, not time slots",
          "Exercises are numbered, not time-boxed. Teams work in four open labs and start the next exercise "
          "when they are ready."),
-        ("Two parts per exercise",
-         "A **brief** (objective, input, steps, what to hand in) and a **toolkit** (fill-in templates, how to "
-         "run it with HVE Core or HVE-Squad, and links)."),
+        ("Brief, starting guidance and toolkit",
+         "Read the **brief**, then **How to start** for Exercises 2–10: four first steps, practical advice and "
+         "traps to avoid. The **toolkit** has fill-in templates, commands and links. Exercise 1 is a guided, "
+         "no-agent warm-up with an answer sheet and six reveals."),
         ("Nobody waits for an agent",
-         "Intermissions A–C fill waiting time while agents run. Exercise 9 is a backup for teams that "
+         "Intermissions A–C fill waiting time while agents run. Exercise 10 is a backup for teams that "
          "finish early."),
     ],
 }
@@ -259,10 +274,11 @@ HOME = {
 GROUPS = [
     {"name": "Get started", "note": "Before the first lab"},
     {"name": "Open lab 1", "note": "Exercises 1–3"},
-    {"name": "Open lab 2", "note": "Exercises 4–5 · Intermission A"},
-    {"name": "Open lab 3", "note": "Exercises 6–7 · Intermissions B–C"},
-    {"name": "Open lab 4", "note": "Exercises 8 and 10 · backup Exercise 9"},
+    {"name": "Open lab 2", "note": "Exercise 4 · Intermission A"},
+    {"name": "Open lab 3", "note": "Exercises 5–7 · Intermissions B–C"},
+    {"name": "Open lab 4", "note": "Exercises 8–9"},
     {"name": "Close", "note": "Playback and scorecard"},
+    {"name": "Backup", "note": "Exercise 10 · only if time remains before close"},
     {"name": "Reference", "note": "All links and templates"},
 ]
 
@@ -297,14 +313,14 @@ PAGES = [
                     ["09:50–11:15", "[Open lab 1](exercise-1.html) · Exercises 1–3",
                      "Predict the lifecycle, build an evidence map, define MVEs"],
                     {"cells": ["11:15–11:30", "Break", "Agents may continue running"], "cls": "pause"},
-                    ["11:30–13:00", "[Open lab 2](exercise-4.html) · Exercises 4–5 · Intermission A",
-                     "Intake to an approved backlog; design a reusable component"],
+                    ["11:30–13:00", "[Open lab 2](exercise-4.html) · Exercise 4 · Intermission A",
+                     "Intake to an approved backlog; pick the Exercise 5 item before lunch so research can run"],
                     {"cells": ["13:00–14:00", "Lunch", "Short coach huddle and run health check"], "cls": "pause"},
-                    ["14:00–15:30", "[Open lab 3](exercise-6.html) · Exercises 6–7 · Intermissions B–C",
-                     "Bounded RPI build, gates and controls; AI versus script audit"],
+                    ["14:00–15:30", "[Open lab 3](exercise-5.html) · Exercises 5–7 · Intermissions B–C",
+                     "Bounded RPI build; gates while it runs; reuse a correction after the review"],
                     {"cells": ["15:30–15:45", "Break", "Prepare evidence for cross-review"], "cls": "pause"},
-                    ["15:45–17:10", "[Open lab 4](exercise-8.html) · Exercises 8 and 10",
-                     "Red team and recovery; adoption path (Exercise 9 is backup)"],
+                    ["15:45–17:10", "[Open lab 4](exercise-8.html) · Exercises 8 and 9",
+                     "Red team and recovery; adoption path (Exercise 10 is backup if time remains)"],
                     ["17:10–17:30", "[Team playback and close](playback.html)",
                      "Show evidence, lessons, decisions, owners and next steps"],
                 ],
@@ -321,26 +337,26 @@ PAGES = [
                      "Whole team, then product owner, auditor, agent operator",
                      "**[Ex 3 · MVE bake-off](exercise-3.html)**\n"
                      "Architect, quality lead; agents run the experiments (may continue over the break)",
-                     "Lifecycle map · evidence map · context manifest · questions · 2 MVE cards"],
+                     "Scored answer sheet · evidence map · context manifest · questions · 2 MVE cards"],
                     ["**Open lab 2**",
                      "**[Ex 4 · Intake to approved backlog](exercise-4.html)**\n"
                      "Product owner, agent operator, quality lead",
-                     "**[Ex 5 · Reusable component](exercise-5.html)**\n"
-                     "Architect and one volunteer; [Intermission A](intermission-a.html) (PO canvas) "
-                     "while Ex 4 agents run",
-                     "Approved requirements · decision log · backlog · component spec · PO canvas"],
+                     "**[Intermission A · PO canvas](intermission-a.html)**\n"
+                     "Product owner and agent operator, while Ex 4 agents run",
+                     "Approved requirements · decision log · backlog · PO canvas · one Ex 5 item chosen"],
                     ["**Open lab 3**",
-                     "**[Ex 6 · Bounded RPI work unit](exercise-6.html)**\n"
-                     "Agent operator; product owner and architect approve the plan",
-                     "**[Ex 7 · Gates and guardrails](exercise-7.html)**\n"
-                     "Quality and governance lead, architect; [Intermissions B](intermission-b.html) and "
-                     "[C](intermission-c.html) while Ex 6 runs",
-                     "Research, plan, patch, review · gate map · control matrix · script-versus-AI audit"],
+                     "**[Ex 5 · Bounded RPI work unit](exercise-5.html)**\n"
+                     "Agent operator; product owner and architect approve the plan. Then quality lead and "
+                     "architect start **[Ex 7 · Gates and guardrails](exercise-7.html)** while it runs",
+                     "**[Ex 6 · Reuse a lesson](exercise-6.html)** after the Ex 5 review\n"
+                     "Architect and one volunteer; anyone free picks [Intermission B](intermission-b.html) or "
+                     "[C](intermission-c.html) during Ex 5",
+                     "Research, plan, patch, review · gate map · control matrix · reusable lesson and re-run proof"],
                     ["**Open lab 4**",
                      "**[Ex 8 · Red team and recovery](exercise-8.html)**, then "
-                     "**[Ex 10 · Adoption path](exercise-10.html)**\n"
+                     "**[Ex 9 · Adoption path](exercise-9.html)**\n"
                      "Whole team; paired with another team for Ex 8",
-                     "Backup · **[Ex 9 · Compare autonomy, cost and outcome](exercise-9.html)**\n"
+                     "Backup · **[Ex 10 · Compare autonomy, cost and outcome](exercise-10.html)**\n"
                      "Auditor / observer, only if there is time; then playback preparation",
                      "Findings · recovery log · adoption canvas · pilot and owners"],
                 ],
@@ -349,10 +365,27 @@ PAGES = [
             ),
             banner("Teams pace themselves inside each lab. The auditor / observer keeps the log all day; "
                    "it feeds Exercise 8 and the playback.", kind="soft"),
+            section("agents-or-thinking", "Choose the working mode", "Agents or thinking?",
+                    jump="Agents or thinking"),
+            table(["Exercise", "How to work"], [
+                ["[1 · Predict the lifecycle](exercise-1.html)", "No agents: whole-room thinking and answer sheet"],
+                ["[2 · Evidence map](exercise-2.html)", "People classify first; one targeted read-only agent call"],
+                ["[3 · MVEs](exercise-3.html)", "Set thresholds first; agents generate research or prototypes"],
+                ["[4 · Backlog](exercise-4.html)", "Agents draft; the product owner answers and approves"],
+                ["[5 · RPI](exercise-5.html)", "Full RPI run; people approve the plan and accept the result"],
+                ["[6 · Reuse](exercise-6.html)", "One targeted call to capture and test a lesson from Exercise 5"],
+                ["[7 · Gates](exercise-7.html)", "Mostly no agents; make a deterministic control actually block"],
+                ["[8 · Recovery](exercise-8.html)", "Mostly no agents; recovery may re-run one phase"],
+                ["[9 · Adoption](exercise-9.html)", "Mostly no agents; agree the pilot and fill the canvas"],
+                ["[10 · Comparison](exercise-10.html)", "Optional: agents repeat the work with one variable changed"],
+            ]),
             tips(
-                "Exercise 7 is a core task but can start while Exercise 6 executes, because its input can be "
-                "the Exercise 4 outputs.",
-                "Exercise 9 is a backup: run it only if your team finishes early.",
+                "Exercise 7 begins while Exercise 5 runs, after its plan is approved; the Exercise 4 outputs "
+                "are already enough to start the gate map.",
+                "By 15:30, bring RPI artefacts, a gate map and one lesson reused to the cross-review.",
+                "Exercise 10 is a backup: try it before close only if time remains. Its reference section comes "
+                "after playback in this guide, but playback stays at 17:10–17:30.",
+                "If time is short, drop the backup comparison first, then intermissions; protect the core tasks.",
                 "Adapt the split to your team size and run speed.",
             ),
         ],
@@ -400,7 +433,7 @@ PAGES = [
             tips(
                 "Your code stays on your laptops: facilitators never need access to it.",
                 "Keep the agreements visible on your table.",
-                "The auditor’s log starts with Exercise 1; it feeds Exercises 8 and 9 and the final playback.",
+                "The auditor’s log starts with Exercise 1; it feeds Exercises 8 and 10 and the final playback.",
             ),
         ],
     },
@@ -460,6 +493,10 @@ PAGES = [
                     ("A small greenfield feature", "", None),
                 ]}],
                 [{"type": "cardlist", "title": "Ready-made fallbacks", "items": [
+                    ("Inventory-aware cart",
+                     "The catalogue shows 3 units in stock, but the cart accepts 4. Use a facilitator-provided "
+                     "pre-run walkthrough or recording. This is separate from the fictional appointment case "
+                     "in Exercise 1.", None),
                     ("Inventory-aware cart",
                      "“The catalogue shows 3 units in stock. The cart accepts 4.” Pre-run walkthrough and "
                      "recorded run from the facilitators.", None),
@@ -610,93 +647,142 @@ PAGES = [
     {
         "slug": "exercise-1",
         "group": "Open lab 1",
-        "kind": "parallel",
+        "kind": "core",
         "num": "1",
+        "storage_slug": "exercise-1-appointments",
         "nav": "Predict the lifecycle",
-        "eyebrow": "Exercise 1 · Open lab 1 · Parallel or waiting-time task",
+        "eyebrow": "Exercise 1 · Open lab 1 · Whole-room warm-up · No agents",
         "title": "Predict the lifecycle before the agents do",
-        "summary": "Understand the lifecycle and expose hidden assumptions before automation starts.",
+        "summary": "Six guided questions: predict what each HVE step needs, produces and leaves for a person to decide.",
         "blocks": [
-            brief("Understand the lifecycle and expose hidden assumptions before automation starts.",
-                  "A ready-made end-to-end scenario or one of your own cases",
-                  "Parallel or waiting-time task",
-                  "Whole team; the auditor records the differences",
+            brief("Understand each HVE step: what it needs, what it produces, and where a person decides.",
+                  "The same fictional citizen-appointment change request for every team",
+                  "Facilitator-led thinking exercise; no agents",
+                  "Whole team; auditor writes the answers; facilitator leads the room",
                   roles_label="Roles"),
             work(
                 [
-                    "Look only at the starting evidence and the desired outcome.",
-                    "On paper, write the steps, roles, gates and artefacts you expect.",
-                    "The facilitator reveals a pre-run walkthrough or logs, one stage at a time.",
-                    "At each stage, compare your decision with the actual HVE or HVE-Squad path.",
-                    "Label each difference: missing context · different judgement · unnecessary machinery.",
+                    "The facilitator presents the fictional use case below.",
+                    "For each of six HVE steps, listen to one guided question.",
+                    "Write your team’s short answer in 90 seconds, on paper or in the web answer sheet.",
+                    "Only then open that round’s reveal with the facilitator: what is produced, and who decides?",
+                    "Score your original answer: ✓ we had it · ½ partly · ✗ we missed it.",
                 ],
                 [
-                    "A hand-drawn lifecycle map",
-                    "Three assumptions you would validate first",
-                    "One change you would make to the automated flow",
+                    "The answer sheet, scored",
+                    "Your biggest miss",
+                    "One question the agent should always ask on your projects",
                 ],
             ),
-            section("toolkit", "Exercise 1 · Hand-in and toolkit", "Map it first, then compare it",
+            callout("info", "How it works",
+                    "About 30 minutes: a short introduction, six answer-and-reveal rounds, then a recap. "
+                    "Use the web sheet or paper, but do not ask an agent. Keep your original answers after "
+                    "the reveals; a defensible different answer is a different judgement, not automatically a miss."),
+            section("case", "The shared use case", "Cita Previa: change an appointment", jump="Use case"),
+            para("Illustrative example · fictional client and system · not a recorded run", cls="caveat"),
+            table(["Starting evidence", "What you know"], [
+                ["Ticket CITA-482", "As a citizen, I want to change the date of my appointment online, so that "
+                 "I don’t have to phone the office."],
+                ["Current rules", "15-minute slots; bookings up to 30 days ahead; confirmation by email and SMS"],
+                ["System", "Citizen appointment portal for a fictional regional public administration"],
+                ["Stack", "Java / Spring Boot back end; Angular front end; on-prem GitLab"],
+                ["Tool context", "HVE Core in VS Code with GitHub Copilot; approved read-only Jira and "
+                 "Confluence Data Center access through MCP"],
+                ["Desired outcome", "Change the date within business-owner-approved rules, free the old slot, "
+                 "notify the citizen, and leave a reviewed, tested change with release evidence"],
+            ], row_header=True),
+            section("toolkit", "Exercise 1 · Hand-in and toolkit", "One box per round, scored after each reveal",
                     jump="Hand-in and toolkit"),
-            template("lifecycle-map", "Template 1 · Lifecycle map",
-                     matrix("", ["Stage 1", "Stage 2", "Stage 3", "Stage 4", "Stage 5"],
-                            ["Steps", "Who decides", "Gate", "Artefact left behind"])),
-            template("difference-log", "Template 2 · Difference log",
-                     blank(["Stage", "What we predicted", "What actually happened", "Label"], n=3),
-                     note="Label: missing context / different judgement / unnecessary machinery"),
-            run_with((None, "The facilitators’ pre-run walkthrough or logs; for a team’s own case, the research, "
-                            "plan and review files of a previous run, or the HVE-Squad decisions log")),
-            links(("HVE Core · RPI workflow", U["rpi"]), ("HVE-Squad · Guided demos", U["squad_demo"])),
-            done("Every difference carries a label, and the three assumptions are written down before the reveal "
-                 "ends."),
-            {"type": "reveal",
-             "summary": "Reveal: the governed path",
-             "warning": "Open this only after your team has drawn its own map. Your facilitator walks through it "
-                        "one stage at a time.",
-             "eyebrow": "Exercise 1 · Reveal",
-             "title": "The governed path: people own the transitions",
-             "phases": [
-                 ("Discover", "conversation, ticket or incident → evidence map"),
-                 ("Define", "requirements → architecture → backlog"),
-                 ("Build", "Research → Plan → Implement → Review"),
-                 ("Deliver and operate", "PR review, release and ITSM gates, feedback into the next loop"),
-             ],
-             "gates_title": "Five gates, one owner each",
-             "gates": [
-                 ("Evidence → BRD", "Product owner"),
-                 ("BRD → PRD", "Product + engineering"),
-                 ("PRD → Plan", "Architect"),
-                 ("Plan → Implement", "Engineering lead"),
-                 ("Review → Merge", "Release approver"),
-             ],
-             "run_title": "The recorded run (inventory-aware cart)",
-             "run": [
-                 "28-min transcript + 3 pages",
-                 "7 unresolved questions",
-                 "10 functional · 9 non-functional requirements · 15 acceptance criteria",
-                 "19 answers from the owner",
-                 "research",
-                 "plan + critique: Pass",
-                 "20 files · 56 tests",
-                 "review",
-                 "owner validation",
-             ],
-             "caveat": "One recorded demonstration on a sample app, not a benchmark or a productivity claim.",
-             "links": [("HVE Core · AI-assisted project lifecycle", U["lifecycle"])],
-             "banner": "Security and Responsible AI checks sit on these gates, not in a separate review.",
-             "questions": [
-                 "Who owns each of these gates in your projects today?",
-                 "What was your most surprising difference, and which label did you give it?",
-                 "The same lifecycle covers application management: the trigger is an incident or a service "
-                 "request instead of a new product idea.",
-             ]},
+            template("round-team", "Team and auditor", form(["Team", "Auditor"])),
+            template("round-answers", "Six-round answer sheet", {
+                "head": ["Round", "Step", "Our answer", "Score"],
+                "rows": [[str(i), step, None, None] for i, step in enumerate(
+                    ["Evidence", "Requirements", "Research", "Plan", "Implement", "Review and hand-off"], 1)],
+                "row_header": True,
+            }, note="✓ = 1 (we had it) · ½ = 0.5 (partly) · ✗ = 0 (we missed it). Score after each reveal."),
+            template("round-reflection", "Reflection", form([
+                "Total out of 6 (for fun only)",
+                "Our biggest miss",
+                "One question the agent should always ask on your projects",
+            ])),
+            section("reveal", "Six guided rounds", "Answer first, then reveal one step at a time",
+                    jump="Six rounds"),
+            round_("1", "Evidence",
+                   "Before anyone writes code, what should the agent read, and what should it hand back to you?",
+                   "Read before you write",
+                   [
+                       "Evidence summary: fewer phone calls (CITA-482); 15-minute slots, 30-day advance booking, "
+                       "email and SMS confirmation (Confluence).",
+                       "Five open questions: how many changes per citizen; how many hours before; another "
+                       "office too; who is notified; same-day appointments?",
+                   ],
+                   "The business owner confirms sources and completeness. Nothing is approved yet."),
+            round_("2", "Requirements",
+                   "The agent drafts the requirements. Name 3 things it must ASK the business owner instead "
+                   "of deciding itself.",
+                   "The agent asks; the owner decides",
+                   [
+                       "Requirements v0.2: R3 permits at most 2 changes (owner answer 1); R4 closes changes "
+                       "24 hours before (owner answer 2); R5 frees the old slot immediately (Confluence).",
+                       "AC-7: under 24 hours, Change date is disabled and the office phone is shown. "
+                       "Accessibility requirement: WCAG 2.1 AA for the public-sector example.",
+                       "Unanswered rules and their dependent acceptance criteria remain blocked.",
+                   ],
+                   "The business owner answers an options/undecided form and approves the requirements."),
+            round_("3", "Research",
+                   "Before planning, what 3 facts must the agent find out in the code?",
+                   "Check the code before trusting the docs",
+                   [
+                       "Booking logic is in `AppointmentService`; cancellation already releases a slot.",
+                       "A shared messaging service exists, but new SMS text is needed. There are no automated "
+                       "`AppointmentService` tests.",
+                       "Confluence says 30 days; the code allows 60. That conflict becomes a new business-owner "
+                       "question, not an agent-made decision.",
+                   ],
+                   "No approval yet. The evidence and the documentation/code conflict go back to the owner."),
+            round_("4", "Plan",
+                   "The agent proposes a plan. What would make you REJECT it?",
+                   "Reject the plan before any code exists",
+                   [
+                       "Plan: 1 safety-net tests for current booking; 2 R3/R4 rules; 3 reuse slot release R5; "
+                       "4 SMS/email text; 5 disable the button under 24 hours (AC-7); 6 accessibility checks.",
+                       "Critique: a displayed slot may be taken before confirmation. Add task 2b to hold the "
+                       "slot at confirmation.",
+                   ],
+                   "The tech lead or architect approves the plan before any code is written."),
+            round_("5", "Implement",
+                   "How much freedom would you give the agent here, and what proves the work is done?",
+                   "Match autonomy to risk",
+                   [
+                       "Tasks 1–6 and 2b are done; new `AppointmentService` tests pass; changes link back to "
+                       "R3–R5 and AC-7.",
+                       "Because the service lacked tests, the engineering lead chooses a check-in after each "
+                       "task. Manual is the default; full autonomy is only on request.",
+                   ],
+                   "The engineering lead chooses the autonomy level and checks progress against evidence."),
+            round_("6", "Review and hand-off",
+                   "What can the agent review on its own, and what must a person still check before release?",
+                   "Finished is not accepted",
+                   [
+                       "Acceptance tests are verified except for the manual screen-reader announcement of the "
+                       "new date. SMS text over 160 characters was found and fixed.",
+                       "The owner still has to try the test environment. A backlog item to show remaining "
+                       "changes is proposed, not created.",
+                   ],
+                   "The business owner accepts; a named person approves the GitLab merge request; the normal "
+                   "release process still applies."),
+            banner("Six steps, five human decisions: sources confirmed · requirements approved · plan "
+                   "approved · autonomy chosen · merge approved.", kind="soft"),
+            links(("HVE Core · AI-assisted project lifecycle", U["lifecycle"]),
+                  ("HVE Core · RPI workflow", U["rpi"])),
+            done("Every round has an answer and a score, and the biggest miss is written down."),
             tips(
-                "If your own case has pre-run material (research, plan and review files of a previous run), use "
-                "it; otherwise use the inventory-aware cart.",
-                "The starting evidence is typically a stakeholder transcript and some context; nothing else until "
-                "the reveal.",
-                "Keep your map: it is reused in [Exercise 9](exercise-9.html) (backup) to compare predicted and "
-                "actual human effort.",
+                "Wait for the facilitator before opening each reveal. These are fictional illustrations, "
+                "not measurements or a recorded run.",
+                "Keep your answer sheet for [Exercise 10](exercise-10.html) (backup): compare the human "
+                "decisions you predicted with the effort your real run needed.",
+                "The inventory-aware cart is a separate [fallback scenario](scenario.html), not this exercise’s "
+                "appointment case.",
             ),
         ],
     },
@@ -723,6 +809,24 @@ PAGES = [
                 ],
                 ["Evidence map", "Context manifest", "Prioritised clarification questions"],
             ),
+            *how_to_start("2", "One statement per row, then one agent call", [
+                "Gather your scenario’s material in one place: ticket, notes, transcript, architecture note, "
+                "backlog item.",
+                "Open the [evidence map table](#tpl-evidence-map) and add one row per statement, not per document.",
+                "The product owner tags each row: fact, decision, constraint, assumption or open question.",
+                "Only then ask the agent: `/rpi-research` “List gaps and contradictions in these sources; "
+                "change nothing.”",
+            ]),
+            tips(
+                "Two sources disagree? That is an open question, not a fact.",
+                "Note the source and its date in every row; mark stale information as stale.",
+                "Name one source of truth per kind of information: requirements, work items, decisions.",
+                "Save the context manifest in the repo: it is the agent’s context in Exercises 4 and 5.",
+                "Accept, reject or rewrite every gap the agent finds, with a one-line reason.",
+                label="Tips and tricks",
+            ),
+            tips("Letting the agent build the map for you", "Treating meeting notes as decisions",
+                 "Putting client data in the repo before anonymising it", label="Watch out"),
             section("toolkit", "Exercise 2 · Hand-in and toolkit",
                     "Make context explicit, and decide what the agent may use", jump="Hand-in and toolkit"),
             template("evidence-map", "Evidence map", blank(["Item", "Type", "Source", "Owner"], n=4),
@@ -775,10 +879,28 @@ PAGES = [
                     "Define success, failure and inconclusive thresholds before building.",
                     "Let agents generate research or prototypes while you prepare the evaluation matrix.",
                     "Compare the experiments and carry the insight into the next RPI cycle "
-                    "([Exercise 6](exercise-6.html)).",
+                    "([Exercise 5](exercise-5.html)).",
                 ],
                 ["Two MVE cards", "Decision matrix", "Recorded selection and rejection rationale"],
             ),
+            *how_to_start("3", "Write the thresholds before the agents start", [
+                "Take the riskiest assumption or open question from your evidence map.",
+                "Design two genuinely different MVEs, for example a read-only technical spike and a throwaway "
+                "prototype.",
+                "Fill both MVE cards with success, failure and inconclusive thresholds, in numbers, before "
+                "any agent runs.",
+                "Start two agent sessions on separate branches, one per MVE; they can keep running over the break.",
+            ]),
+            tips(
+                "Spike: `/rpi-research` for a read-only technical question. Concept: the DT Coach for a "
+                "low-fidelity prototype.",
+                "Time-box each MVE to 20–30 minutes and prepare the decision matrix while they run.",
+                "No product doubt? Test a technical one: a library, an integration path, a migration approach.",
+                "Inconclusive is a valid result: record what would settle it and carry it into Exercise 5.",
+                label="Tips and tricks",
+            ),
+            tips("Writing thresholds after seeing the output", "Two MVEs that are variants of one idea",
+                 "Polishing a prototype that should be thrown away", label="Watch out"),
             section("toolkit", "Exercise 3 · Hand-in and toolkit",
                     "Set the thresholds first, then let the evidence decide", jump="Hand-in and toolkit"),
             template("mve-card", "MVE card",
@@ -815,7 +937,7 @@ PAGES = [
                 "comes back.",
                 "No product uncertainty? Use a technical one: a library choice, an integration path, a migration "
                 "approach.",
-                "Carry the winning insight into [Exercise 6](exercise-6.html) as an explicit input to the plan.",
+                "Carry the winning insight into [Exercise 5](exercise-5.html) as an explicit input to the plan.",
             ),
         ],
     },
@@ -849,7 +971,25 @@ PAGES = [
                     "The product owner and agent operator can pick up Intermission A: give the product owner a "
                     "canvas into the HVE loop.",
                     actions=[("Intermission A · PO canvas", "intermission-a.html"),
-                             ("Exercise 5 · Reusable component", "exercise-5.html")]),
+                             ("Exercise 5 · Bounded RPI work unit", "exercise-5.html")]),
+            *how_to_start("4", "The product owner sits next to the agent", [
+                "Product owner and agent operator sit together with the evidence map and the clarification "
+                "questions.",
+                "Start the BRD Builder, or the PRD Builder for a small change, and give it your scenario and evidence.",
+                "Answer its questions live. Unsure? Answer “undecided” and log it in the decision log with an owner.",
+                "Run `/backlog-plan` read-only; write to Jira, Azure DevOps or GitHub with `/backlog-execute` "
+                "only after approval.",
+            ]),
+            tips(
+                "Keep it small: one feature, three to six backlog items.",
+                "Write at least one acceptance criterion as a concrete example: given, when, then.",
+                "Use your own document names and templates; ask the builders to follow them.",
+                "Before lunch, pick one narrow item for [Exercise 5](exercise-5.html); its research can run "
+                "over lunch.",
+                label="Tips and tricks",
+            ),
+            tips("An agent silently resolving an open question", "A backlog that only splits the text",
+                 "Requirements with no version or approval stamp", label="Watch out"),
             section("toolkit", "Exercise 4 · Hand-in and toolkit",
                     "Every requirement traces back; open questions get an owner", jump="Hand-in and toolkit"),
             template("decision-log", "Decision log",
@@ -882,87 +1022,8 @@ PAGES = [
                 "not just in the chat.",
                 "A business answer has to change the files (requirements, backlog, traceability), not just appear "
                 "in chat.",
-                "Pick one narrow, testable item from this backlog for [Exercise 6](exercise-6.html).",
-            ),
-        ],
-    },
-    {
-        "slug": "exercise-5",
-        "group": "Open lab 2",
-        "kind": "parallel",
-        "num": "5",
-        "nav": "Reusable component",
-        "eyebrow": "Exercise 5 · Open lab 2 · Parallel activity",
-        "title": "Build one reusable skill, agent or connector",
-        "summary": "Convert local know-how into a reusable component that can connect to the wider flow.",
-        "blocks": [
-            brief("Convert local know-how into a reusable component that can connect to the wider flow.",
-                  "A repeated in-house method, internal agent, orchestrator or MCP pattern",
-                  "Parallel or waiting-time task",
-                  "Architect and one volunteer"),
-            work(
-                [
-                    "Select one repeated task: discovery questions, Jira intake, architecture review, a code "
-                    "standard, AMS triage…",
-                    "Choose the smallest correct building block: instruction, prompt, skill, agent, hook or "
-                    "control, or connector.",
-                    "Define when it runs, its inputs, outputs, permissions and failure behaviour.",
-                    "Prototype the component, or write its specification.",
-                    "Explain where it plugs into HVE-Squad and where it should stay independent.",
-                ],
-                ["Component specification or working prototype", "Permission and failure model",
-                 "Reuse and ownership plan"],
-            ),
-            section("toolkit", "Exercise 5 · Hand-in and toolkit", "Pick the smallest building block that works",
-                    jump="Hand-in and toolkit"),
-            table(
-                ["If you need…", "→ Use…"],
-                [
-                    ["A rule that always applies to certain files",
-                     "**Instruction** (narrow `applyTo` pattern; keep it short)"],
-                    ["A workflow someone starts on demand",
-                     "**Prompt file or skill entry point** (slash command)"],
-                    ["Deep know-how, question banks, templates or scripts",
-                     "**Skill** (short `SKILL.md`; detail in reference files)"],
-                    ["A multi-step job with tools, phases or hand-offs",
-                     "**Agent** (restrict its tools; hand off, don’t sprawl)"],
-                    ["A rule that must hold whatever the model thinks",
-                     "**Control**: hook, permission, schema or CI check"],
-                    ["Governed access to Jira, Confluence, GitLab or another system",
-                     "**Connector** (MCP server)"],
-                ],
-                cls="pick",
-            ),
-            template("component-spec", "Component spec", form([
-                "Name",
-                "Trigger: when it runs",
-                "Inputs",
-                "Outputs",
-                "Permissions and tools",
-                "On failure",
-                "Owner and version",
-                "Plugs into HVE-Squad as… / stays independent because…",
-            ], col="Specification")),
-            run_with((None, "HVE Core’s **hve-builder** skill (create, validate, review with a Pass / Revise / "
-                            "Blocked verdict, correct). Package and pin it with **APM**: one manifest, a lockfile, "
-                            "and an organisation policy for what may be installed.")),
-            links(("HVE Core · hve-builder", U["hve_builder"]), ("VS Code · Customise agents", U["vs_overview"]),
-                  ("Agent skills", U["vs_skills"]), ("Custom agents", U["vs_agents"]),
-                  ("MCP servers", U["vs_mcp"]), ("Hooks", U["vs_hooks"]),
-                  ("HVE Core · Customisation", U["customization"]), ("APM", U["apm"])),
-            done("Someone outside the team could install and run it from the specification alone."),
-            tips(
-                "Many teams already have home-made orchestrations, agents and MCP servers; the goal is to turn one "
-                "of them into something another team can safely reuse.",
-                "Least machinery: one well-reviewed skill beats ten private orchestrations.",
-                "Jira and Confluence on Data Center? Atlassian’s official remote MCP server "
-                "([Rovo MCP](" + U["rovo_mcp"] + ")) is Cloud-only. The open-source "
-                "[sooperset/mcp-atlassian](" + U["mcp_atlassian"] + ") server supports Server/Data Center but is "
-                "not an Atlassian product: evaluate it under your security policy before use.",
-                "APM lockfile governance is stable; its policy engine (`apm-policy.yml`) is an early preview, so "
-                "pin the APM version.",
-                "Further reading: [Agent Skills specification](" + U["skills_spec"] + ") and "
-                "[Model Context Protocol](" + U["mcp_spec"] + ").",
+                "Pick one narrow, testable item from this backlog for [Exercise 5](exercise-5.html) before lunch; "
+                "its research can run over lunch.",
             ),
         ],
     },
@@ -977,14 +1038,15 @@ PAGES = [
         "summary": "Let a non-developer steer BRD, PRD and ADR generation without writing code.",
         "blocks": [
             brief("Let a non-developer steer BRD, PRD and ADR generation without writing code.",
-                  "The team repo in the GitHub Copilot app, with the Atlassian and WorkIQ MCP servers connected",
+                  "The team repo in the GitHub Copilot app, with approved read-only MCP servers where available",
                   "Waiting-time task during [Ex 4](exercise-4.html)",
                   "Product owner leads; agent operator pairs; auditor logs prompts and edits"),
             work(
                 [
-                    "Open the team repo in the GitHub Copilot app; connect the MCP servers.",
+                    "Open the team repo in the GitHub Copilot app; connect the approved, available MCP servers.",
                     "Ask Copilot to generate a product-owner canvas: goals, users, scope, open questions, decisions.",
-                    "Pull real context via MCP (Jira epic, Confluence, WorkIQ) and look up a matching accelerator at "
+                    "Pull approved context via available MCP servers (for example Jira, Confluence or WorkIQ) "
+                    "and look up a matching accelerator at "
                     "[accelerators.ms](" + U["accelerators"] + ").",
                     "The PO approves the canvas; Copilot drafts BRD, PRD and ADR, citing sources. The ADR records: "
                     "adopt, adapt or build.",
@@ -1008,18 +1070,19 @@ PAGES = [
                 "Pick the closest match (for example Modernize your Code for a legacy codebase), cite it as the "
                 "reference architecture in the ADR, and record whether you adopt, adapt or build.",
                 "If an MCP server is unavailable, record it as missing context rather than pasting data by hand.",
-                "The PO edit log is reused in [Exercise 9](exercise-9.html).",
+                "The PO edit log is reused in [Exercise 10](exercise-10.html).",
             ),
         ],
     },
     # ------------------------------------------------------------- Open lab 3
     {
-        "slug": "exercise-6",
+        "slug": "exercise-5",
         "group": "Open lab 3",
         "kind": "core",
-        "num": "6",
+        "num": "5",
+        "storage_slug": "exercise-6",
         "nav": "Bounded RPI work unit",
-        "eyebrow": "Exercise 6 · Open lab 3 · Core task",
+        "eyebrow": "Exercise 5 · Open lab 3 · Core task · Start Exercise 7 while it runs",
         "title": "Execute a bounded RPI work unit",
         "summary": "Run Research → Plan → Implement → Review without losing traceability.",
         "blocks": [
@@ -1032,19 +1095,34 @@ PAGES = [
                     "Agree the definition of done and the boundaries before execution.",
                     "Assign the run: HVE Core, HVE-Squad or your own orchestrator.",
                     "Require research and plan evidence before any implementation.",
-                    "While it executes, the rest of the team works on [Exercise 7](exercise-7.html) and the "
-                    "parallel activities.",
+                    "While it runs, split the team: the quality lead and architect start "
+                    "[Exercise 7](exercise-7.html); anyone free picks Intermission B or C; the auditor logs.",
                     "Review the result against the requirement, the plan, the tests and the source evidence.",
                 ],
                 ["Research and plan artefacts", "Implementation or credible patch",
                  "Review evidence and unresolved risks"],
             ),
-            callout("wait", "While Exercise 6 executes",
-                    "The rest of the team starts Exercise 7 and the two intermissions for this lab.",
+            callout("wait", "Start Exercise 7 while the RPI run executes",
+                    "Once the plan is approved, the quality lead and architect begin gates and guardrails. "
+                    "The agent operator and product owner stay with the run; anyone free picks an intermission.",
                     actions=[("Exercise 7 · Gates and guardrails", "exercise-7.html"),
                              ("Intermission B · Issue to patch", "intermission-b.html"),
                              ("Intermission C · AI versus script", "intermission-c.html")]),
-            section("toolkit", "Exercise 6 · Hand-in and toolkit",
+            *how_to_start("5", "Bound it, approve the plan, then split the team", [
+                "Pick one backlog item from [Exercise 4](exercise-4.html) that fits about an hour of implementation.",
+                "Write the request with its boundaries: what to change, what not to touch, the definition of done.",
+                "Start the RPI Agent (manual by default), or `/squad request=…` with a cost ceiling for HVE-Squad.",
+                "Approve the research, then the plan, before any code is written. Then let implementation run.",
+            ]),
+            banner("While the RPI runs · Split the team\n"
+                   "Agent operator and product owner: stay with the run and approve each phase.\n"
+                   "Quality lead and architect: start Exercise 7, gates and guardrails, now.\n"
+                   "Anyone free: Intermission B (issue to patch) or C (AI versus script).\n"
+                   "Auditor: log times, questions and corrections for Exercise 10 and the playback.\n"
+                   "After the review: turn one lesson into a reusable instruction or skill (Exercise 6)."),
+            tips("Full auto before a plan is approved", "Reading “Complete” as “accepted”",
+                 "Pushing on when research shows the item is bigger: cut the scope instead", label="Watch out"),
+            section("toolkit", "Exercise 5 · Hand-in and toolkit",
                     "One job, one artefact and one human decision per phase", jump="Hand-in and toolkit"),
             table(
                 ["", "Research", "Plan", "Implement", "Review"],
@@ -1067,9 +1145,10 @@ PAGES = [
                 ("HVE Core", "select the RPI Agent and describe the item (manual by default; full auto only on "
                              "request), or run `/rpi-research`, `/rpi-plan`, `/rpi-implement` and `/rpi-review` one "
                              "at a time"),
-                ("HVE-Squad", "`/squad request=\"<backlog item>\" mode=autopilot cost-ceiling=<USD>` — the "
-                              "Implementation Gate means work never begins cold; the Impactful-Action Gate stops "
-                              "before deploy, push, merge or schema changes"),
+                ("HVE-Squad", "`/squad request=\"<backlog item>\" cost-ceiling=<USD>` starts interactively. "
+                              "Approve research and the plan before increasing autonomy; the Implementation "
+                              "Gate means work never begins cold, and the Impactful-Action Gate stops before "
+                              "deploy, push, merge or schema changes"),
                 ("Your own orchestrator", "show the same four artefacts"),
                 label="Start it",
             ),
@@ -1092,6 +1171,110 @@ PAGES = [
                 "For HVE-Squad, use the cost ceiling agreed for all teams and record any raise.",
                 "If HVE-Squad misbehaves, ask the coordinator for `squad-doctor`, then check the troubleshooting "
                 "page; if it is still blocked, run the item with HVE Core instead.",
+                "Keep this run’s request, starting commit and logs: it is normally Run A for "
+                "[Exercise 10](exercise-10.html). After its review, use one real correction in "
+                "[Exercise 6](exercise-6.html).",
+            ),
+        ],
+    },
+    {
+        "slug": "exercise-6",
+        "group": "Open lab 3",
+        "kind": "parallel",
+        "num": "6",
+        "storage_slug": "exercise-5",
+        "nav": "Reuse a lesson",
+        "eyebrow": "Exercise 6 · Open lab 3 · Parallel task · After the first RPI run",
+        "title": "Reuse what the first RPI run taught you",
+        "summary": "Capture a real Exercise 5 correction, then prove the next run no longer needs it.",
+        "blocks": [
+            brief("Capture one lesson from Exercise 5 as an instruction, skill or control the next run picks up.",
+                  "Corrections and review findings from [Exercise 5](exercise-5.html), plus the auditor’s log",
+                  "Parallel task, once Exercise 5 has a review",
+                  "Architect and one volunteer"),
+            work(
+                [
+                    "Find one thing you had to correct, repeat or explain to the agent in Exercise 5.",
+                    "Pick the smallest block: instructions file, scoped instruction, prompt, skill, hook or "
+                    "connector.",
+                    "Define when it runs, its inputs, outputs, permissions and failure behaviour.",
+                    "Build it with `hve-builder`, then re-run one RPI step to check the correction is no longer needed.",
+                    "Explain where it plugs into HVE-Squad and where it should stay independent.",
+                ],
+                ["Component specification or working prototype", "Permission and failure model",
+                 "Reuse and ownership plan", "Evidence from a re-run where the original correction was not needed"],
+            ),
+            *how_to_start("6", "Make the next run need fewer corrections", [
+                "Read the auditor’s log and the [Exercise 5](exercise-5.html) review: what did you correct, "
+                "repeat or explain to the agent?",
+                "Pick one lesson that will come back: a convention, how to run your tests, a template, "
+                "a triage checklist.",
+                "Choose the smallest block: a line in `.github/copilot-instructions.md`, a scoped instruction "
+                "or a skill.",
+                "Create and validate it with `hve-builder`, then re-run one step, such as `/rpi-plan`, and "
+                "check the fix holds.",
+            ]),
+            tips(
+                "A rule for the whole repo? `copilot-instructions.md`. A rule for some files? An instruction "
+                "with a narrow `applyTo`.",
+                "Know-how, checklists or templates? A skill: a short `SKILL.md` with the detail in reference files.",
+                "A rule that must always hold? A hook or CI check ([Exercise 7](exercise-7.html)), not more "
+                "instructions.",
+                "Name an owner and a version so another team can install it.",
+                label="Tips and tricks",
+            ),
+            tips("Generic advice such as “write clean code”", "A big agent where one instruction line would do",
+                 "Never testing whether it changes the next run", label="Watch out"),
+            section("toolkit", "Exercise 6 · Hand-in and toolkit", "Pick the smallest building block that works",
+                    jump="Hand-in and toolkit"),
+            table(
+                ["If you need…", "→ Use…"],
+                [
+                    ["A rule that always applies to certain files",
+                     "**Instruction** (narrow `applyTo` pattern; keep it short)"],
+                    ["A workflow someone starts on demand", "**Prompt file or skill entry point** (slash command)"],
+                    ["Deep know-how, question banks, templates or scripts",
+                     "**Skill** (short `SKILL.md`; detail in reference files)"],
+                    ["A multi-step job with tools, phases or hand-offs",
+                     "**Agent** (restrict its tools; hand off, don’t sprawl)"],
+                    ["A rule that must hold whatever the model thinks",
+                     "**Control**: hook, permission, schema or CI check"],
+                    ["Governed access to Jira, Confluence, GitLab or another system", "**Connector** (MCP server)"],
+                ],
+                cls="pick",
+            ),
+            template("component-spec", "Component spec", form([
+                "Name", "Trigger: when it runs", "Inputs", "Outputs", "Permissions and tools", "On failure",
+                "Owner and version", "Plugs into HVE-Squad as… / stays independent because…",
+            ], col="Specification")),
+            template("correction-proof", "Correction and re-run proof", form([
+                "Original correction from Exercise 5 (link to log or review)",
+                "Instruction, skill or control created",
+                "RPI step re-run, request and starting commit",
+                "Observed result: was the correction still needed?",
+                "Evidence link and remaining limitations",
+            ])),
+            run_with((None, "HVE Core’s **hve-builder** skill (create, validate, review with a Pass / Revise / "
+                            "Blocked verdict, correct). Package and pin it with **APM**: one manifest, a lockfile, "
+                            "and an organisation policy for what may be installed.")),
+            links(("HVE Core · hve-builder", U["hve_builder"]), ("VS Code · Customise agents", U["vs_overview"]),
+                  ("Agent skills", U["vs_skills"]), ("Custom agents", U["vs_agents"]),
+                  ("MCP servers", U["vs_mcp"]), ("Hooks", U["vs_hooks"]),
+                  ("HVE Core · Customisation", U["customization"]), ("APM", U["apm"])),
+            done("Someone outside the team could install and run it from the specification alone, and a "
+                 "re-run of one RPI step shows the original correction is no longer needed."),
+            tips(
+                "Start with an observed correction, not a generic component idea. The proof is changed behaviour "
+                "on the next run, not the size of the specification.",
+                "Least machinery: one well-reviewed skill beats ten private orchestrations.",
+                "Jira and Confluence on Data Center? Atlassian’s official remote MCP server "
+                "([Rovo MCP](" + U["rovo_mcp"] + ")) is Cloud-only. The open-source "
+                "[sooperset/mcp-atlassian](" + U["mcp_atlassian"] + ") server supports Server/Data Center but is "
+                "not an Atlassian product: evaluate it under your security policy before use.",
+                "APM lockfile governance is stable; its policy engine (`apm-policy.yml`) is an early preview, so "
+                "pin the APM version.",
+                "Further reading: [Agent Skills specification](" + U["skills_spec"] + ") and "
+                "[Model Context Protocol](" + U["mcp_spec"] + ").",
             ),
         ],
     },
@@ -1101,12 +1284,12 @@ PAGES = [
         "kind": "core",
         "num": "7",
         "nav": "Gates and guardrails",
-        "eyebrow": "Exercise 7 · Open lab 3 · Core task, starts while Exercise 6 runs",
+        "eyebrow": "Exercise 7 · Open lab 3 · Core task · Begin while Exercise 5 runs",
         "title": "Human gates and deterministic guardrails",
         "summary": "Separate advice from enforcement and decide where people remain accountable.",
         "blocks": [
             brief("Separate advice from enforcement and decide where people remain accountable.",
-                  "Outputs from [Exercise 4](exercise-4.html) or [6](exercise-6.html)",
+                  "Outputs from [Exercise 4](exercise-4.html), and [Exercise 5](exercise-5.html) while it runs",
                   "Core task",
                   "Quality and governance lead, architect"),
             work(
@@ -1121,6 +1304,23 @@ PAGES = [
                 ],
                 ["Gate map", "Control matrix", "One tested blocked / override scenario"],
             ),
+            *how_to_start("7", "Map the gates, then make one control real", [
+                "Start as soon as [Exercise 5](exercise-5.html) is running; use your Exercise 4 and 5 artefacts "
+                "as input.",
+                "Draw the path: requirements approval, plan, implementation, merge, release. One gate-map row "
+                "for each.",
+                "Classify every rule: advisory (written down), human gate or deterministic control.",
+                "Make one control real, such as the [merge check](#code-merge-check), and show it failing on purpose.",
+            ]),
+            tips(
+                "For each gate, ask: what happens today if someone skips it? If nothing, it is advisory.",
+                "Use the CI you already have: GitLab CI, Bitbucket Pipelines, Azure Pipelines or GitHub Actions.",
+                "Name a person, not a role, for each gate, and who may override it with what evidence.",
+                "Agents will sometimes skip a step: design the control for that.",
+                label="Tips and tricks",
+            ),
+            tips("Answering every risk with more instructions", "A check that warns but does not block",
+                 "A gate with no named owner", label="Watch out"),
             section("toolkit", "Exercise 7 · Hand-in and toolkit", "Written rules advise. Controls enforce.",
                     jump="Hand-in and toolkit"),
             template("gate-map", "Gate map",
@@ -1175,14 +1375,14 @@ PAGES = [
         "kind": "intermission",
         "num": "B",
         "nav": "Intermission B · Issue to patch",
-        "eyebrow": "Intermission B · While Exercise 6 executes · Open lab 3 · Parallel task",
+        "eyebrow": "Intermission B · While Exercise 5 executes · Open lab 3 · Parallel task",
         "title": "Close the loop: from Azure SRE Agent issue or ticket to patch",
         "summary": "Route auto-generated issues or customer tickets into an automated, knowledge-grounded patch flow.",
         "blocks": [
             brief("Route issues auto-generated by the Azure SRE Agent, or raised as customer tickets, into an "
                   "automated, knowledge-grounded patch flow.",
-                  "Azure SRE Agent issues or customer tickets, Ex 6 review; instructions, skills, ADRs",
-                  "Waiting-time task during [Ex 6](exercise-6.html)",
+                  "Azure SRE Agent issues or customer tickets, available Ex 5 artefacts; instructions, skills, ADRs",
+                  "Waiting-time task during [Ex 5](exercise-5.html)",
                   "Agent operator and architect; quality lead owns the human gate"),
             work(
                 [
@@ -1219,39 +1419,39 @@ PAGES = [
         "kind": "intermission",
         "num": "C",
         "nav": "Intermission C · AI versus script",
-        "eyebrow": "Intermission C · While Exercise 6 executes · Open lab 3 · Parallel task",
+        "eyebrow": "Intermission C · While Exercise 5 executes · Open lab 3 · Parallel task",
         "title": "What did we ask AI to do that a script could do?",
         "summary": "Find the steps that should be deterministic, and make every step the AI keeps verifiable.",
         "blocks": [
             brief("Find the steps that should be deterministic, and make every step the AI keeps verifiable.",
-                  "The [Exercise 6](exercise-6.html) run: prompts, research, plan and change log, plus the "
+                  "The [Exercise 5](exercise-5.html) run: prompts, research, plan and change log, plus the "
                   "auditor’s log",
-                  "Waiting-time task during [Ex 6](exercise-6.html)",
+                  "Waiting-time task during [Ex 5](exercise-5.html)",
                   "Architect and quality lead; agent operator supplies the run files"),
             work(
                 [
-                    "List every task you asked the agent to do in the Ex 6 run.",
+                    "List every task you asked the agent to do in the Ex 5 run.",
                     "Classify each: script alone · AI with a deterministic check · judgement.",
                     "For each script candidate, name the tool: lint, codemod, template, schema, CI check or git "
                     "hook.",
                     "For tasks where AI stays, add a fixed step list and a check that fails the run if a step is "
                     "skipped.",
-                    "Run one script or check against the Ex 6 artefacts and record what it catches that the agent "
+                    "Run one script or check against the Ex 5 artefacts and record what it catches that the agent "
                     "missed.",
                 ],
-                ["Task list, classified by who should do it", "One script or check, run on Ex 6 output",
+                ["Task list, classified by who should do it", "One script or check, run on Ex 5 output",
                  "Pass / fail check for each AI step"],
             ),
             section("toolkit", "Intermission C · Hand-in and toolkit",
                     "Script it, or make the AI prove every step", jump="Hand-in and toolkit"),
-            template("run-audit", "Template 1 · Audit of the Ex 6 run",
+            template("run-audit", "Template 1 · Audit of the Ex 5 run",
                      matrix("", ["Research", "Plan", "Build", "Review", "Follow-up"],
                             ["Asked of the AI", "Script instead?", "Check per step",
                              "Decision: script, AI + check or AI"])),
             template("step-verifier", "Template 2 · Step verifier",
                      blank(["Step", "Required output", "Check (script)", "Fails if…"], n=3),
                      note="Example: every plan task ID (P01-T01…) appears in the change log and review record"),
-            run_with((None, "The Ex 6 artefacts in `.copilot-tracking/` (research, plans, changes, reviews) · a shell "
+            run_with((None, "The Ex 5 artefacts in `.copilot-tracking/` (research, plans, changes, reviews) · a shell "
                             "or Python script, schema validation or a CI check · the same check runs in GitLab CI, "
                             "Bitbucket Pipelines, Azure Pipelines or GitHub Actions")),
             {"type": "rules", "items": ["Scripts read the artefacts, never edit them",
@@ -1267,10 +1467,10 @@ PAGES = [
                 "Where AI stays (research, judgement, synthesis), make it more deterministic: a fixed step list, "
                 "required output files, a schema for artefacts and a verifier that fails the run when a step is "
                 "missing.",
-                "Fill Template 1 across the five phases of the Exercise 6 run: for each, what did we ask the AI to "
+                "Fill Template 1 across the five phases of the Exercise 5 run: for each, what did we ask the AI to "
                 "do, could a script do it instead, and which check proves the step happened.",
                 "Feed the best finding into [Exercise 7](exercise-7.html) (control matrix) and the adoption canvas "
-                "in [Exercise 10](exercise-10.html).",
+                "in [Exercise 9](exercise-9.html).",
             ),
         ],
     },
@@ -1301,6 +1501,21 @@ PAGES = [
                 ],
                 ["Red-team findings", "Recovery log", "Revised artefact or plan"],
             ),
+            *how_to_start("8", "Swap artefacts, then break something", [
+                "Pair with the team your facilitator names; share a branch or repo link, not a demo.",
+                "Review their artefacts for 15 minutes with the five lenses, and write findings in the table.",
+                "Hand them one fault card; they recover while you watch, and you do not explain the fault.",
+                "Swap roles. Both teams log what caught each fault: a control, an agent or a person.",
+            ]),
+            tips(
+                "Speed up with `/rpi-review` or the Code Review agent, read-only on their branch; people decide "
+                "what counts.",
+                "Follow the chain: evidence, decision, requirement, plan, result. Where does it break?",
+                "Route each fault to the earliest phase responsible: research, plan or implement.",
+                label="Tips and tricks",
+            ),
+            tips("Explaining instead of handing over artefacts", "Deleting evidence to make the story look clean",
+                 "Turning it into a code-style review", label="Watch out"),
             section("toolkit", "Exercise 8 · Hand-in and toolkit", "Challenge with artefacts, recover with evidence",
                     jump="Hand-in and toolkit"),
             {"type": "lenses", "title": "Five lenses", "items": [
@@ -1313,6 +1528,8 @@ PAGES = [
             {"type": "chips", "title": "Fault cards (draw one)", "style": "faults", "items": [
                 "Missing project ID", "Tool error", "Incomplete experiment", "Stale context", "Rejected assumption",
             ]},
+            template("red-team-findings", "Red-team findings",
+                     blank(["Lens", "Finding", "Evidence link", "Next action"], n=5)),
             template("recovery-log", "Recovery log",
                      blank(["Fault", "Caught by (control · agent · person)", "Decision",
                             "Routed to (research · plan · implement · new item)", "Evidence kept"], n=3)),
@@ -1332,18 +1549,19 @@ PAGES = [
                 "Pairing: A with B, C with D; with five teams, rotate (A reviews B, B reviews C … E reviews A).",
                 "The facilitators hand out the five fault cards. The red team may not explain the fault; the "
                 "original team must discover and handle it.",
-                "Count the “caught by” tally at the end: it is a strong input for [Exercise 9](exercise-9.html) "
-                "and for the adoption canvas (which controls are worth automating).",
+                "Count the “caught by” tally at the end: it is a strong input for [Exercise 10](exercise-10.html) "
+                "and the [Exercise 9 adoption canvas](exercise-9.html) (which controls are worth automating).",
             ),
         ],
     },
     {
-        "slug": "exercise-10",
+        "slug": "exercise-9",
         "group": "Open lab 4",
         "kind": "core",
-        "num": "10",
+        "num": "9",
+        "storage_slug": "exercise-10",
         "nav": "Adoption path",
-        "eyebrow": "Exercise 10 · Open lab 4 · Core task",
+        "eyebrow": "Exercise 9 · Open lab 4 · Core task",
         "title": "Design your adoption path",
         "summary": "Turn workshop learning into a repeatable internal practice and a real pilot.",
         "blocks": [
@@ -1363,7 +1581,24 @@ PAGES = [
                 ["One-page adoption canvas", "Named pilot and owners",
                  "30-day experiment with measurable acceptance criteria"],
             ),
-            section("toolkit", "Exercise 10 · Hand-in and toolkit", "One-page adoption canvas",
+            *how_to_start("9", "From a good day to a 30-day pilot", [
+                "Everyone writes two lines: one thing from today we would use on Monday, and one we would not.",
+                "Group them, then fill the adoption canvas from top to bottom.",
+                "Pick one real pilot with an owner in the room: an AMS stream, a modernisation slice "
+                "or Customer Zero.",
+                "Set two or three measures you can baseline today, and a date for the 30-day review.",
+            ]),
+            tips(
+                "Reuse what you built today: the [Exercise 6](exercise-6.html) skill, the "
+                "[Exercise 7](exercise-7.html) control, your templates.",
+                "Prefer measures your organisation already reports: lead time, rework, interventions per item.",
+                "Names, not departments: sponsor, practice owner, technical owner, first team.",
+                "Write down what is out of scope and which approvals you still need: security, legal, data.",
+                label="Tips and tricks",
+            ),
+            tips("“Roll out HVE everywhere”", "A pilot without a baseline", "No date for the first review",
+                 label="Watch out"),
+            section("toolkit", "Exercise 9 · Hand-in and toolkit", "One-page adoption canvas",
                     jump="Hand-in and toolkit"),
             {"type": "canvas", "id": "adoption-canvas", "label": "Adoption canvas", "items": [
                 ("1", "Where HVE fits, and where it does not"),
@@ -1387,65 +1622,6 @@ PAGES = [
                 "lead time and rework from unclear requirements).",
                 "Typical pilot scorecard: unplanned intervention rate, active human minutes per item, AI cost per "
                 "accepted item, lead time and quality guardrails.",
-            ),
-        ],
-    },
-    {
-        "slug": "exercise-9",
-        "group": "Open lab 4",
-        "kind": "backup",
-        "num": "9",
-        "nav": "Compare autonomy and cost (backup)",
-        "eyebrow": "Backup · Exercise 9 · Parallel task · Run if there is time",
-        "title": "Compare autonomy, cost and accepted outcome",
-        "summary": "Evaluate usefulness rather than declaring a symbolic winner.",
-        "blocks": [
-            callout("info", "Backup exercise",
-                    "Run it only if your team finishes early. It uses the [common scorecard](scorecard.html)."),
-            brief("Evaluate usefulness rather than declaring a symbolic winner.",
-                  "Two runs, teams or approaches",
-                  "Parallel or waiting-time task",
-                  "Auditor / observer with the agent operator"),
-            work(
-                [
-                    "Normalise the scope and the definition of done.",
-                    "Compare time to first useful output and time to accepted outcome.",
-                    "Count human questions, corrections, approvals, retries and unplanned interventions.",
-                    "Review AI consumption or available cost signals alongside quality and rework.",
-                    "Identify one improvement that should become an instruction, skill, control or team practice.",
-                ],
-                ["Comparison scorecard", "One reusable improvement", "Recommendation by phase and context"],
-            ),
-            section("toolkit", "Backup · Exercise 9 · Hand-in and toolkit", "Count everything, then compare usefulness",
-                    jump="Hand-in and toolkit"),
-            {"type": "formula", "text": "Net improvement = time saved − (AI cost + extra review effort)",
-             "sub": "Count failed and abandoned runs too."},
-            template("comparison-sheet", "Comparison sheet",
-                     matrix("Measure", ["Run A", "Run B"],
-                            ["Same scope and definition of done?", "Time to first useful output",
-                             "Time to accepted outcome", "Questions", "Corrections", "Approvals", "Retries",
-                             "Unplanned interventions", "AI consumption / cost signal", "Quality and rework",
-                             "Common scorecard total"])),
-            run_with((None, "the auditor’s log · HVE-Squad `consumption.md` (model, tokens and estimated cost per "
-                            "dispatch) and `decisions.md` · HVE Core research, plan, change and review files · "
-                            "GitHub Copilot usage metrics and AI-credit consumption"),
-                     label="Where the numbers come from"),
-            template("recommendation", "Recommendation format",
-                     {"head": ["Recommendation"], "rows": [[ph("In phase … and context …, use … because …")]],
-                      "row_header": False}),
-            links(("GitHub Copilot · Usage-based billing (AI credits)", U["gh_billing"]),
-                  ("GitHub Copilot · Usage metrics", U["gh_metrics"]),
-                  ("HVE-Squad · Usage › Cost admission control", U["squad_usage"])),
-            done("The recommendation names a phase and a context, not a winner."),
-            tips(
-                "Typical pairs: HVE Core versus HVE-Squad on comparable items; interactive versus autopilot; or your "
-                "run versus the team you red-teamed.",
-                "Use logs and state files, not memory.",
-                "Cheaper models can cost more if they need more cycles; strong models for research and planning, "
-                "cheaper ones for implementation and checks is a common pattern.",
-                "Measure cost per accepted outcome, not tokens per run.",
-                "Reuse your [Exercise 1](exercise-1.html) lifecycle map to compare predicted and actual human "
-                "effort, and the PO edit log from [Intermission A](intermission-a.html).",
             ),
         ],
     },
@@ -1479,7 +1655,7 @@ PAGES = [
         "nav": "Common scorecard",
         "eyebrow": "Common scorecard",
         "title": "One scorecard for every team and every approach",
-        "summary": "Nine criteria rated 1–5, used in the playback and in the backup Exercise 9.",
+        "summary": "Nine criteria rated 1–5, used in the playback and in the backup Exercise 10.",
         "blocks": [
             template("scorecard", "Common scorecard", {
                 "head": ["Criterion", "What to observe", "Rating 1–5"],
@@ -1500,8 +1676,107 @@ PAGES = [
                 "row_header": True,
                 "cls": "scorecard",
             }),
-            tips("Used in the [playback](playback.html) and, if it is run, in [Exercise 9](exercise-9.html) "
+            tips("Used in the [playback](playback.html) and, if it is run, in [Exercise 10](exercise-10.html) "
                  "(backup). Score from logs and artefacts, not impressions."),
+        ],
+    },
+    # ------------------------------------------------------------- Backup
+    {
+        "slug": "exercise-10",
+        "group": "Backup",
+        "kind": "backup",
+        "num": "10",
+        "storage_slug": "exercise-9",
+        "nav": "Compare autonomy and cost (backup)",
+        "eyebrow": "Backup · Exercise 10 · Parallel task · Run if there is time",
+        "title": "Compare autonomy, cost and accepted outcome",
+        "summary": "Change one variable on the same item and commit; recommend an approach by phase and context.",
+        "blocks": [
+            callout("info", "Backup exercise",
+                    "Try this before close only if time remains. It appears after playback and scorecard as a "
+                    "reference section, not as an extra time slot; playback stays at 17:10–17:30. "
+                    "Use the [common scorecard](scorecard.html)."),
+            brief("Compare usefulness by changing one variable, not by declaring a symbolic winner.",
+                  "Your logged [Exercise 5](exercise-5.html) run, its starting commit and request",
+                  "Optional parallel or waiting-time task before close",
+                  "Auditor / observer with the agent operator"),
+            work(
+                [
+                    "Choose one comparison: two models, HVE Core versus HVE-Squad, or HVE versus another "
+                    "harness (your own orchestrator or plain Copilot agent mode).",
+                    "Use Exercise 5 as Run A. Run B repeats the same item, request and definition of done "
+                    "from the same commit, with one variable changed.",
+                    "Compare time to first useful output and accepted outcome; count questions, corrections, "
+                    "approvals, retries and unplanned interventions.",
+                    "Review consumption or available cost signals alongside quality and rework, including "
+                    "failed and abandoned runs.",
+                    "Identify a reusable improvement and write a recommendation by phase and context.",
+                ],
+                ["Comparison scorecard", "One reusable improvement", "Recommendation by phase and context"],
+            ),
+            *how_to_start("10", "Change one thing, measure everything", [
+                "Choose one comparison: two models, HVE Core versus HVE-Squad, or HVE versus another harness.",
+                "Run A is usually your [Exercise 5](exercise-5.html) run, already logged. Run B re-runs the "
+                "same item with only that change.",
+                "Start Run B from the same commit and request. Short on time? Compare research and plan only "
+                "on both sides.",
+                "Fill the comparison sheet as you go, then write the recommendation: phase, context, approach, "
+                "reason.",
+            ]),
+            tips(
+                "Another harness can be your own orchestrator or plain GitHub Copilot agent mode without HVE.",
+                "Time: note the start, the first useful output and the accepted outcome. Count every question "
+                "and correction.",
+                "Cost: HVE-Squad’s `consumption.md` per dispatch; GitHub Copilot usage metrics and AI credits "
+                "for the rest.",
+                "Two teams ran different approaches on similar items? Compare across teams instead of re-running.",
+                label="Tips and tricks",
+            ),
+            tips("Changing the model and the harness at once", "Comparing a full run with a partial one",
+                 "Declaring a winner instead of a phase and a context", label="Watch out"),
+            section("toolkit", "Backup · Exercise 10 · Hand-in and toolkit",
+                    "Count everything, then compare usefulness", jump="Hand-in and toolkit"),
+            template("comparison-setup", "Controlled comparison setup", form([
+                "Comparison and the one variable changed",
+                "Run A: starting commit and evidence link",
+                "Run B: starting commit and evidence link",
+                "Same item, request and definition of done",
+                "Phases compared on both sides",
+            ])),
+            {"type": "formula", "text": "Net improvement = time saved − (AI cost + extra review effort)",
+             "sub": "Count failed and abandoned runs too."},
+            template("comparison-sheet", "Comparison sheet",
+                     matrix("Measure", ["Run A", "Run B"],
+                            ["Same scope and definition of done?", "Time to first useful output",
+                             "Time to accepted outcome", "Questions", "Corrections", "Approvals", "Retries",
+                             "Unplanned interventions", "AI consumption / cost signal", "Quality and rework",
+                             "Common scorecard total"]),
+                     note="If comparing research and plan only, score that same scope on both sides and mark "
+                          "implementation or full-outcome measures not applicable."),
+            run_with((None, "the auditor’s log · HVE-Squad `consumption.md` (model, tokens and estimated cost per "
+                            "dispatch) and `decisions.md` · HVE Core research, plan, change and review files · "
+                            "GitHub Copilot usage metrics and AI-credit consumption"),
+                     label="Where the numbers come from"),
+            callout("info", "Cross-team comparison is observational",
+                    "Similar items from different teams can reveal useful patterns, but they do not isolate "
+                    "one variable. Record the differences in scope and context; do not present this as a "
+                    "controlled same-commit re-run."),
+            template("recommendation", "Recommendation format",
+                     {"head": ["Recommendation"], "rows": [[ph("In phase … and context …, use … because …")]],
+                      "row_header": False}),
+            links(("GitHub Copilot · Usage-based billing (AI credits)", U["gh_billing"]),
+                  ("GitHub Copilot · Usage metrics", U["gh_metrics"]),
+                  ("HVE-Squad · Usage › Cost admission control", U["squad_usage"])),
+            done("The recommendation names a phase and a context, not a winner, and the comparison records "
+                 "its variable, scope and limitations."),
+            tips(
+                "Use logs and state files, not memory.",
+                "Cheaper models can cost more if they need more cycles; hold the harness fixed when comparing "
+                "models, and hold the model fixed when comparing harnesses.",
+                "Measure cost per accepted outcome, not tokens per run.",
+                "Reuse your [Exercise 1](exercise-1.html) answer sheet to compare predicted and actual human "
+                "decisions, and the PO edit log from [Intermission A](intermission-a.html).",
+            ),
         ],
     },
     # ------------------------------------------------------------- Reference

@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Exercise 1 · Predict the lifecycle before the agents do · HVE workshop guide</title>
-<meta name="description" content="Understand the lifecycle and expose hidden assumptions before automation starts.">
+<meta name="description" content="Six guided questions: predict what each HVE step needs, produces and leaves for a person to decide.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
 </head>
-<body class="page page-exercise-1 kind-parallel" data-page="exercise-1">
+<body class="page page-exercise-1 kind-core" data-page="exercise-1-appointments">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar">
 <button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
@@ -21,11 +21,12 @@
 <nav class="side-nav" aria-label="Exercise guide">
 <a class="side-home" href="index.html">← Guide home</a>
 <div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html" aria-current="page"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html" aria-current="page"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-6.html"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Reuse a lesson</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Adoption path</span></a></li></ul></div>
 <div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Backup</h2><ul><li><a href="exercise-10.html"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
 <div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
 </nav>
 </aside>
@@ -33,83 +34,172 @@
 <main id="main" class="content" tabindex="-1">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Open lab 1</span></nav>
 <header class="page-head">
-<p class="eyebrow">Exercise 1 · Open lab 1 · Parallel or waiting-time task</p>
+<p class="eyebrow">Exercise 1 · Open lab 1 · Whole-room warm-up · No agents</p>
 <h1>Predict the lifecycle before the agents do</h1>
-<p class="tags"><span class="tag tag-parallel">Parallel task</span><span class="tag tag-group">Open lab 1</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#toolkit">Hand-in and toolkit</a><a href="#reveal">Reveal</a><a href="#tips">Tips</a></nav></header>
+<p class="tags"><span class="tag tag-core">Core task</span><span class="tag tag-group">Open lab 1</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#case">Use case</a><a href="#toolkit">Hand-in and toolkit</a><a href="#reveal">Six rounds</a><a href="#tips">Tips</a></nav></header>
 <section class="brief" id="brief" aria-label="Brief">
-<div class="objective"><span class="label">Objective</span><p>Understand the lifecycle and expose hidden assumptions before automation starts.</p></div>
+<div class="objective"><span class="label">Objective</span><p>Understand each HVE step: what it needs, what it produces, and where a person decides.</p></div>
 <dl class="meta">
-<div class="meta-input"><dt>Input</dt><dd>A ready-made end-to-end scenario or one of your own cases</dd></div>
-<div class="meta-best"><dt>Best use</dt><dd>Parallel or waiting-time task</dd></div>
-<div class="meta-roles"><dt>Roles</dt><dd>Whole team; the auditor records the differences</dd></div>
+<div class="meta-input"><dt>Input</dt><dd>The same fictional citizen-appointment change request for every team</dd></div>
+<div class="meta-best"><dt>Best use</dt><dd>Facilitator-led thinking exercise; no agents</dd></div>
+<div class="meta-roles"><dt>Roles</dt><dd>Whole team; auditor writes the answers; facilitator leads the room</dd></div>
 </dl>
 </section>
 <div class="work">
 <section class="steps-wrap" aria-label="Steps"><h2 class="mini-head">Steps</h2>
 <ol class="steps">
-<li><p>Look only at the starting evidence and the desired outcome.</p></li>
-<li><p>On paper, write the steps, roles, gates and artefacts you expect.</p></li>
-<li><p>The facilitator reveals a pre-run walkthrough or logs, one stage at a time.</p></li>
-<li><p>At each stage, compare your decision with the actual HVE or HVE-Squad path.</p></li>
-<li><p>Label each difference: missing context · different judgement · unnecessary machinery.</p></li>
+<li><p>The facilitator presents the fictional use case below.</p></li>
+<li><p>For each of six HVE steps, listen to one guided question.</p></li>
+<li><p>Write your team’s short answer in 90 seconds, on paper or in the web answer sheet.</p></li>
+<li><p>Only then open that round’s reveal with the facilitator: what is produced, and who decides?</p></li>
+<li><p>Score your original answer: ✓ we had it · ½ partly · ✗ we missed it.</p></li>
 </ol></section>
 <section class="handin" aria-label="Hand in"><h2 class="handin-head">Hand in</h2>
 <ul>
-<li><label><input type="checkbox" data-key="handin-0"><span>A hand-drawn lifecycle map</span></label></li>
-<li><label><input type="checkbox" data-key="handin-1"><span>Three assumptions you would validate first</span></label></li>
-<li><label><input type="checkbox" data-key="handin-2"><span>One change you would make to the automated flow</span></label></li>
+<li><label><input type="checkbox" data-key="handin-0"><span>The answer sheet, scored</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Your biggest miss</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>One question the agent should always ask on your projects</span></label></li>
 </ul>
 <p class="handin-note">Tick items as your team hands them in.</p></section>
 </div>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">How it works</p><p>About 30 minutes: a short introduction, six answer-and-reveal rounds, then a recap. Use the web sheet or paper, but do not ask an agent. Keep your original answers after the reveals; a defensible different answer is a different judgement, not automatically a miss.</p></div></div>
+<header class="section-head" id="case">
+<p class="eyebrow">The shared use case</p>
+<h2>Cita Previa: change an appointment</h2>
+</header>
+<p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<div class="static-table"><div class="table-wrap" role="region" aria-label="Table" tabindex="0">
+<table class="grid">
+<thead><tr><th scope="col">Starting evidence</th><th scope="col">What you know</th></tr></thead>
+<tbody>
+<tr><th scope="row">Ticket CITA-482</th><td>As a citizen, I want to change the date of my appointment online, so that I don’t have to phone the office.</td></tr>
+<tr><th scope="row">Current rules</th><td>15-minute slots; bookings up to 30 days ahead; confirmation by email and SMS</td></tr>
+<tr><th scope="row">System</th><td>Citizen appointment portal for a fictional regional public administration</td></tr>
+<tr><th scope="row">Stack</th><td>Java / Spring Boot back end; Angular front end; on-prem GitLab</td></tr>
+<tr><th scope="row">Tool context</th><td>HVE Core in VS Code with GitHub Copilot; approved read-only Jira and Confluence Data Center access through MCP</td></tr>
+<tr><th scope="row">Desired outcome</th><td>Change the date within business-owner-approved rules, free the old slot, notify the citizen, and leave a reviewed, tested change with release evidence</td></tr>
+</tbody>
+</table>
+</div></div>
 <header class="section-head" id="toolkit">
 <p class="eyebrow">Exercise 1 · Hand-in and toolkit</p>
-<h2>Map it first, then compare it</h2>
+<h2>One box per round, scored after each reveal</h2>
 </header>
-<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-lifecycle-map" data-tpl="lifecycle-map">
-<div class="tpl-head"><h3>Template 1 · Lifecycle map</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
-<div class="table-wrap" role="region" aria-label="Template 1 · Lifecycle map" tabindex="0">
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-round-team" data-tpl="round-team">
+<div class="tpl-head"><h3>Team and auditor</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Team and auditor" tabindex="0">
 <table class="grid tpl-table">
-<thead><tr><td class="corner"></td><th scope="col">Stage 1</th><th scope="col">Stage 2</th><th scope="col">Stage 3</th><th scope="col">Stage 4</th><th scope="col">Stage 5</th></tr></thead>
+<thead><tr><td class="corner"></td><th scope="col">Our answer</th></tr></thead>
 <tbody>
-<tr><th scope="row">Steps</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Steps, Stage 1"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Steps, Stage 2"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Steps, Stage 3"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Steps, Stage 4"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Steps, Stage 5"></td></tr>
-<tr><th scope="row">Who decides</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Stage 1"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Stage 2"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Stage 3"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Stage 4"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Who decides, Stage 5"></td></tr>
-<tr><th scope="row">Gate</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Stage 1"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Stage 2"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Stage 3"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Stage 4"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Gate, Stage 5"></td></tr>
-<tr><th scope="row">Artefact left behind</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Stage 1"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Stage 2"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Stage 3"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Stage 4"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Artefact left behind, Stage 5"></td></tr>
+<tr><th scope="row">Team</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Team, Our answer"></td></tr>
+<tr><th scope="row">Auditor</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Auditor, Our answer"></td></tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="tpl" id="tpl-difference-log" data-tpl="difference-log">
-<div class="tpl-head"><h3>Template 2 · Difference log</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
-<div class="table-wrap" role="region" aria-label="Template 2 · Difference log" tabindex="0">
+<div class="tpl" id="tpl-round-answers" data-tpl="round-answers">
+<div class="tpl-head"><h3>Six-round answer sheet</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Six-round answer sheet" tabindex="0">
 <table class="grid tpl-table">
-<thead><tr><th scope="col">Stage</th><th scope="col">What we predicted</th><th scope="col">What actually happened</th><th scope="col">Label</th></tr></thead>
+<thead><tr><th scope="col">Round</th><th scope="col">Step</th><th scope="col">Our answer</th><th scope="col">Score</th></tr></thead>
 <tbody>
-<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Stage"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="What we predicted"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="What actually happened"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Label"></td></tr>
-<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Stage"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="What we predicted"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="What actually happened"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Label"></td></tr>
-<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Stage"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="What we predicted"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="What actually happened"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Label"></td></tr>
+<tr><th scope="row">1</th><td>Evidence</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Our answer"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Score"></td></tr>
+<tr><th scope="row">2</th><td>Requirements</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Our answer"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Score"></td></tr>
+<tr><th scope="row">3</th><td>Research</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Our answer"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Score"></td></tr>
+<tr><th scope="row">4</th><td>Plan</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Our answer"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Score"></td></tr>
+<tr><th scope="row">5</th><td>Implement</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="5, Our answer"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="5, Score"></td></tr>
+<tr><th scope="row">6</th><td>Review and hand-off</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="6, Our answer"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="6, Score"></td></tr>
 </tbody>
 </table>
 </div>
-<p class="tpl-note">Label: missing context / different judgement / unnecessary machinery</p></div>
-<div class="box box-run"><p class="label">Run it with</p><p>The facilitators’ pre-run walkthrough or logs; for a team’s own case, the research, plan and review files of a previous run, or the HVE-Squad decisions log</p></div>
-<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/rpi/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · RPI workflow<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/demo.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Guided demos<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
-<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>Every difference carries a label, and the three assumptions are written down before the reveal ends.</p></div>
-<details class="reveal" id="reveal">
-<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal: the governed path</strong><span class="reveal-hint">Open this only after your team has drawn its own map. Your facilitator walks through it one stage at a time.</span></span></summary>
-<div class="reveal-body">
-<p class="eyebrow">Exercise 1 · Reveal</p>
-<h2>The governed path: people own the transitions</h2>
-<ol class="phases"><li class="phase"><p class="phase-name">Discover</p><p>conversation, ticket or incident → evidence map</p></li><li class="phase"><p class="phase-name">Define</p><p>requirements → architecture → backlog</p></li><li class="phase"><p class="phase-name">Build</p><p>Research → Plan → Implement → Review</p></li><li class="phase"><p class="phase-name">Deliver and operate</p><p>PR review, release and ITSM gates, feedback into the next loop</p></li></ol>
-<p class="label">Five gates, one owner each</p><ol class="gates"><li class="gate"><span class="gate-t">Evidence → BRD</span><strong>Product owner</strong></li><li class="gate"><span class="gate-t">BRD → PRD</span><strong>Product + engineering</strong></li><li class="gate"><span class="gate-t">PRD → Plan</span><strong>Architect</strong></li><li class="gate"><span class="gate-t">Plan → Implement</span><strong>Engineering lead</strong></li><li class="gate"><span class="gate-t">Review → Merge</span><strong>Release approver</strong></li></ol>
-<p class="label">The recorded run (inventory-aware cart)</p><ol class="run"><li><span>28-min transcript + 3 pages</span></li><li><span>7 unresolved questions</span></li><li><span>10 functional · 9 non-functional requirements · 15 acceptance criteria</span></li><li><span>19 answers from the owner</span></li><li><span>research</span></li><li><span>plan + critique: Pass</span></li><li><span>20 files · 56 tests</span></li><li><span>review</span></li><li><span>owner validation</span></li></ol>
-<p class="caveat">One recorded demonstration on a sample app, not a benchmark or a productivity claim.</p>
-<div class="links-block"><p class="label">Link</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/hve-guide/lifecycle/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · AI-assisted project lifecycle<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
-<p class="banner banner-soft">Security and Responsible AI checks sit on these gates, not in a separate review.</p>
-<div class="box box-questions"><p class="label">Talk about it</p><ul><li>Who owns each of these gates in your projects today?</li><li>What was your most surprising difference, and which label did you give it?</li><li>The same lifecycle covers application management: the trigger is an incident or a service request instead of a new product idea.</li></ul></div>
+<p class="tpl-note">✓ = 1 (we had it) · ½ = 0.5 (partly) · ✗ = 0 (we missed it). Score after each reveal.</p></div>
+<div class="tpl" id="tpl-round-reflection" data-tpl="round-reflection">
+<div class="tpl-head"><h3>Reflection</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Reflection" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Our answer</th></tr></thead>
+<tbody>
+<tr><th scope="row">Total out of 6 (for fun only)</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Total out of 6 (for fun only), Our answer"></td></tr>
+<tr><th scope="row">Our biggest miss</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Our biggest miss, Our answer"></td></tr>
+<tr><th scope="row">One question the agent should always ask on your projects</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="One question the agent should always ask on your projects, Our answer"></td></tr>
+</tbody>
+</table>
 </div>
+</div>
+<header class="section-head" id="reveal">
+<p class="eyebrow">Six guided rounds</p>
+<h2>Answer first, then reveal one step at a time</h2>
+</header>
+<section aria-labelledby="round-1">
+<h3 id="round-1">Round 1 · Evidence</h3>
+<p class="lead">Before anyone writes code, what should the agent read, and what should it hand back to you?</p>
+<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. Take 90 seconds; wait for the facilitator before opening the reveal.</p>
+<details class="reveal" id="reveal-1">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Read before you write</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<ul class="bullets"><li>Evidence summary: fewer phone calls (CITA-482); 15-minute slots, 30-day advance booking, email and SMS confirmation (Confluence).</li><li>Five open questions: how many changes per citizen; how many hours before; another office too; who is notified; same-day appointments?</li></ul>
+<p class="banner banner-soft"><strong>Human decision:</strong> The business owner confirms sources and completeness. Nothing is approved yet.</p></div>
 </details>
-<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>If your own case has pre-run material (research, plan and review files of a previous run), use it; otherwise use the inventory-aware cart.</li><li>The starting evidence is typically a stakeholder transcript and some context; nothing else until the reveal.</li><li>Keep your map: it is reused in <a href="exercise-9.html">Exercise 9</a> (backup) to compare predicted and actual human effort.</li></ul></aside>
+</section>
+<section aria-labelledby="round-2">
+<h3 id="round-2">Round 2 · Requirements</h3>
+<p class="lead">The agent drafts the requirements. Name 3 things it must ASK the business owner instead of deciding itself.</p>
+<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. Take 90 seconds; wait for the facilitator before opening the reveal.</p>
+<details class="reveal" id="reveal-2">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · The agent asks; the owner decides</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<ul class="bullets"><li>Requirements v0.2: R3 permits at most 2 changes (owner answer 1); R4 closes changes 24 hours before (owner answer 2); R5 frees the old slot immediately (Confluence).</li><li>AC-7: under 24 hours, Change date is disabled and the office phone is shown. Accessibility requirement: WCAG 2.1 AA for the public-sector example.</li><li>Unanswered rules and their dependent acceptance criteria remain blocked.</li></ul>
+<p class="banner banner-soft"><strong>Human decision:</strong> The business owner answers an options/undecided form and approves the requirements.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-3">
+<h3 id="round-3">Round 3 · Research</h3>
+<p class="lead">Before planning, what 3 facts must the agent find out in the code?</p>
+<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. Take 90 seconds; wait for the facilitator before opening the reveal.</p>
+<details class="reveal" id="reveal-3">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Check the code before trusting the docs</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<ul class="bullets"><li>Booking logic is in <code>AppointmentService</code>; cancellation already releases a slot.</li><li>A shared messaging service exists, but new SMS text is needed. There are no automated <code>AppointmentService</code> tests.</li><li>Confluence says 30 days; the code allows 60. That conflict becomes a new business-owner question, not an agent-made decision.</li></ul>
+<p class="banner banner-soft"><strong>Human decision:</strong> No approval yet. The evidence and the documentation/code conflict go back to the owner.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-4">
+<h3 id="round-4">Round 4 · Plan</h3>
+<p class="lead">The agent proposes a plan. What would make you REJECT it?</p>
+<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. Take 90 seconds; wait for the facilitator before opening the reveal.</p>
+<details class="reveal" id="reveal-4">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Reject the plan before any code exists</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<ul class="bullets"><li>Plan: 1 safety-net tests for current booking; 2 R3/R4 rules; 3 reuse slot release R5; 4 SMS/email text; 5 disable the button under 24 hours (AC-7); 6 accessibility checks.</li><li>Critique: a displayed slot may be taken before confirmation. Add task 2b to hold the slot at confirmation.</li></ul>
+<p class="banner banner-soft"><strong>Human decision:</strong> The tech lead or architect approves the plan before any code is written.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-5">
+<h3 id="round-5">Round 5 · Implement</h3>
+<p class="lead">How much freedom would you give the agent here, and what proves the work is done?</p>
+<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. Take 90 seconds; wait for the facilitator before opening the reveal.</p>
+<details class="reveal" id="reveal-5">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Match autonomy to risk</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<ul class="bullets"><li>Tasks 1–6 and 2b are done; new <code>AppointmentService</code> tests pass; changes link back to R3–R5 and AC-7.</li><li>Because the service lacked tests, the engineering lead chooses a check-in after each task. Manual is the default; full autonomy is only on request.</li></ul>
+<p class="banner banner-soft"><strong>Human decision:</strong> The engineering lead chooses the autonomy level and checks progress against evidence.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-6">
+<h3 id="round-6">Round 6 · Review and hand-off</h3>
+<p class="lead">What can the agent review on its own, and what must a person still check before release?</p>
+<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. Take 90 seconds; wait for the facilitator before opening the reveal.</p>
+<details class="reveal" id="reveal-6">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Finished is not accepted</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
+<ul class="bullets"><li>Acceptance tests are verified except for the manual screen-reader announcement of the new date. SMS text over 160 characters was found and fixed.</li><li>The owner still has to try the test environment. A backlog item to show remaining changes is proposed, not created.</li></ul>
+<p class="banner banner-soft"><strong>Human decision:</strong> The business owner accepts; a named person approves the GitLab merge request; the normal release process still applies.</p></div>
+</details>
+</section>
+<p class="banner banner-soft">Six steps, five human decisions: sources confirmed · requirements approved · plan approved · autonomy chosen · merge approved.</p>
+<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/hve-guide/lifecycle/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · AI-assisted project lifecycle<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://microsoft.github.io/hve-core/docs/rpi/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · RPI workflow<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>Every round has an answer and a score, and the biggest miss is written down.</p></div>
+<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Wait for the facilitator before opening each reveal. These are fictional illustrations, not measurements or a recorded run.</li><li>Keep your answer sheet for <a href="exercise-10.html">Exercise 10</a> (backup): compare the human decisions you predicted with the effort your real run needed.</li><li>The inventory-aware cart is a separate <a href="scenario.html">fallback scenario</a>, not this exercise’s appointment case.</li></ul></aside>
 <nav class="pager" aria-label="Previous and next step"><a class="prev" href="while-agents-run.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">While agents run</span></a><a class="next" href="exercise-2.html" rel="next"><span class="dir">Next →</span><span class="ttl">Exercise 2 · Evidence map</span></a></nav>
 </main>
 </div>

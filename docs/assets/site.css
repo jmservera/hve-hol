@@ -92,6 +92,7 @@ code {
   padding: .05em .35em;
   white-space: nowrap;
 }
+.numbered code, .box-run code { white-space: normal; overflow-wrap: anywhere; }
 h1, h2, h3 { color: var(--ink-strong); line-height: 1.2; }
 h2 { font-size: 1.55rem; font-weight: 650; margin: 0 0 .75rem; }
 h3 { font-size: 1.08rem; font-weight: 650; margin: 0 0 .5rem; }

@@ -430,27 +430,24 @@ def r_intermissions(b, ctx):
             '</h2><div class="int-grid">%s</div></section>' % "".join(cards))
 
 
-def r_reveal(b, ctx):
-    phases = "".join('<li class="phase"><p class="phase-name">%s</p><p>%s</p></li>' % (esc(n), fmt(d))
-                     for n, d in b["phases"])
-    gates = "".join('<li class="gate"><span class="gate-t">%s</span><strong>%s</strong></li>' % (esc(t), esc(o))
-                    for t, o in b["gates"])
-    run = "".join("<li><span>%s</span></li>" % esc(s) for s in b["run"])
-    qs = "".join("<li>%s</li>" % fmt(q) for q in b["questions"])
+def r_round(b, ctx):
+    num = esc(b["num"])
+    evidence = "".join("<li>%s</li>" % fmt(item) for item in b["evidence"])
     return (
-        '<details class="reveal" id="reveal">\n<summary>%s<span><strong>%s</strong><span class="reveal-hint">%s'
-        "</span></span></summary>\n"
-        '<div class="reveal-body">\n<p class="eyebrow">%s</p>\n<h2>%s</h2>\n'
-        '<ol class="phases">%s</ol>\n'
-        '<p class="label">%s</p><ol class="gates">%s</ol>\n'
-        '<p class="label">%s</p><ol class="run">%s</ol>\n'
-        '<p class="caveat">%s</p>\n%s\n<p class="banner banner-soft">%s</p>\n'
-        '<div class="box box-questions"><p class="label">Talk about it</p><ul>%s</ul></div>\n'
-        "</div>\n</details>"
-        % (icon("eye", "icon reveal-icon"), esc(b["summary"]), esc(b["warning"]), esc(b["eyebrow"]),
-           esc(b["title"]), phases, esc(b["gates_title"]), gates, esc(b["run_title"]), run, esc(b["caveat"]),
-           '<div class="links-block"><p class="label">Link</p>%s</div>' % links_list(b["links"]),
-           fmt(b["banner"]), qs)
+        '<section aria-labelledby="round-%s">\n<h3 id="round-%s">Round %s · %s</h3>\n'
+        '<p class="lead">%s</p>\n'
+        '<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. '
+        'Take 90 seconds; wait for the facilitator before opening the reveal.</p>\n'
+        '<details class="reveal" id="reveal-%s">\n'
+        '<summary>%s<span><strong>Reveal · %s</strong><span class="reveal-hint">'
+        'Open after answering, then score your original answer.</span></span></summary>\n'
+        '<div class="reveal-body"><p class="caveat">'
+        'Illustrative example · fictional client and system · not a recorded run</p>\n'
+        '<ul class="bullets">%s</ul>\n'
+        '<p class="banner banner-soft"><strong>Human decision:</strong> %s</p></div>\n'
+        '</details>\n</section>'
+        % (num, num, num, fmt(b["step"]), fmt(b["question"]), num, icon("eye", "icon reveal-icon"),
+           fmt(b["title"]), evidence, fmt(b["human"]))
     )
 
 
@@ -529,7 +526,7 @@ RENDERERS = {
     "banner": r_banner, "code": r_code, "p": r_p, "list": r_list, "cols": r_cols, "numbered": r_numbered,
     "roles": r_roles, "timer": r_timer, "checklist": r_checklist, "cardlist": r_cardlist,
     "runtimes": r_runtimes, "refcard": r_refcard, "refcode": r_refcode, "intermissions": r_intermissions,
-    "reveal": r_reveal, "shared_ab": r_shared_ab, "example": r_example, "note": r_note, "chips": r_chips,
+    "round": r_round, "shared_ab": r_shared_ab, "example": r_example, "note": r_note, "chips": r_chips,
     "rules": r_rules, "lenses": r_lenses, "canvas": r_canvas, "formula": r_formula, "h3": r_h3,
     "resources": r_resources,
 }
@@ -570,9 +567,6 @@ def collect_links(page):
             t = b.get("type")
             if t == "links":
                 for label, url in b["items"]:
-                    add(label, url)
-            elif t == "reveal":
-                for label, url in b["links"]:
                     add(label, url)
             elif t == "cardlist":
                 for _, _, link in b["items"]:
@@ -681,6 +675,8 @@ def render_resources_body():
 # Page chrome
 # ---------------------------------------------------------------------------
 def head(title, description, page_id, body_cls):
+    # Keep keys stable even when the browser has the previous site.js cached.
+    storage_page = BY_SLUG.get(page_id, {}).get("storage_slug", page_id)
     return (
         "<!doctype html>\n"
         '<html lang="en">\n<head>\n<meta charset="utf-8">\n'
@@ -694,7 +690,7 @@ def head(title, description, page_id, body_cls):
         "</head>\n"
         '<body class="%s" data-page="%s">\n'
         '<a class="skip-link" href="#main">Skip to content</a>\n'
-        % (esc(title), esc(description), body_cls, esc(page_id))
+        % (esc(title), esc(description), body_cls, esc(storage_page))
     )
 
 
@@ -753,8 +749,6 @@ def jump_nav(page):
             links.append((b["id"], b["jump"]))
         elif t == "shared_ab":
             links.append(("toolkit", "Hand-in and toolkit"))
-        elif t == "reveal":
-            links.append(("reveal", "Reveal"))
     if page["kind"] != "info" and any(b.get("type") == "tips" for b in page["blocks"]):
         links.append(("tips", "Tips"))
     if len(links) < 2:
