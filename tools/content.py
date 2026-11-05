@@ -63,6 +63,7 @@ U = {
     "vs_agents": "https://code.visualstudio.com/docs/agent-customization/custom-agents",
     "vs_mcp": "https://code.visualstudio.com/docs/agent-customization/mcp-servers",
     "vs_hooks": "https://code.visualstudio.com/docs/agent-customization/hooks",
+    "playwright_cli": "https://playwright.dev/agent-cli/introduction",
     "gl_protected": "https://docs.gitlab.com/user/project/repository/branches/protected/",
     "gl_approvals": "https://docs.gitlab.com/user/project/merge_requests/approvals/rules/",
     "bb_checks": "https://confluence.atlassian.com/bitbucketserver/checks-for-merging-pull-requests-776640039.html",
@@ -84,11 +85,16 @@ U = {
     "sre_overview": "https://learn.microsoft.com/en-us/azure/sre-agent/overview",
     "azmcp": "https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/",
     "azmcp_start": "https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/get-started",
+    "azmcp_vscode": (
+        "https://learn.microsoft.com/en-us/azure/developer/azure-mcp-server/"
+        "get-started/tools/visual-studio-code?tabs=one-click"
+    ),
     "fabric_mcp": "https://learn.microsoft.com/en-us/rest/api/fabric/articles/mcp-servers/what-is-fabric-mcp-server",
     "workiq_mcp": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
     "deepwiki_docs": "https://docs.devin.ai/work-with-devin/deepwiki-mcp",
     "deepwiki": "https://mcp.deepwiki.com/",
     "context7": "https://github.com/upstash/context7",
+    "context7_cli": "https://context7.com/docs/resources/all-clients#copilot-cli",
     "gh_mcp": "https://github.com/mcp",
     "rovo_mcp": "https://developer.atlassian.com/cloud/rovo-mcp/",
     "mcp_atlassian": "https://github.com/sooperset/mcp-atlassian",
@@ -1547,6 +1553,7 @@ RESOURCES = [
         ("VS Code · Custom agents", U["vs_agents"], ""),
         ("VS Code · MCP servers", U["vs_mcp"], ""),
         ("VS Code · Agent hooks (preview)", U["vs_hooks"], ""),
+        ("Playwright · Agent CLI introduction", U["playwright_cli"], ""),
         ("GitLab · Protected branches", U["gl_protected"], ""),
         ("GitLab · Merge request approval rules", U["gl_approvals"], "Needs GitLab Premium or Ultimate"),
         ("Bitbucket Data Center · Merge checks", U["bb_checks"], ""),
@@ -1566,6 +1573,7 @@ RESOURCES = [
             ("Overview of Azure SRE Agent", U["sre_overview"], ""),
             ("Azure MCP Server documentation", U["azmcp"], ""),
             ("Azure MCP Server · Get started", U["azmcp_start"], ""),
+            ("Azure MCP Server · Get started with VS Code", U["azmcp_vscode"], ""),
             ("Fabric MCP Servers overview", U["fabric_mcp"], ""),
             ("Work IQ MCP overview", U["workiq_mcp"], ""),
         ]},
@@ -1573,6 +1581,7 @@ RESOURCES = [
             ("DeepWiki MCP · Documentation", U["deepwiki_docs"], ""),
             ("DeepWiki MCP · Server endpoint", U["deepwiki"], ""),
             ("Context7 MCP · Up-to-date library docs", U["context7"], ""),
+            ("Context7 MCP · Copilot CLI setup", U["context7_cli"], ""),
             ("GitHub MCP Registry", U["gh_mcp"], ""),
         ]},
         {"title": "Jira and Confluence (Atlassian)", "items": [
