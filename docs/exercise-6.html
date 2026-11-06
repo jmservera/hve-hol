@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>Exercise 6 · Execute a bounded RPI work unit · HVE workshop guide</title>
-<meta name="description" content="Run Research → Plan → Implement → Review without losing traceability.">
+<title>Exercise 6 · Reuse what the first RPI run taught you · HVE workshop guide</title>
+<meta name="description" content="Capture a real Exercise 5 correction, then prove the next run no longer needs it.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
 </head>
-<body class="page page-exercise-6 kind-core" data-page="exercise-6">
+<body class="page page-exercise-6 kind-parallel" data-page="exercise-5">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="topbar">
 <button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Steps</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Hands-on workshop · Exercise guide</small></span></a>
@@ -21,11 +21,12 @@
 <nav class="side-nav" aria-label="Exercise guide">
 <a class="side-home" href="index.html">← Guide home</a>
 <div class="nav-group"><h2>Get started</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Suggested agenda</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Working agreements and roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Kick-off: team charter</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Your scenario</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">How you run it</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">While agents run</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-parallel" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="exercise-5.html"><span class="badge badge-parallel" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Reusable component</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-6.html" aria-current="page"><span class="badge badge-core" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
-<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-10.html"><span class="badge badge-core" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Adoption path</span></a></li><li><a href="exercise-9.html"><span class="badge badge-backup" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Exercise 1: </span>Predict the lifecycle</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Exercise 2: </span>Evidence map</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Exercise 3: </span>MVE bake-off</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Exercise 4: </span>Intake to approved backlog</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Intermission A · PO canvas</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Exercise 5: </span>Bounded RPI work unit</span></a></li><li><a href="exercise-6.html" aria-current="page"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Exercise 6: </span>Reuse a lesson</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Exercise 7: </span>Gates and guardrails</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Intermission B · Issue to patch</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Intermission C · AI versus script</span></a></li></ul></div>
+<div class="nav-group"><h2>Open lab 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Exercise 8: </span>Red team and recovery</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Exercise 9: </span>Adoption path</span></a></li></ul></div>
 <div class="nav-group"><h2>Close</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Playback and close</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Common scorecard</span></a></li></ul></div>
+<div class="nav-group"><h2>Backup</h2><ul><li><a href="exercise-10.html"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Exercise 10: </span>Compare autonomy and cost (backup)</span></a></li></ul></div>
 <div class="nav-group"><h2>Reference</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Resources</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Hand-in templates</span></a></li></ul></div>
 </nav>
 </aside>
@@ -33,56 +34,98 @@
 <main id="main" class="content" tabindex="-1">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html#guide">Guide</a><span aria-hidden="true">›</span><span>Open lab 3</span></nav>
 <header class="page-head">
-<p class="eyebrow">Exercise 6 · Open lab 3 · Core task</p>
-<h1>Execute a bounded RPI work unit</h1>
-<p class="tags"><span class="tag tag-core">Core task</span><span class="tag tag-group">Open lab 3</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#toolkit">Hand-in and toolkit</a><a href="#tips">Tips</a></nav></header>
+<p class="eyebrow">Exercise 6 · Open lab 3 · Parallel task · After the first RPI run</p>
+<h1>Reuse what the first RPI run taught you</h1>
+<p class="tags"><span class="tag tag-parallel">Parallel task</span><span class="tag tag-group">Open lab 3</span></p><nav class="jump" aria-label="On this page"><span>On this page</span><a href="#brief">Brief</a><a href="#how-to-start">How to start</a><a href="#toolkit">Hand-in and toolkit</a><a href="#tips">Tips</a></nav></header>
 <section class="brief" id="brief" aria-label="Brief">
-<div class="objective"><span class="label">Objective</span><p>Run Research → Plan → Implement → Review without losing traceability.</p></div>
+<div class="objective"><span class="label">Objective</span><p>Capture one lesson from Exercise 5 as an instruction, skill or control the next run picks up.</p></div>
 <dl class="meta">
-<div class="meta-input"><dt>Input</dt><dd>One narrow, testable backlog item (from <a href="exercise-4.html">Exercise 4</a>)</dd></div>
-<div class="meta-best"><dt>Best use</dt><dd>Core task</dd></div>
-<div class="meta-roles"><dt>Roles (suggested)</dt><dd>Agent operator runs; product owner and architect approve the plan; quality lead reviews</dd></div>
+<div class="meta-input"><dt>Input</dt><dd>Corrections and review findings from <a href="exercise-5.html">Exercise 5</a>, plus the auditor’s log</dd></div>
+<div class="meta-best"><dt>Best use</dt><dd>Parallel task, once Exercise 5 has a review</dd></div>
+<div class="meta-roles"><dt>Roles (suggested)</dt><dd>Architect and one volunteer</dd></div>
 </dl>
 </section>
 <div class="work">
 <section class="steps-wrap" aria-label="Steps"><h2 class="mini-head">Steps</h2>
 <ol class="steps">
-<li><p>Agree the definition of done and the boundaries before execution.</p></li>
-<li><p>Assign the run: HVE Core, HVE-Squad or your own orchestrator.</p></li>
-<li><p>Require research and plan evidence before any implementation.</p></li>
-<li><p>While it executes, the rest of the team works on <a href="exercise-7.html">Exercise 7</a> and the parallel activities.</p></li>
-<li><p>Review the result against the requirement, the plan, the tests and the source evidence.</p></li>
+<li><p>Find one thing you had to correct, repeat or explain to the agent in Exercise 5.</p></li>
+<li><p>Pick the smallest block: instructions file, scoped instruction, prompt, skill, hook or connector.</p></li>
+<li><p>Define when it runs, its inputs, outputs, permissions and failure behaviour.</p></li>
+<li><p>Build it with <code>hve-builder</code>, then re-run one RPI step to check the correction is no longer needed.</p></li>
+<li><p>Explain where it plugs into HVE-Squad and where it should stay independent.</p></li>
 </ol></section>
 <section class="handin" aria-label="Hand in"><h2 class="handin-head">Hand in</h2>
 <ul>
-<li><label><input type="checkbox" data-key="handin-0"><span>Research and plan artefacts</span></label></li>
-<li><label><input type="checkbox" data-key="handin-1"><span>Implementation or credible patch</span></label></li>
-<li><label><input type="checkbox" data-key="handin-2"><span>Review evidence and unresolved risks</span></label></li>
+<li><label><input type="checkbox" data-key="handin-0"><span>Component specification or working prototype</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Permission and failure model</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Reuse and ownership plan</span></label></li>
+<li><label><input type="checkbox" data-key="handin-3"><span>Evidence from a re-run where the original correction was not needed</span></label></li>
 </ul>
 <p class="handin-note">Tick items as your team hands them in.</p></section>
 </div>
-<div class="callout callout-wait"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12M7 3v3.5L12 12l-5 5.5V21M17 3v3.5L12 12l5 5.5V21"/></svg><div class="callout-body"><p class="callout-title">While Exercise 6 executes</p><p>The rest of the team starts Exercise 7 and the two intermissions for this lab.</p><p class="callout-actions"><a href="exercise-7.html" class="btn btn-small">Exercise 7 · Gates and guardrails</a> <a href="intermission-b.html" class="btn btn-small">Intermission B · Issue to patch</a> <a href="intermission-c.html" class="btn btn-small">Intermission C · AI versus script</a></p></div></div>
+<header class="section-head" id="how-to-start">
+<p class="eyebrow">Exercise 6 · How to start</p>
+<h2>Make the next run need fewer corrections</h2>
+</header>
+<h3>Start here</h3>
+<ol class="numbered compact"><li><span class="n" aria-hidden="true">1</span><div><p>Read the auditor’s log and the <a href="exercise-5.html">Exercise 5</a> review: what did you correct, repeat or explain to the agent?</p></div></li><li><span class="n" aria-hidden="true">2</span><div><p>Pick one lesson that will come back: a convention, how to run your tests, a template, a triage checklist.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><p>Choose the smallest block: a line in <code>.github/copilot-instructions.md</code>, a scoped instruction or a skill.</p></div></li><li><span class="n" aria-hidden="true">4</span><div><p>Create and validate it with <code>hve-builder</code>, then re-run one step, such as <code>/rpi-plan</code>, and check the fix holds.</p></div></li></ol>
+<aside class="tips" id="tips" aria-label="Tips and tricks"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips and tricks</p><ul><li>A rule for the whole repo? <code>copilot-instructions.md</code>. A rule for some files? An instruction with a narrow <code>applyTo</code>.</li><li>Know-how, checklists or templates? A skill: a short <code>SKILL.md</code> with the detail in reference files.</li><li>A rule that must always hold? A hook or CI check (<a href="exercise-7.html">Exercise 7</a>), not more instructions.</li><li>Name an owner and a version so another team can install it.</li></ul></aside>
+<aside class="tips" id="tips-2" aria-label="Watch out"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Watch out</p><ul><li>Generic advice such as “write clean code”</li><li>A big agent where one instruction line would do</li><li>Never testing whether it changes the next run</li></ul></aside>
 <header class="section-head" id="toolkit">
 <p class="eyebrow">Exercise 6 · Hand-in and toolkit</p>
-<h2>One job, one artefact and one human decision per phase</h2>
+<h2>Pick the smallest building block that works</h2>
 </header>
 <div class="static-table"><div class="table-wrap" role="region" aria-label="Table" tabindex="0">
-<table class="grid phases-table">
-<thead><tr><td class="corner"></td><th scope="col">Research</th><th scope="col">Plan</th><th scope="col">Implement</th><th scope="col">Review</th></tr></thead>
+<table class="grid pick">
+<thead><tr><th scope="col">If you need…</th><th scope="col">→ Use…</th></tr></thead>
 <tbody>
-<tr><th scope="row">May</th><td>read code, docs and sources; never writes code</td><td>files, tests, risks and rollback, then a critique (Pass · Revise · Blocked)</td><td>only the approved plan; tests after each change</td><td>check every acceptance criterion; never edits code</td></tr>
-<tr><th scope="row">Leaves</th><td><strong>research notes</strong></td><td><strong>plan and critique</strong></td><td><strong>change log and tests</strong></td><td><strong>review record</strong></td></tr>
-<tr><th scope="row">You decide</th><td><strong>“Is the evidence enough?”</strong></td><td><strong>“Approve the plan”</strong></td><td><strong>“Do the checks pass?”</strong></td><td><strong>“Accept, fix or follow up”</strong></td></tr>
+<tr><td>A rule that always applies to certain files</td><td><strong>Instruction</strong> (narrow <code>applyTo</code> pattern; keep it short)</td></tr>
+<tr><td>A workflow someone starts on demand</td><td><strong>Prompt file or skill entry point</strong> (slash command)</td></tr>
+<tr><td>Deep know-how, question banks, templates or scripts</td><td><strong>Skill</strong> (short <code>SKILL.md</code>; detail in reference files)</td></tr>
+<tr><td>A multi-step job with tools, phases or hand-offs</td><td><strong>Agent</strong> (restrict its tools; hand off, don’t sprawl)</td></tr>
+<tr><td>A rule that must hold whatever the model thinks</td><td><strong>Control</strong>: hook, permission, schema or CI check</td></tr>
+<tr><td>Governed Azure DevOps/GitHub context or approved SharePoint/Teams evidence</td><td><strong>Approved connector</strong> (MCP server); reuse an existing server before building one</td></tr>
 </tbody>
 </table>
 </div></div>
-<p class="followup"><strong>Follow-up:</strong> defects → implement · decision gaps → plan · missing evidence → research · leftovers → a new backlog item</p>
-<div class="box box-run"><p class="label">Start it</p><ul class="run-list"><li><strong>HVE Core:</strong> select the RPI Agent and describe the item (manual by default; full auto only on request), or run <code>/rpi-research</code>, <code>/rpi-plan</code>, <code>/rpi-implement</code> and <code>/rpi-review</code> one at a time</li><li><strong>HVE-Squad:</strong> <code>/squad request="&lt;backlog item&gt;" mode=autopilot cost-ceiling=&lt;USD&gt;</code> — the Implementation Gate means work never begins cold; the Impactful-Action Gate stops before deploy, push, merge or schema changes</li><li><strong>Your own orchestrator:</strong> show the same four artefacts</li></ul></div>
-<p class="note-line"><strong>Review language:</strong> execution status (Complete · Partial · Blocked) is recorded separately from the outcome (Conformant · Conformant with justified divergence · Defects found · Residual work · Not accepted), so “it ran” is never mistaken for “it is right”.</p>
-<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/rpi/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · RPI workflow<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/getting-started.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Getting started<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/usage.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Usage<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/troubleshooting.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Troubleshooting<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
-<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>A named person has accepted, or sent back, the result on the basis of the review record.</p></div>
-<aside class="tips" id="tips" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Keep the item small enough for about an hour of implementation; if it cannot be sliced that small, it is an epic, not an exercise item.</li><li>Carry the <a href="exercise-3.html">Exercise 3</a> insight into the plan.</li><li>The approval of the plan is a human decision: the product owner or architect signs it, not the agent.</li><li>Plan IDs are stable (P01, P01-T01 …), so you can resume after clearing the chat without redoing the research.</li><li>If a run drifts, route the problem to the earliest responsible phase instead of patching in place.</li><li>For HVE-Squad, use the cost ceiling agreed for all teams and record any raise.</li><li>If HVE-Squad misbehaves, ask the coordinator for <code>squad-doctor</code>, then check the troubleshooting page; if it is still blocked, run the item with HVE Core instead.</li></ul></aside>
-<nav class="pager" aria-label="Previous and next step"><a class="prev" href="intermission-a.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Intermission A · PO canvas</span></a><a class="next" href="exercise-7.html" rel="next"><span class="dir">Next →</span><span class="ttl">Exercise 7 · Gates and guardrails</span></a></nav>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Template cells are editable: type in them, then use <strong>Copy as Markdown</strong> to paste the result into your repository or wiki. What you type stays in this browser only; nothing is uploaded.</span></p><div class="tpl" id="tpl-component-spec" data-tpl="component-spec">
+<div class="tpl-head"><h3>Component spec</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Component spec" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Specification</th></tr></thead>
+<tbody>
+<tr><th scope="row">Name</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Name, Specification"></td></tr>
+<tr><th scope="row">Trigger: when it runs</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Trigger: when it runs, Specification"></td></tr>
+<tr><th scope="row">Inputs</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Inputs, Specification"></td></tr>
+<tr><th scope="row">Outputs</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Outputs, Specification"></td></tr>
+<tr><th scope="row">Permissions and tools</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Permissions and tools, Specification"></td></tr>
+<tr><th scope="row">On failure</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="On failure, Specification"></td></tr>
+<tr><th scope="row">Owner and version</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Owner and version, Specification"></td></tr>
+<tr><th scope="row">Plugs into HVE-Squad as… / stays independent because…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Plugs into HVE-Squad as… / stays independent because…, Specification"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-correction-proof" data-tpl="correction-proof">
+<div class="tpl-head"><h3>Correction and re-run proof</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copy as Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Clear</button></div></div>
+<div class="table-wrap" role="region" aria-label="Correction and re-run proof" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Our answer</th></tr></thead>
+<tbody>
+<tr><th scope="row">Original correction from Exercise 5 (link to log or review)</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Original correction from Exercise 5 (link to log or review), Our answer"></td></tr>
+<tr><th scope="row">Instruction, skill or control created</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Instruction, skill or control created, Our answer"></td></tr>
+<tr><th scope="row">RPI step re-run, request and starting commit</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="RPI step re-run, request and starting commit, Our answer"></td></tr>
+<tr><th scope="row">Observed result: was the correction still needed?</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Observed result: was the correction still needed?, Our answer"></td></tr>
+<tr><th scope="row">Evidence link and remaining limitations</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Evidence link and remaining limitations, Our answer"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="box box-run"><p class="label">Run it with</p><p>HVE Core’s <strong>hve-builder</strong> skill (create, validate, review with a Pass / Revise / Blocked verdict, correct). Package and pin it with <strong>APM</strong>: one manifest, a lockfile, and an organisation policy for what may be installed.</p></div>
+<div class="links-block"><p class="label">Links</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/reference/skills/hve-core/hve-builder/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · hve-builder<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/overview" target="_blank" rel="noopener noreferrer" class="ext">VS Code · Customise agents<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/agent-skills" target="_blank" rel="noopener noreferrer" class="ext">Agent skills<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/custom-agents" target="_blank" rel="noopener noreferrer" class="ext">Custom agents<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers" target="_blank" rel="noopener noreferrer" class="ext">MCP servers<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/hooks" target="_blank" rel="noopener noreferrer" class="ext">Hooks<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://microsoft.github.io/hve-core/docs/customization/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Customisation<span class="sr-only"> (opens in a new tab)</span></a></li><li><a href="https://microsoft.github.io/apm/" target="_blank" rel="noopener noreferrer" class="ext">APM<span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Done when</span><p>Someone outside the team could install and run it from the specification alone, and a re-run of one RPI step shows the original correction is no longer needed.</p></div>
+<aside class="tips" id="tips-3" aria-label="Tips"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Tips</p><ul><li>Start with an observed correction, not a generic component idea. The proof is changed behaviour on the next run, not the size of the specification.</li><li>Least machinery: one well-reviewed skill beats ten private orchestrations.</li><li>Reuse the approved <a href="https://learn.microsoft.com/en-us/azure/devops/mcp-server/mcp-server-overview?view=azure-devops" target="_blank" rel="noopener noreferrer" class="ext">Azure DevOps MCP<span class="sr-only"> (opens in a new tab)</span></a> or <a href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener noreferrer" class="ext">GitHub MCP server<span class="sr-only"> (opens in a new tab)</span></a> for delivery context. Optional <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq" target="_blank" rel="noopener noreferrer" class="ext">Work IQ<span class="sr-only"> (opens in a new tab)</span></a> retrieves approved SharePoint/Teams evidence; it does not replace tracker-write approval.</li><li>Keep source access, allowed tools and failure behaviour in the component spec. Do not embed private Microsoft 365 excerpts or credentials in a reusable public skill.</li><li>APM lockfile governance is stable; its policy engine (<code>apm-policy.yml</code>) is an early preview, so pin the APM version.</li><li>Further reading: <a href="https://agentskills.io/specification" target="_blank" rel="noopener noreferrer" class="ext">Agent Skills specification<span class="sr-only"> (opens in a new tab)</span></a> and <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" class="ext">Model Context Protocol<span class="sr-only"> (opens in a new tab)</span></a>.</li></ul></aside>
+<nav class="pager" aria-label="Previous and next step"><a class="prev" href="exercise-5.html" rel="prev"><span class="dir">← Previous</span><span class="ttl">Exercise 5 · Bounded RPI work unit</span></a><a class="next" href="exercise-7.html" rel="next"><span class="dir">Next →</span><span class="ttl">Exercise 7 · Gates and guardrails</span></a></nav>
 </main>
 </div>
 <footer class="site-footer"><p>HyperVelocity Engineering · Hands-on workshop · Exercise guide</p><p class="muted">Links point to public documentation. HVE Core and HVE-Squad change quickly: use the versions installed for the workshop.</p></footer>
