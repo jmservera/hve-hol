@@ -611,7 +611,7 @@ def render_resources_body():
         (C.ACCELERATORS["id"], "Accelerators"), ("by-exercise", "Links by exercise"), ("templates", "Templates")]
     out.append(
         '<div class="res-tools"><label for="res-filter">Filter links</label>'
-        '<input id="res-filter" type="search" autocomplete="off" placeholder="Type to filter, e.g. MCP, GitLab, squad">'
+        '<input id="res-filter" type="search" autocomplete="off" placeholder="Type to filter, e.g. Azure DevOps, Work IQ, squad">'
         '<span id="res-count" class="res-count" aria-live="polite"></span></div>'
     )
     out.append('<nav class="res-toc" aria-label="Resource sections"><ul>%s</ul></nav>' % "".join(

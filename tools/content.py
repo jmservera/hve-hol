@@ -64,9 +64,13 @@ U = {
     "vs_mcp": "https://code.visualstudio.com/docs/agent-customization/mcp-servers",
     "vs_hooks": "https://code.visualstudio.com/docs/agent-customization/hooks",
     "playwright_cli": "https://playwright.dev/agent-cli/introduction",
-    "gl_protected": "https://docs.gitlab.com/user/project/repository/branches/protected/",
-    "gl_approvals": "https://docs.gitlab.com/user/project/merge_requests/approvals/rules/",
-    "bb_checks": "https://confluence.atlassian.com/bitbucketserver/checks-for-merging-pull-requests-776640039.html",
+    "ado_boards": "https://learn.microsoft.com/en-us/azure/devops/boards/get-started/what-is-azure-boards?view=azure-devops",
+    "ado_mcp": "https://learn.microsoft.com/en-us/azure/devops/mcp-server/mcp-server-overview?view=azure-devops",
+    "ado_policies": "https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops",
+    "ado_checks": "https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops",
+    "ado_hooks": "https://learn.microsoft.com/en-us/azure/devops/service-hooks/overview?view=azure-devops",
+    "gh_actions": "https://docs.github.com/en/actions",
+    "gh_mcp_server": "https://github.com/github/github-mcp-server",
     "gh_rulesets": (
         "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/"
         "managing-rulesets/about-rulesets"
@@ -90,14 +94,14 @@ U = {
         "get-started/tools/visual-studio-code?tabs=one-click"
     ),
     "fabric_mcp": "https://learn.microsoft.com/en-us/rest/api/fabric/articles/mcp-servers/what-is-fabric-mcp-server",
-    "workiq_mcp": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/mcp/overview",
+    "workiq_mcp": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq",
+    "workiq_retrieve": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/mcp/retrieve",
+    "workiq_setup": "https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq/mcp/quickstart/github-copilot-cli",
     "deepwiki_docs": "https://docs.devin.ai/work-with-devin/deepwiki-mcp",
     "deepwiki": "https://mcp.deepwiki.com/",
     "context7": "https://github.com/upstash/context7",
     "context7_cli": "https://context7.com/docs/resources/all-clients#copilot-cli",
     "gh_mcp": "https://github.com/mcp",
-    "rovo_mcp": "https://developer.atlassian.com/cloud/rovo-mcp/",
-    "mcp_atlassian": "https://github.com/sooperset/mcp-atlassian",
     "accelerators": "https://accelerators.ms/#section=accelerators",
 }
 
@@ -241,7 +245,7 @@ HOME = {
     "title": "HyperVelocity Engineering",
     "title_line2": "Exercise guide",
     "lead": "Nine team exercises and an optional comparison to apply HVE, HVE Core and HVE-Squad to real or "
-            "anonymised scenarios",
+            "anonymised scenarios with Azure DevOps, GitHub and optional Microsoft 365 evidence",
     "goals_title": "What today is for",
     "goals": [
         "Experience a governed agentic lifecycle, end to end, on your own scenario",
@@ -527,7 +531,7 @@ PAGES = [
                  "points": [
                      "RPI Agent, or the four phase skills: research, plan, implement, review",
                      "Specialist agents for requirements, architecture decisions, security and Responsible AI "
-                     "planning, a Design Thinking coach, and backlog managers for Jira, Azure DevOps and GitHub",
+                     "planning, a Design Thinking coach, and a Backlog Manager for the Azure DevOps and GitHub paths",
                      "You approve each phase",
                  ],
                  "best": "learning the method, one team, tight control"},
@@ -549,6 +553,29 @@ PAGES = [
             ]},
             banner("HVE is the operating model. The toolkit is optional; the evidence is not."),
             tips("HVE-Squad is a community project built on HVE Core, at design-partner stage."),
+            section("microsoft-toolchain", "Microsoft-first workshop paths",
+                    "Delivery in Azure DevOps or GitHub; evidence from Microsoft 365",
+                    jump="Microsoft toolchain"),
+            table(["Need", "Microsoft products", "Boundary"], [
+                ["Plan work", "Azure DevOps (ADO): Azure Boards work items, or GitHub Issues",
+                 "Read first; approve backlog writes and the target project/repository"],
+                ["Code, review and CI", "GitHub repositories, pull requests and Actions; "
+                 "Azure Repos and Azure Pipelines are alternatives",
+                 "Named reviewers, required checks and a human merge/release decision"],
+                ["Gather business context", "Approved SharePoint documents and Microsoft Teams notes/messages "
+                 "through optional Work IQ MCP",
+                 "Read-only source retrieval for this workshop; retain citations, dates and access constraints"],
+            ]),
+            callout("info", "Work IQ is optional, not assumed",
+                    "Use a documented Copilot CLI connection or a workshop-approved MCP-capable client. "
+                    "Before live retrieval, confirm sign-in/consent, tenant policy and available read tools. "
+                    "Preview `retrieve` may also require Work IQ API billing and a Copilot Credits spending "
+                    "policy. Do not change tenant policy during an exercise. If unavailable or denied, stop "
+                    "that retrieval and use the [fictional starting evidence](exercise-1.html#case) or another "
+                    "approved source pack; record the limitation, never fabricate a live result."),
+            links(("Azure DevOps MCP", U["ado_mcp"]), ("GitHub MCP server", U["gh_mcp_server"]),
+                  ("Work IQ · Retrieval (preview)", U["workiq_retrieve"]),
+                  ("Work IQ · Copilot CLI setup", U["workiq_setup"])),
             section("quick-reference", "Quick reference", "Entry points, and where the evidence lives",
                     jump="Quick reference"),
             cols(
@@ -597,10 +624,12 @@ PAGES = [
             tips(
                 "HVE Core no longer ships prompt files: `/rpi` is retired, so use the RPI Agent and describe the "
                 "task.",
-                "The separate Azure DevOps, GitHub and Jira backlog agents are now one Backlog Manager.",
+                "Use the Backlog Manager for the Azure DevOps or GitHub path; confirm the target organisation, "
+                "project or repository before allowing writes.",
                 "The Meeting Analyst agent is experimental and needs the Work IQ MCP server, which may not be "
-                "available in your organisation; use the PRD Builder’s clarifying questions or `/rpi-research` on "
-                "an anonymised transcript instead.",
+                "available in your organisation. Keep meeting evidence optional: use approved fictional excerpts "
+                "or the PRD Builder’s questions if live retrieval is not enabled. Teams notes are evidence, not "
+                "automatic requirements approval.",
                 "For HVE-Squad, use a fixed, strong model for the coordinator, not Auto.",
             ),
             section("setup-pins", "Setup", "Pins for the day", jump="Setup pins"),
@@ -681,13 +710,16 @@ PAGES = [
             section("case", "The shared use case", "Cita Previa: change an appointment", jump="Use case"),
             para("Illustrative example · fictional client and system · not a recorded run", cls="caveat"),
             table(["Starting evidence", "What you know"], [
-                ["Ticket CITA-482", "As a citizen, I want to change the date of my appointment online, so that "
+                ["Azure Boards work item 482", "As a citizen, I want to change the date of my appointment online, so that "
                  "I don’t have to phone the office."],
-                ["Current rules", "15-minute slots; bookings up to 30 days ahead; confirmation by email and SMS"],
+                ["SharePoint rules document", "15-minute slots; bookings up to 30 days ahead; confirmation by email and SMS"],
+                ["Teams service-owner note", "Fewer phone calls are the goal. Change limits, notice period and "
+                 "cross-office moves are still undecided; this note is not requirements approval."],
                 ["System", "Citizen appointment portal for a fictional regional public administration"],
-                ["Stack", "Java / Spring Boot back end; Angular front end; on-prem GitLab"],
-                ["Tool context", "HVE Core in VS Code with GitHub Copilot; approved read-only Jira and "
-                 "Confluence Data Center access through MCP"],
+                ["Stack", "Java / Spring Boot back end; Angular front end; GitHub repository"],
+                ["Tool context", "HVE Core in VS Code with GitHub Copilot; approved Azure DevOps/GitHub read "
+                 "tools, with optional Work IQ MCP retrieval of SharePoint and Teams evidence. "
+                 "The fictional walkthrough needs no live tenant connection."],
                 ["Desired outcome", "Change the date within business-owner-approved rules, free the old slot, "
                  "notify the citizen, and leave a reviewed, tested change with release evidence"],
             ], row_header=True),
@@ -711,8 +743,8 @@ PAGES = [
                    "Before anyone writes code, what should the agent read, and what should it hand back to you?",
                    "Read before you write",
                    [
-                       "Evidence summary: fewer phone calls (CITA-482); 15-minute slots, 30-day advance booking, "
-                       "email and SMS confirmation (Confluence).",
+                       "Evidence summary: fewer phone calls (Azure Boards work item 482 and the Teams note); "
+                       "15-minute slots, 30-day advance booking, email and SMS confirmation (SharePoint).",
                        "Five open questions: how many changes per citizen; how many hours before; another "
                        "office too; who is notified; same-day appointments?",
                    ],
@@ -723,7 +755,7 @@ PAGES = [
                    "The agent asks; the owner decides",
                    [
                        "Requirements v0.2: R3 permits at most 2 changes (owner answer 1); R4 closes changes "
-                       "24 hours before (owner answer 2); R5 frees the old slot immediately (Confluence).",
+                       "24 hours before (owner answer 2); R5 frees the old slot immediately (SharePoint).",
                        "AC-7: under 24 hours, Change date is disabled and the office phone is shown. "
                        "Accessibility requirement: WCAG 2.1 AA for the public-sector example.",
                        "Unanswered rules and their dependent acceptance criteria remain blocked.",
@@ -736,7 +768,7 @@ PAGES = [
                        "Booking logic is in `AppointmentService`; cancellation already releases a slot.",
                        "A shared messaging service exists, but new SMS text is needed. There are no automated "
                        "`AppointmentService` tests.",
-                       "Confluence says 30 days; the code allows 60. That conflict becomes a new business-owner "
+                       "SharePoint says 30 days; the code in GitHub allows 60. That conflict becomes a new business-owner "
                        "question, not an agent-made decision.",
                    ],
                    "No approval yet. The evidence and the documentation/code conflict go back to the owner."),
@@ -769,7 +801,7 @@ PAGES = [
                        "The owner still has to try the test environment. A backlog item to show remaining "
                        "changes is proposed, not created.",
                    ],
-                   "The business owner accepts; a named person approves the GitLab merge request; the normal "
+                   "The business owner accepts; a named person approves the GitHub pull request; the normal "
                    "release process still applies."),
             banner("Six steps, five human decisions: sources confirmed · requirements approved · plan "
                    "approved · autonomy chosen · merge approved.", kind="soft"),
@@ -809,12 +841,12 @@ PAGES = [
                 ],
                 ["Evidence map", "Context manifest", "Prioritised clarification questions"],
             ),
-            *how_to_start("2", "One statement per row, then one agent call", [
-                "Gather your scenario’s material in one place: ticket, notes, transcript, architecture note, "
-                "backlog item.",
+            *how_to_start("2", "One statement per row, then check the gaps", [
+                "Gather the Azure Boards work item or GitHub issue, approved SharePoint rules, Teams notes "
+                "and code context. Use the fictional pack if live sources are unavailable.",
                 "Open the [evidence map table](#tpl-evidence-map) and add one row per statement, not per document.",
                 "The product owner tags each row: fact, decision, constraint, assumption or open question.",
-                "Only then ask the agent: `/rpi-research` “List gaps and contradictions in these sources; "
+                "Only then ask the gap-analysis agent: `/rpi-research` “List gaps and contradictions in these sources; "
                 "change nothing.”",
             ]),
             tips(
@@ -825,8 +857,15 @@ PAGES = [
                 "Accept, reject or rewrite every gap the agent finds, with a one-line reason.",
                 label="Tips and tricks",
             ),
-            tips("Letting the agent build the map for you", "Treating meeting notes as decisions",
+            tips("Letting the agent build the map for you", "Treating Teams notes as approved decisions",
                  "Putting client data in the repo before anonymising it", label="Watch out"),
+            callout("info", "Optional Work IQ source collection",
+                    "With approved access, ask Work IQ MCP to retrieve only the named SharePoint documents "
+                    "and Teams discussion/meeting notes for your item. Request concise excerpts, source URLs "
+                    "and dates; retain sensitivity/access metadata. Use read operations only, not updates or "
+                    "messages. People still classify the evidence before the gap-analysis call. If a tool "
+                    "is missing or access is denied, stop and log missing context; use the "
+                    "[fictional source pack](exercise-1.html#case), not a permission workaround."),
             section("toolkit", "Exercise 2 · Hand-in and toolkit",
                     "Make context explicit, and decide what the agent may use", jump="Hand-in and toolkit"),
             template("evidence-map", "Evidence map", blank(["Item", "Type", "Source", "Owner"], n=4),
@@ -845,6 +884,8 @@ PAGES = [
                              "working memory, not the source of truth."),
             ),
             links(("HVE Core · Project planning", U["project_planning"]), ("HVE Core · RPI workflow", U["rpi"]),
+                  ("Azure DevOps MCP", U["ado_mcp"]), ("GitHub MCP server", U["gh_mcp_server"]),
+                  ("Work IQ · Retrieval (preview)", U["workiq_retrieve"]),
                   ("VS Code · MCP servers", U["vs_mcp"])),
             done("Every gap the agent proposed has been accepted, rejected or rewritten by the team, with a reason."),
             tips(
@@ -853,8 +894,9 @@ PAGES = [
                 "Name one source of truth per kind of information (requirements, work items, decisions), not "
                 "“everything is in the wiki”.",
                 "Good gap analyses distinguish “the agent could not find it” from “it does not exist”.",
-                "If you connect Jira or Confluence through MCP, keep credentials outside the repository and use "
-                "only approved servers.",
+                "Keep credentials outside the repository. Use only approved Azure DevOps/GitHub integrations "
+                "and Work IQ read tools; source URLs do not grant permission to copy private content into a "
+                "public repository.",
             ),
         ],
     },
@@ -962,7 +1004,8 @@ PAGES = [
                     "Generate or refine the business and product requirements (BRD / PRD), in your organisation’s "
                     "own terms and templates where possible.",
                     "Stop at unresolved questions: the product owner decides, defers or rejects.",
-                    "Create a backlog with acceptance criteria and links to the source evidence.",
+                    "Create Azure Boards work items or GitHub Issues with acceptance criteria and links to "
+                    "the approved source evidence.",
                     "Check whether the backlog preserves intent rather than merely decomposing text.",
                 ],
                 ["Approved requirements artefact", "Decision log", "Prioritised backlog with acceptance criteria"],
@@ -975,9 +1018,10 @@ PAGES = [
             *how_to_start("4", "The product owner sits next to the agent", [
                 "Product owner and agent operator sit together with the evidence map and the clarification "
                 "questions.",
-                "Start the BRD Builder, or the PRD Builder for a small change, and give it your scenario and evidence.",
+                "Start the BRD Builder, or the PRD Builder for a small change, with your scenario and approved "
+                "Azure Boards/GitHub, SharePoint and Teams evidence.",
                 "Answer its questions live. Unsure? Answer “undecided” and log it in the decision log with an owner.",
-                "Run `/backlog-plan` read-only; write to Jira, Azure DevOps or GitHub with `/backlog-execute` "
+                "Run `/backlog-plan` read-only; write Azure Boards work items or GitHub Issues with `/backlog-execute` "
                 "only after approval.",
             ]),
             tips(
@@ -1006,14 +1050,16 @@ PAGES = [
                      blank(["Version", "Approved by", "Date", "Open items"], n=1)),
             run_with(
                 ("HVE Core", "BRD Builder, then PRD Builder (they ask the clarifying questions); Backlog Manager "
-                             "(`/backlog-plan` to triage read-only, `/backlog-execute` to write to Jira, Azure "
-                             "DevOps or GitHub); Functional Planner turns a PRD into a planned hierarchy."),
+                             "(`/backlog-plan` to triage read-only, `/backlog-execute` for approved Azure Boards "
+                             "or GitHub writes); Functional Planner turns a PRD into a planned hierarchy."),
                 ("HVE-Squad", "intake gate → requirements → experiment → backlog; the Tracker-Write Gate asks a "
                               "person before anything is written to the tracker."),
                 ("Gates you exercise", "Evidence → BRD (product owner) · BRD → PRD (product + engineering)"),
             ),
             links(("HVE Core · Project planning", U["project_planning"]),
-                  ("HVE Core · Backlog management", U["backlog"]), ("HVE-Squad · Usage", U["squad_usage"])),
+                  ("HVE Core · Backlog management", U["backlog"]), ("Azure Boards", U["ado_boards"]),
+                  ("Work IQ · Retrieval (preview)", U["workiq_retrieve"]),
+                  ("HVE-Squad · Usage", U["squad_usage"])),
             done("No open question was silently resolved by an agent, and every backlog item links to its evidence."),
             tips(
                 "Use your organisation’s own document names (for example functional analysis or change-request "
@@ -1022,6 +1068,8 @@ PAGES = [
                 "not just in the chat.",
                 "A business answer has to change the files (requirements, backlog, traceability), not just appear "
                 "in chat.",
+                "Use Work IQ only for approved SharePoint/Teams source retrieval where available. A Teams message "
+                "does not replace the product owner’s approval, and missing access is logged rather than bypassed.",
                 "Pick one narrow, testable item from this backlog for [Exercise 5](exercise-5.html) before lunch; "
                 "its research can run over lunch.",
             ),
@@ -1038,15 +1086,17 @@ PAGES = [
         "summary": "Let a non-developer steer BRD, PRD and ADR generation without writing code.",
         "blocks": [
             brief("Let a non-developer steer BRD, PRD and ADR generation without writing code.",
-                  "The team repo in the GitHub Copilot app, with approved read-only MCP servers where available",
+                  "An approved MCP-capable Copilot workspace, Azure Boards/GitHub context and optional "
+                  "SharePoint/Teams evidence through Work IQ",
                   "Waiting-time task during [Ex 4](exercise-4.html)",
                   "Product owner leads; agent operator pairs; auditor logs prompts and edits"),
             work(
                 [
-                    "Open the team repo in the GitHub Copilot app; connect the approved, available MCP servers.",
+                    "Open the workspace in Copilot CLI or a workshop-approved MCP-capable client. Verify approved "
+                    "Azure DevOps/GitHub read tools and optional Work IQ; use fictional excerpts if unavailable.",
                     "Ask Copilot to generate a product-owner canvas: goals, users, scope, open questions, decisions.",
-                    "Pull approved context via available MCP servers (for example Jira, Confluence or WorkIQ) "
-                    "and look up a matching accelerator at "
+                    "Read the Azure Boards item or GitHub issue; optionally retrieve approved SharePoint rules "
+                    "and Teams notes through Work IQ, keeping citations. Look up a matching accelerator at "
                     "[accelerators.ms](" + U["accelerators"] + ").",
                     "The PO approves the canvas; Copilot drafts BRD, PRD and ADR, citing sources. The ADR records: "
                     "adopt, adapt or build.",
@@ -1059,17 +1109,23 @@ PAGES = [
                                           "Template 1."},
             links(("Microsoft AI Solution Accelerators", U["accelerators"]),
                   ("Work IQ MCP overview", U["workiq_mcp"]),
+                  ("Work IQ · Retrieval and prerequisites", U["workiq_retrieve"]),
+                  ("Work IQ · Copilot CLI setup", U["workiq_setup"]),
+                  ("Azure DevOps MCP", U["ado_mcp"]), ("GitHub MCP server", U["gh_mcp_server"]),
                   ("Accelerators: how they work", "resources.html#accelerators")),
             tips(
                 "The canvas can be a simple Markdown file or page in the repo that the PO edits in plain language; "
                 "Copilot regenerates the BRD, PRD and ADR from it.",
-                "Use workshop data only and read-only MCP scopes.",
+                "Use approved workshop data and read tools only for source gathering. Work IQ has broader "
+                "capabilities; keep its update/send actions disabled for this activity.",
                 "Compare the drafts with the [Exercise 4](exercise-4.html) outputs: what did the PO add that the "
                 "agents missed?",
                 "Accelerators are ready-made, maintained solution architectures with deployment guides and costing. "
                 "Pick the closest match (for example Modernize your Code for a legacy codebase), cite it as the "
                 "reference architecture in the ADR, and record whether you adopt, adapt or build.",
-                "If an MCP server is unavailable, record it as missing context rather than pasting data by hand.",
+                "If Work IQ or another source connector is unavailable or policy-denied, stop that retrieval "
+                "and record missing context. Use the approved fictional pack; do not paste private data to "
+                "bypass a restriction or pretend a live query succeeded.",
                 "The PO edit log is reused in [Exercise 10](exercise-10.html).",
             ),
         ],
@@ -1239,7 +1295,8 @@ PAGES = [
                      "**Agent** (restrict its tools; hand off, don’t sprawl)"],
                     ["A rule that must hold whatever the model thinks",
                      "**Control**: hook, permission, schema or CI check"],
-                    ["Governed access to Jira, Confluence, GitLab or another system", "**Connector** (MCP server)"],
+                    ["Governed Azure DevOps/GitHub context or approved SharePoint/Teams evidence",
+                     "**Approved connector** (MCP server); reuse an existing server before building one"],
                 ],
                 cls="pick",
             ),
@@ -1267,10 +1324,11 @@ PAGES = [
                 "Start with an observed correction, not a generic component idea. The proof is changed behaviour "
                 "on the next run, not the size of the specification.",
                 "Least machinery: one well-reviewed skill beats ten private orchestrations.",
-                "Jira and Confluence on Data Center? Atlassian’s official remote MCP server "
-                "([Rovo MCP](" + U["rovo_mcp"] + ")) is Cloud-only. The open-source "
-                "[sooperset/mcp-atlassian](" + U["mcp_atlassian"] + ") server supports Server/Data Center but is "
-                "not an Atlassian product: evaluate it under your security policy before use.",
+                "Reuse the approved [Azure DevOps MCP](" + U["ado_mcp"] + ") or [GitHub MCP server](" +
+                U["gh_mcp_server"] + ") for delivery context. Optional [Work IQ](" + U["workiq_mcp"] +
+                ") retrieves approved SharePoint/Teams evidence; it does not replace tracker-write approval.",
+                "Keep source access, allowed tools and failure behaviour in the component spec. Do not embed "
+                "private Microsoft 365 excerpts or credentials in a reusable public skill.",
                 "APM lockfile governance is stable; its policy engine (`apm-policy.yml`) is an early preview, so "
                 "pin the APM version.",
                 "Further reading: [Agent Skills specification](" + U["skills_spec"] + ") and "
@@ -1314,7 +1372,7 @@ PAGES = [
             ]),
             tips(
                 "For each gate, ask: what happens today if someone skips it? If nothing, it is advisory.",
-                "Use the CI you already have: GitLab CI, Bitbucket Pipelines, Azure Pipelines or GitHub Actions.",
+                "Use the CI you already have: Azure Pipelines or GitHub Actions.",
                 "Name a person, not a role, for each gate, and who may override it with what evidence.",
                 "Agents will sometimes skip a step: design the control for that.",
                 label="Tips and tricks",
@@ -1335,22 +1393,31 @@ PAGES = [
                  "  echo \"Remove .copilot-tracking/ and promote decisions before merge.\"\n"
                  "  exit 1\n"
                  "fi",
-                 caption="Example: a required merge check — the same script runs in GitLab CI, Bitbucket "
-                         "Pipelines, Azure Pipelines or GitHub Actions",
+                 caption="Example: require this check through GitHub rulesets or Azure Repos build validation; "
+                         "the script runs in GitHub Actions or Azure Pipelines",
                  id_="merge-check"),
             {"type": "chips", "title": "Other deterministic options", "items": [
-                "protected branches with required approvals",
-                "required pipeline checks",
-                "CODEOWNERS on docs and ADRs",
+                "GitHub rulesets with required reviews/status checks",
+                "Azure Repos branch policies with required build validation",
+                "GitHub CODEOWNERS on docs and ADRs",
+                "Azure Repos required reviewers with path filters",
                 "schema / front-matter lint for artefacts",
                 "read-only tools for research and review",
                 "agent hooks that block writes",
                 "an APM policy for what agent packages may be installed",
             ]},
-            links(("GitLab · Protected branches", U["gl_protected"]),
-                  ("GitLab · Merge request approval rules", U["gl_approvals"]),
-                  ("Bitbucket Data Center · Merge checks", U["bb_checks"]),
-                  ("GitHub · Rulesets", U["gh_rulesets"]), ("VS Code · Agent hooks", U["vs_hooks"]),
+            table(["Platform", "A real blocking control"], [
+                ["GitHub", "Require reviews/status checks in a ruleset or branch protection; use CODEOWNERS "
+                 "when code-owner approval is required"],
+                ["Azure Repos", "Configure required reviewers/path filters and required build validation or "
+                 "status checks in branch policies; CODEOWNERS is not an Azure Repos feature"],
+                ["Azure Pipelines", "Use resource/environment approvals and checks where needed; a named person "
+                 "owns override decisions"],
+            ]),
+            links(("Azure Repos · Branch policies", U["ado_policies"]),
+                  ("Azure Pipelines · Approvals and checks", U["ado_checks"]),
+                  ("GitHub · Rulesets", U["gh_rulesets"]), ("GitHub Actions", U["gh_actions"]),
+                  ("VS Code · Agent hooks", U["vs_hooks"]),
                   ("APM · Governance", U["apm_gov"])),
             done("One control actually blocks something, and the override path names who may override and what "
                  "evidence they need."),
@@ -1359,10 +1426,9 @@ PAGES = [
                 "advisory, whatever the process document says.",
                 "Agents will sometimes skip a step; design for that.",
                 "A gitignore entry is a convenience, not a control; the required check is the control. Mark the "
-                "check as required in the merge-request settings.",
-                "If your repositories are on GitLab or Bitbucket on-premises, prefer those examples. GitLab merge "
-                "request approval rules need Premium or Ultimate; protected branches and “pipelines must succeed” "
-                "work on all tiers.",
+                "check as required in GitHub rules or Azure Repos branch policies.",
+                "Have an authorised repository/project administrator configure required policies and govern bypass "
+                "rights. A YAML file, MCP tool annotation or instruction alone does not enforce the gate.",
                 "The APM policy engine is an early preview.",
                 "Reuse the operations loop from [Intermission B](intermission-b.html) and the step verifier from "
                 "[Intermission C](intermission-c.html) as inputs to your control matrix.",
@@ -1376,21 +1442,22 @@ PAGES = [
         "num": "B",
         "nav": "Intermission B · Issue to patch",
         "eyebrow": "Intermission B · While Exercise 5 executes · Open lab 3 · Parallel task",
-        "title": "Close the loop: from Azure SRE Agent issue or ticket to patch",
-        "summary": "Route auto-generated issues or customer tickets into an automated, knowledge-grounded patch flow.",
+        "title": "Close the loop: from Azure Boards or GitHub issue to patch",
+        "summary": "Turn an Azure SRE Agent finding or support work item into a source-grounded draft patch.",
         "blocks": [
-            brief("Route issues auto-generated by the Azure SRE Agent, or raised as customer tickets, into an "
+            brief("Route Azure SRE Agent findings or Azure Boards/GitHub issues into an "
                   "automated, knowledge-grounded patch flow.",
-                  "Azure SRE Agent issues or customer tickets, available Ex 5 artefacts; instructions, skills, ADRs",
+                  "An Azure Boards work item or GitHub issue, available Ex 5 artefacts, instructions, skills, ADRs "
+                  "and optional approved Microsoft 365 runbook context",
                   "Waiting-time task during [Ex 5](exercise-5.html)",
                   "Agent operator and architect; quality lead owns the human gate"),
             work(
                 [
-                    "Pick three issues: auto-raised by the Azure SRE Agent, or customer tickets.",
-                    "Draft a label-triggered workflow: a GitHub agentic workflow, or Jenkins/Bamboo on Bitbucket "
-                    "Data Center.",
-                    "Ground each patch in knowledge: instructions, skills and ADRs, plus Jira and Confluence via "
-                    "Atlassian MCP.",
+                    "Pick three Azure Boards work items or GitHub issues, for example records of Azure SRE Agent findings.",
+                    "Draft a GitHub issue-label to Actions workflow, or an Azure Boards service hook plus "
+                    "approved dispatcher that queues an Azure Pipeline.",
+                    "Ground each patch in instructions, skills, ADRs and delivery context. Where approved, use "
+                    "Work IQ read tools for SharePoint runbooks and Teams incident notes, with source citations.",
                     "The agent opens a draft pull request with patch, tests and issue link; a human reviews, never "
                     "auto-merge.",
                     "Feed the outcome back: close, reopen, or turn the failure into a new instruction or skill.",
@@ -1400,15 +1467,19 @@ PAGES = [
             ),
             {"type": "shared_ab", "fill": "Intermission B fills the **Issue** and **Patch** columns of Template 1, "
                                           "and Template 2 (operations loop)."},
-            links(("Azure SRE Agent documentation", U["sre"]), ("Overview of Azure SRE Agent", U["sre_overview"])),
+            links(("Azure SRE Agent documentation", U["sre"]), ("Overview of Azure SRE Agent", U["sre_overview"]),
+                  ("Azure DevOps · Service hooks", U["ado_hooks"]), ("GitHub Actions", U["gh_actions"]),
+                  ("Work IQ · Retrieval (preview)", U["workiq_retrieve"])),
             tips(
                 "Teams on GitHub use an agentic workflow or Actions to hand labelled issues to the Copilot coding "
                 "agent.",
-                "Teams on Bitbucket Data Center (on-prem) sketch the equivalent Jenkins or Bamboo job calling an "
-                "agent CLI, and write the Jira update back through the Atlassian MCP server.",
+                "For Azure Boards, use a service hook and approved automation/dispatcher to queue a pipeline. "
+                "Do not assume that a work-item update is a native YAML pipeline trigger.",
+                "Work IQ source access is optional and read-only here. If unavailable, use approved runbook/note "
+                "excerpts and log the missing live connection; do not bypass policy.",
                 "Keep the loop bounded: draft PRs only, a retry limit, and a human merge.",
-                "The trigger can be an issue generated automatically by the Azure SRE Agent from operational "
-                "signals, or a ticket raised by a customer; the downstream flow is identical.",
+                "The input can represent an Azure SRE Agent finding or a support request; do not assume an "
+                "automatic integration is configured. Work-item and draft-PR writes require separate approval.",
                 "The loop diagram feeds [Exercise 7](exercise-7.html) (gates and guardrails).",
             ),
         ],
@@ -1452,8 +1523,8 @@ PAGES = [
                      blank(["Step", "Required output", "Check (script)", "Fails if…"], n=3),
                      note="Example: every plan task ID (P01-T01…) appears in the change log and review record"),
             run_with((None, "The Ex 5 artefacts in `.copilot-tracking/` (research, plans, changes, reviews) · a shell "
-                            "or Python script, schema validation or a CI check · the same check runs in GitLab CI, "
-                            "Bitbucket Pipelines, Azure Pipelines or GitHub Actions")),
+                            "or Python script, schema validation or a CI check · the same check runs in "
+                            "Azure Pipelines or GitHub Actions")),
             {"type": "rules", "items": ["Scripts read the artefacts, never edit them",
                                         "A failed check blocks; it does not just warn"]},
             done("At least one task moved from AI to a script, or an AI step now has a check that fails when the "
@@ -1622,6 +1693,8 @@ PAGES = [
                 "lead time and rework from unclear requirements).",
                 "Typical pilot scorecard: unplanned intervention rate, active human minutes per item, AI cost per "
                 "accepted item, lead time and quality guardrails.",
+                "Name the Azure DevOps/GitHub scope and its owners. If using Work IQ, also name the approved "
+                "SharePoint/Teams sources, access owner and any preview/billing readiness work still needed.",
             ),
         ],
     },
@@ -1705,7 +1778,8 @@ PAGES = [
                     "Choose one comparison: two models, HVE Core versus HVE-Squad, or HVE versus another "
                     "harness (your own orchestrator or plain Copilot agent mode).",
                     "Use Exercise 5 as Run A. Run B repeats the same item, request and definition of done "
-                    "from the same commit, with one variable changed.",
+                    "from the same commit, with one variable changed. Freeze the same approved source snapshot "
+                    "and access scopes for both runs.",
                     "Compare time to first useful output and accepted outcome; count questions, corrections, "
                     "approvals, retries and unplanned interventions.",
                     "Review consumption or available cost signals alongside quality and rework, including "
@@ -1734,13 +1808,18 @@ PAGES = [
             ),
             tips("Changing the model and the harness at once", "Comparing a full run with a partial one",
                  "Declaring a winner instead of a phase and a context", label="Watch out"),
+            callout("info", "Keep Microsoft 365 context fixed too",
+                    "If SharePoint/Teams evidence came through Work IQ, freeze the same approved source "
+                    "snapshot, versions and access scopes for Run A and B. New retrieval results or changed "
+                    "permissions are another variable. Record available retrieval cost signals separately; "
+                    "do not assume that preview Work IQ API use is free."),
             section("toolkit", "Backup · Exercise 10 · Hand-in and toolkit",
                     "Count everything, then compare usefulness", jump="Hand-in and toolkit"),
             template("comparison-setup", "Controlled comparison setup", form([
                 "Comparison and the one variable changed",
                 "Run A: starting commit and evidence link",
                 "Run B: starting commit and evidence link",
-                "Same item, request and definition of done",
+                "Same item, request, approved source snapshot, access scopes and definition of done",
                 "Phases compared on both sides",
             ])),
             {"type": "formula", "text": "Net improvement = time saved − (AI cost + extra review effort)",
@@ -1755,7 +1834,8 @@ PAGES = [
                           "implementation or full-outcome measures not applicable."),
             run_with((None, "the auditor’s log · HVE-Squad `consumption.md` (model, tokens and estimated cost per "
                             "dispatch) and `decisions.md` · HVE Core research, plan, change and review files · "
-                            "GitHub Copilot usage metrics and AI-credit consumption"),
+                            "GitHub Copilot usage metrics and AI-credit consumption · Work IQ API Copilot "
+                            "Credits if used and available (keep different credit units separate)"),
                      label="Where the numbers come from"),
             callout("info", "Cross-team comparison is observational",
                     "Similar items from different teams can reveal useful patterns, but they do not isolate "
@@ -1829,9 +1909,11 @@ RESOURCES = [
         ("VS Code · MCP servers", U["vs_mcp"], ""),
         ("VS Code · Agent hooks (preview)", U["vs_hooks"], ""),
         ("Playwright · Agent CLI introduction", U["playwright_cli"], ""),
-        ("GitLab · Protected branches", U["gl_protected"], ""),
-        ("GitLab · Merge request approval rules", U["gl_approvals"], "Needs GitLab Premium or Ultimate"),
-        ("Bitbucket Data Center · Merge checks", U["bb_checks"], ""),
+        ("Azure Boards · Work items", U["ado_boards"], ""),
+        ("Azure Repos · Branch policies", U["ado_policies"], "Required reviewers, build validation and status checks"),
+        ("Azure Pipelines · Approvals and checks", U["ado_checks"], ""),
+        ("Azure DevOps · Service hooks", U["ado_hooks"], "Approved event dispatch for the issue-to-patch loop"),
+        ("GitHub Actions", U["gh_actions"], ""),
         ("GitHub · Rulesets", U["gh_rulesets"], ""),
         ("GitHub Copilot · Usage-based billing (AI credits)", U["gh_billing"], ""),
         ("GitHub Copilot · Usage metrics", U["gh_metrics"], ""),
@@ -1850,20 +1932,21 @@ RESOURCES = [
             ("Azure MCP Server · Get started", U["azmcp_start"], ""),
             ("Azure MCP Server · Get started with VS Code", U["azmcp_vscode"], ""),
             ("Fabric MCP Servers overview", U["fabric_mcp"], ""),
-            ("Work IQ MCP overview", U["workiq_mcp"], ""),
+            ("Azure DevOps MCP overview", U["ado_mcp"], "Delivery context: work items, repos, PRs and builds"),
+            ("GitHub MCP server", U["gh_mcp_server"], "Approved repository and issue tools"),
         ]},
-        {"title": "Recommended MCP servers", "items": [
+        {"title": "Optional Microsoft 365 evidence with Work IQ", "items": [
+            ("Work IQ overview", U["workiq_mcp"], "User access and tenant policy still apply"),
+            ("Work IQ · Retrieval (preview)", U["workiq_retrieve"],
+             "SharePoint/Teams citations and metadata; confirm tool, consent, billing/spending-policy readiness"),
+            ("Work IQ · Copilot CLI setup", U["workiq_setup"], "Use an approved, supported client connection"),
+        ]},
+        {"title": "Optional public-document research tools", "items": [
             ("DeepWiki MCP · Documentation", U["deepwiki_docs"], ""),
             ("DeepWiki MCP · Server endpoint", U["deepwiki"], ""),
             ("Context7 MCP · Up-to-date library docs", U["context7"], ""),
             ("Context7 MCP · Copilot CLI setup", U["context7_cli"], ""),
             ("GitHub MCP Registry", U["gh_mcp"], ""),
-        ]},
-        {"title": "Jira and Confluence (Atlassian)", "items": [
-            ("Atlassian Rovo MCP server", U["rovo_mcp"], "Official remote server; Atlassian Cloud only"),
-            ("sooperset/mcp-atlassian", U["mcp_atlassian"],
-             "Open source; supports Server/Data Center; not an Atlassian product, so evaluate it under your "
-             "security policy first"),
         ]},
     ]},
 ]
@@ -1901,16 +1984,21 @@ ACCELERATORS = {
 SHARED_AB = {
     "eyebrow": "Intermissions A–B · Hand-in and toolkit",
     "title": "Connect real systems, keep the human gate",
-    "trace": matrix("", ["BRD", "PRD", "ADR", "Issue", "Patch"],
+    "trace": matrix("", ["BRD", "PRD", "ADR", "Work item / issue", "Patch"],
                     ["Source (MCP)", "Who decides", "Gate", "Artefact left behind"]),
     "loop": blank(["Step", "Trigger", "Agent or system", "Human gate"], n=4, numbered=True),
-    "loop_note": "Trigger: issue label · failed check · review comment · schedule",
+    "loop_note": "Trigger: GitHub issue label · Azure Boards service hook/approved dispatcher · failed check · "
+                 "review comment · schedule",
     "run_with": (
-        "GitHub Copilot app on the team repo · MCP: Atlassian (Jira, Confluence) and WorkIQ (mail, meetings, "
-        "chats) · accelerators.ms (reference architecture) · Copilot coding agent · GitHub agentic workflow, or "
-        "Jenkins/Bamboo on Bitbucket Data Center"
+        "Copilot CLI or a workshop-approved MCP-capable client · Azure DevOps/GitHub read integrations · "
+        "optional Work IQ read tools for approved SharePoint/Teams evidence · accelerators.ms · "
+        "GitHub Actions or Azure Pipelines with an approved event dispatcher and agent runner"
     ),
-    "rules": ["Read-only MCP scopes; workshop data only", "Draft PRs only; a human merges"],
+    "rules": [
+        "Source gathering uses read tools and approved workshop data only; preserve citations and access constraints",
+        "Work-item and PR writes require separate permission/approval; draft PRs only, a human merges",
+        "Missing or denied Work IQ retrieval stops; use approved fictional excerpts, never bypass policy",
+    ],
     "done": (
         "The PO approved the canvas, every BRD/PRD/ADR line has a source, and one issue reached a draft PR without "
         "manual coding."

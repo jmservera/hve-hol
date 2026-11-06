@@ -72,11 +72,12 @@
 <table class="grid">
 <thead><tr><th scope="col">Starting evidence</th><th scope="col">What you know</th></tr></thead>
 <tbody>
-<tr><th scope="row">Ticket CITA-482</th><td>As a citizen, I want to change the date of my appointment online, so that I don’t have to phone the office.</td></tr>
-<tr><th scope="row">Current rules</th><td>15-minute slots; bookings up to 30 days ahead; confirmation by email and SMS</td></tr>
+<tr><th scope="row">Azure Boards work item 482</th><td>As a citizen, I want to change the date of my appointment online, so that I don’t have to phone the office.</td></tr>
+<tr><th scope="row">SharePoint rules document</th><td>15-minute slots; bookings up to 30 days ahead; confirmation by email and SMS</td></tr>
+<tr><th scope="row">Teams service-owner note</th><td>Fewer phone calls are the goal. Change limits, notice period and cross-office moves are still undecided; this note is not requirements approval.</td></tr>
 <tr><th scope="row">System</th><td>Citizen appointment portal for a fictional regional public administration</td></tr>
-<tr><th scope="row">Stack</th><td>Java / Spring Boot back end; Angular front end; on-prem GitLab</td></tr>
-<tr><th scope="row">Tool context</th><td>HVE Core in VS Code with GitHub Copilot; approved read-only Jira and Confluence Data Center access through MCP</td></tr>
+<tr><th scope="row">Stack</th><td>Java / Spring Boot back end; Angular front end; GitHub repository</td></tr>
+<tr><th scope="row">Tool context</th><td>HVE Core in VS Code with GitHub Copilot; approved Azure DevOps/GitHub read tools, with optional Work IQ MCP retrieval of SharePoint and Teams evidence. The fictional walkthrough needs no live tenant connection.</td></tr>
 <tr><th scope="row">Desired outcome</th><td>Change the date within business-owner-approved rules, free the old slot, notify the citizen, and leave a reviewed, tested change with release evidence</td></tr>
 </tbody>
 </table>
@@ -137,7 +138,7 @@
 <details class="reveal" id="reveal-1">
 <summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Read before you write</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
 <div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
-<ul class="bullets"><li>Evidence summary: fewer phone calls (CITA-482); 15-minute slots, 30-day advance booking, email and SMS confirmation (Confluence).</li><li>Five open questions: how many changes per citizen; how many hours before; another office too; who is notified; same-day appointments?</li></ul>
+<ul class="bullets"><li>Evidence summary: fewer phone calls (Azure Boards work item 482 and the Teams note); 15-minute slots, 30-day advance booking, email and SMS confirmation (SharePoint).</li><li>Five open questions: how many changes per citizen; how many hours before; another office too; who is notified; same-day appointments?</li></ul>
 <p class="banner banner-soft"><strong>Human decision:</strong> The business owner confirms sources and completeness. Nothing is approved yet.</p></div>
 </details>
 </section>
@@ -148,7 +149,7 @@
 <details class="reveal" id="reveal-2">
 <summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · The agent asks; the owner decides</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
 <div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
-<ul class="bullets"><li>Requirements v0.2: R3 permits at most 2 changes (owner answer 1); R4 closes changes 24 hours before (owner answer 2); R5 frees the old slot immediately (Confluence).</li><li>AC-7: under 24 hours, Change date is disabled and the office phone is shown. Accessibility requirement: WCAG 2.1 AA for the public-sector example.</li><li>Unanswered rules and their dependent acceptance criteria remain blocked.</li></ul>
+<ul class="bullets"><li>Requirements v0.2: R3 permits at most 2 changes (owner answer 1); R4 closes changes 24 hours before (owner answer 2); R5 frees the old slot immediately (SharePoint).</li><li>AC-7: under 24 hours, Change date is disabled and the office phone is shown. Accessibility requirement: WCAG 2.1 AA for the public-sector example.</li><li>Unanswered rules and their dependent acceptance criteria remain blocked.</li></ul>
 <p class="banner banner-soft"><strong>Human decision:</strong> The business owner answers an options/undecided form and approves the requirements.</p></div>
 </details>
 </section>
@@ -159,7 +160,7 @@
 <details class="reveal" id="reveal-3">
 <summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Check the code before trusting the docs</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
 <div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
-<ul class="bullets"><li>Booking logic is in <code>AppointmentService</code>; cancellation already releases a slot.</li><li>A shared messaging service exists, but new SMS text is needed. There are no automated <code>AppointmentService</code> tests.</li><li>Confluence says 30 days; the code allows 60. That conflict becomes a new business-owner question, not an agent-made decision.</li></ul>
+<ul class="bullets"><li>Booking logic is in <code>AppointmentService</code>; cancellation already releases a slot.</li><li>A shared messaging service exists, but new SMS text is needed. There are no automated <code>AppointmentService</code> tests.</li><li>SharePoint says 30 days; the code in GitHub allows 60. That conflict becomes a new business-owner question, not an agent-made decision.</li></ul>
 <p class="banner banner-soft"><strong>Human decision:</strong> No approval yet. The evidence and the documentation/code conflict go back to the owner.</p></div>
 </details>
 </section>
@@ -193,7 +194,7 @@
 <summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Reveal · Finished is not accepted</strong><span class="reveal-hint">Open after answering, then score your original answer.</span></span></summary>
 <div class="reveal-body"><p class="caveat">Illustrative example · fictional client and system · not a recorded run</p>
 <ul class="bullets"><li>Acceptance tests are verified except for the manual screen-reader announcement of the new date. SMS text over 160 characters was found and fixed.</li><li>The owner still has to try the test environment. A backlog item to show remaining changes is proposed, not created.</li></ul>
-<p class="banner banner-soft"><strong>Human decision:</strong> The business owner accepts; a named person approves the GitLab merge request; the normal release process still applies.</p></div>
+<p class="banner banner-soft"><strong>Human decision:</strong> The business owner accepts; a named person approves the GitHub pull request; the normal release process still applies.</p></div>
 </details>
 </section>
 <p class="banner banner-soft">Six steps, five human decisions: sources confirmed · requirements approved · plan approved · autonomy chosen · merge approved.</p>

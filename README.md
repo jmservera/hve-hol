@@ -75,6 +75,12 @@ Styles live in `docs/assets/site.css` and behaviour in `docs/assets/site.js`; bo
 Keep public content organization-neutral. Do not publish source presentations, customer-branded images,
 private source paths or facilitator-only answer keys.
 
+Workshop examples use Azure DevOps and GitHub for delivery. SharePoint documents and Microsoft Teams
+notes can supply evidence through optional Work IQ MCP, subject to approved read tools, user access,
+tenant policy and preview retrieval/billing readiness. The fictional source pack works without a live
+Microsoft 365 connection. Source retrieval is read-only for the workshop; Work IQ is not inherently
+read-only, and delivery writes still need approval.
+
 Exercise numbers and URLs follow the workshop order: Exercise 5 is the RPI run, 6 reuses a correction from
 its review, 9 is adoption and 10 is the optional comparison. The backup section follows playback in navigation,
 but is only attempted before the fixed close if time remains.

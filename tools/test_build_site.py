@@ -180,15 +180,70 @@ class WorkshopContentTests(unittest.TestCase):
         self.assertEqual([row[0] for row in sheet["rows"]], ["1", "2", "3", "4", "5", "6"])
         self.assertIn("No agents", page["eyebrow"])
 
-    def test_given_illustrative_reveals_when_reading_then_original_facts_and_limits_remain(self):
+    def test_given_microsoft_reveals_when_reading_then_business_facts_and_limits_remain(self):
         text = json.dumps(site.BY_SLUG["exercise-1"], ensure_ascii=False)
 
-        for fact in ("CITA-482", "15-minute", "30 days", "60", "2 changes", "24 hours",
+        for fact in ("Azure Boards work item 482", "15-minute", "30 days", "60", "2 changes", "24 hours",
                      "R3", "R4", "R5", "AC-7", "WCAG 2.1 AA", "AppointmentService",
                      "2b", "160 characters", "manual screen-reader", "proposed, not created"):
             with self.subTest(fact=fact):
                 self.assertIn(fact, text)
         self.assertNotIn("56 tests", text)
+
+    def test_given_microsoft_defaults_when_rendering_then_legacy_examples_are_absent(self):
+        canonical = json.dumps([site.C.HOME, site.PAGES, site.C.U, site.C.RESOURCES,
+                                site.C.SHARED_AB], ensure_ascii=False)
+        legacy = re.compile(r"jira|gitlab|confluence|atlassian|rovo|bitbucket|jenkins|bamboo|CITA-482", re.I)
+
+        self.assertNotRegex(canonical, legacy)
+        case = json.dumps(site.BY_SLUG["exercise-1"], ensure_ascii=False)
+        for product in ("Azure Boards work item 482", "SharePoint", "Teams", "GitHub repository",
+                        "GitHub pull request"):
+            self.assertIn(product, case)
+        resources = site.render_resources_body()
+        self.assertNotRegex(resources, legacy)
+        self.assertIn("Azure DevOps MCP", resources)
+        self.assertIn("Work IQ", resources)
+
+    def test_given_work_iq_context_when_gathering_then_access_and_fallback_are_explicit(self):
+        for slug in ("exercise-2", "exercise-4", "intermission-a", "intermission-b"):
+            with self.subTest(page=slug):
+                text = json.dumps(site.BY_SLUG[slug], ensure_ascii=False).lower()
+                for term in ("work iq", "sharepoint", "teams", "approved"):
+                    self.assertIn(term, text)
+        setup = json.dumps(site.BY_SLUG["how-you-run-it"], ensure_ascii=False).lower()
+        for term in ("optional", "preview", "billing", "spending policy", "tenant policy",
+                     "denied", "stop", "fictional"):
+            self.assertIn(term, setup)
+        evidence = json.dumps(site.BY_SLUG["exercise-2"], ensure_ascii=False).lower()
+        self.assertIn("source urls", evidence)
+        self.assertIn("read operations only", evidence)
+        self.assertIn("not a permission workaround", evidence)
+        self.assertNotIn("work iq is read-only", setup)
+
+    def test_given_microsoft_controls_when_enforcing_then_product_boundaries_are_correct(self):
+        controls = json.dumps(site.BY_SLUG["exercise-7"], ensure_ascii=False)
+        for term in ("GitHub", "CODEOWNERS", "Azure Repos", "branch policies",
+                     "required build validation", "authorised", "bypass"):
+            self.assertIn(term, controls)
+        self.assertIn("CODEOWNERS is not an Azure Repos feature", controls)
+        loop = json.dumps(site.BY_SLUG["intermission-b"], ensure_ascii=False)
+        self.assertIn("service hook", loop)
+        self.assertIn("dispatcher", loop)
+        self.assertIn("Do not assume", loop)
+        self.assertIn("native YAML pipeline trigger", loop)
+        self.assertIn("separate approval", loop)
+
+    def test_given_comparison_context_when_repeating_then_sources_and_access_are_frozen(self):
+        page = site.BY_SLUG["exercise-10"]
+        text = json.dumps(page, ensure_ascii=False).lower()
+
+        self.assertIn("same approved source snapshot", text)
+        self.assertIn("access scopes", text)
+        self.assertIn("different credit units separate", text)
+        setup = next(block for block in page["blocks"] if block.get("id") == "comparison-setup")
+        self.assertEqual(len(setup["rows"]), 5)
+        self.assertTrue(all(row[1] is None for row in setup["rows"]))
 
 
 if __name__ == "__main__":
