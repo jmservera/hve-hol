@@ -56,6 +56,7 @@ U = {
     "squad_demo": "https://peter-n91.github.io/hve-squad/demo.html",
     "squad_trouble": "https://peter-n91.github.io/hve-squad/troubleshooting.html",
     "squad_workshop": "https://peter-n91.github.io/hve-squad-hands-on-workshop/",
+    "hve_demo_jira": "https://github.com/jmservera/hve-demo-jira",
     "apm": "https://microsoft.github.io/apm/",
     "apm_gov": "https://github.com/microsoft/apm/blob/main/docs/src/content/docs/enterprise/governance-guide.md",
     "vs_overview": "https://code.visualstudio.com/docs/agent-customization/overview",
@@ -496,14 +497,10 @@ PAGES = [
                      "rank hypotheses from logs and context, validate the fix, update the runbook", None),
                     ("A small greenfield feature", "", None),
                 ]}],
-                [{"type": "cardlist", "title": "Ready-made fallbacks", "items": [
-                    ("Inventory-aware cart",
-                     "The catalogue shows 3 units in stock, but the cart accepts 4. Use a facilitator-provided "
-                     "pre-run walkthrough or recording. This is separate from the fictional appointment case "
-                     "in Exercise 1.", None),
+                [{"type": "cardlist", "title": "Ready-made fallbacks", "items": [                    
                     ("Inventory-aware cart",
                      "“The catalogue shows 3 units in stock. The cart accepts 4.” Pre-run walkthrough and "
-                     "recorded run from the facilitators.", None),
+                     "recorded run from the facilitators.", ("Inventory cart demo", U["hve_demo_jira"])),
                     ("HVE-Squad self-led workshop",
                      "Northwind Traders: a product squad plus Azure, .NET and Power Platform tracks",
                      ("HVE-Squad hands-on workshop", U["squad_workshop"])),
