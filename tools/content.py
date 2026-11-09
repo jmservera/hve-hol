@@ -41,6 +41,7 @@ U = {
     "first_workflow": "https://microsoft.github.io/hve-core/docs/getting-started/first-workflow/",
     "rpi": "https://microsoft.github.io/hve-core/docs/rpi/",
     "agents": "https://microsoft.github.io/hve-core/docs/agents/",
+    "experiment_designer": "https://microsoft.github.io/hve-core/docs/agents/#experimental",
     "project_planning": "https://microsoft.github.io/hve-core/docs/agents/project-planning/",
     "backlog": "https://microsoft.github.io/hve-core/docs/agents/backlog/",
     "design_thinking": "https://microsoft.github.io/hve-core/docs/design-thinking/",
@@ -931,6 +932,8 @@ PAGES = [
                 "Start two agent sessions on separate branches, one per MVE; they can keep running over the break.",
             ]),
             tips(
+                "The HVE Core [Experiment Designer](%s) agent can help you build your MVE: frame the "
+                "hypothesis and plan the experiment." % U["experiment_designer"],
                 "Spike: `/rpi-research` for a read-only technical question. Concept: the DT Coach for a "
                 "low-fidelity prototype.",
                 "Time-box each MVE to 20–30 minutes and prepare the decision matrix while they run.",
@@ -954,8 +957,8 @@ PAGES = [
                       "row_header": False},
                      note="Then record: Selected … because …  ·  Rejected … because …"),
             run_with(
-                ("HVE Core", "DT Coach for solution-space concepts and low-fidelity prototypes; `/rpi-research` for "
-                             "a read-only technical spike."),
+                ("HVE Core", "Experiment Designer for MVE coaching; DT Coach for solution-space concepts and "
+                             "low-fidelity prototypes; `/rpi-research` for a read-only technical spike."),
                 (None, "Run two agent sessions in parallel, one per MVE, on separate branches."),
                 ("HVE-Squad", "the discovery gate offers a brainstorm when nothing is written down yet; a product "
                               "squad turns a business case into requirements, an experiment for the riskiest "
@@ -966,7 +969,8 @@ PAGES = [
                      "but the order system has no API and direct database access is forbidden. MVE: 30 cases, "
                      "3 staff, paper and local only. Proposed criteria: ≥ 90% under 2 minutes; licence and run cost "
                      "≤ EUR 900 a month. Honest limit: the experiment is a plan, not a result."},
-            links(("HVE Core · Design Thinking", U["design_thinking"]), ("HVE-Squad · Usage", U["squad_usage"])),
+            links(("HVE Core · Experiment Designer", U["experiment_designer"]),
+                  ("HVE Core · Design Thinking", U["design_thinking"]), ("HVE-Squad · Usage", U["squad_usage"])),
             done("Thresholds were written before any agent output was seen, and the rejected option has a recorded "
                  "reason."),
             tips(
