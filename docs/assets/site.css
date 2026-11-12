@@ -2,6 +2,7 @@
    Plain CSS, no build step. Colours follow the workshop deck: navy, teal and blue. */
 
 :root {
+  color-scheme: light;
   --bg: #ffffff;
   --bg-soft: #f6f8fa;
   --bg-side: #f6f8fb;
@@ -36,7 +37,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
+    color-scheme: dark;
     --bg: #0a1120;
     --bg-soft: #0f1829;
     --bg-side: #0c1424;
@@ -64,6 +66,37 @@
     --topbar-bg: #060c18;
     --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 18px rgba(0, 0, 0, .3);
   }
+}
+
+/* Explicit choices override the device default, including light on a dark device. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a1120;
+  --bg-soft: #0f1829;
+  --bg-side: #0c1424;
+  --surface: #101a2c;
+  --ink: #d3dce7;
+  --ink-strong: #f3f6fa;
+  --muted: #9dabbd;
+  --line: #2b3b55;
+  --line-soft: #1e2b42;
+  --navy: #1b2c4b;
+  --on-navy: #ffffff;
+  --teal: #45c4ae;
+  --teal-strong: #6fd8c5;
+  --on-teal: #04211d;
+  --teal-50: #0d2826;
+  --teal-100: #12403a;
+  --blue: #8fb6ff;
+  --blue-50: #13223d;
+  --blue-100: #1c3159;
+  --grey-50: #131e31;
+  --amber: #f3bd66;
+  --amber-line: #a8741f;
+  --amber-50: #261d0f;
+  --code-bg: #0d1626;
+  --topbar-bg: #060c18;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 18px rgba(0, 0, 0, .3);
 }
 
 /* ------------------------------------------------------------------ base */
@@ -139,16 +172,20 @@ p { margin: 0 0 .75rem; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; font-weight: 650; white-space: nowrap; }
 .brand-text small { font-weight: 400; font-size: .78rem; color: #b8c6da; }
 .toplinks { margin-inline-start: auto; display: flex; align-items: center; gap: .2rem; flex: none; }
-.toplinks a {
+.toplinks a, .toplinks button {
   color: #dbe5f3; text-decoration: none; font-size: .92rem; font-weight: 600;
   padding: .4rem .7rem; border-radius: 7px;
+  white-space: nowrap;
 }
-.toplinks a:hover { background: rgba(255, 255, 255, .1); color: #fff; }
+.toplinks button { font-family: inherit; line-height: inherit; border: 0; background: none; cursor: pointer; }
+.toplinks a:hover, .toplinks button:hover { background: rgba(255, 255, 255, .1); color: #fff; }
 .toplinks .top-action {
   display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
   min-width: 40px; min-height: 40px;
 }
 .toplinks .top-action::after { display: none; }
+.theme-toggle .theme-icon-light, .theme-toggle[data-theme="dark"] .theme-icon-dark { display: none; }
+.theme-toggle[data-theme="dark"] .theme-icon-light { display: block; }
 .nav-toggle {
   display: none; align-items: center; gap: .45rem;
   font: inherit; font-size: .9rem; font-weight: 600; color: #fff; cursor: pointer;
@@ -578,6 +615,8 @@ pre code { white-space: pre; background: none; border: 0; padding: 0; font-size:
   border: 1px solid var(--teal); color: var(--teal-strong); border-radius: 999px; padding: .25rem .8rem;
 }
 .reveal[open] > summary::after { content: "Hide"; }
+html:lang(es) .reveal > summary::after { content: "Mostrar"; }
+html:lang(es) .reveal[open] > summary::after { content: "Ocultar"; }
 .reveal > summary > span { display: flex; flex-direction: column; }
 .reveal-icon { width: 1.8rem; height: 1.8rem; color: var(--teal); }
 .reveal-hint { font-size: .9rem; color: var(--muted); }
@@ -789,6 +828,27 @@ pre code { white-space: pre; background: none; border: 0; padding: 0; font-size:
   .gate { flex-direction: row; gap: .6rem; text-align: start; padding: .3rem 0 .3rem 2rem; }
   .gate::before { inset-block-start: .55rem; inset-inline-start: .3rem; }
   .roles, .lenses ul { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  :root { --topbar-h: 108px; }
+  .topbar {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: 40px 40px;
+    align-content: center; gap: .4rem .65rem; padding: .5rem .75rem;
+  }
+  .nav-toggle { grid-column: 1; grid-row: 1; }
+  .brand { grid-column: 2; grid-row: 1; overflow: hidden; }
+  .home .topbar .brand { grid-column: 1 / -1; }
+  .brand-text { display: flex; min-width: 0; overflow: hidden; font-size: .86rem; }
+  .brand-text small { overflow: hidden; text-overflow: ellipsis; font-size: .72rem; }
+  .toplinks {
+    grid-column: 1 / -1; grid-row: 2; justify-content: flex-end;
+    margin-inline-start: 0; min-width: 0;
+  }
+  .toplinks a, .toplinks button { padding-inline: .5rem; }
+  .feedback-label {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
 }
 @media (max-width: 560px) {
   body { font-size: 15.5px; }

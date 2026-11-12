@@ -2,9 +2,10 @@
    Small progressive enhancements: mobile navigation, editable templates saved in this browser,
    Copy as Markdown, copy buttons for code, hand-in check boxes and the resources filter.
    Everything stays in the browser (localStorage); nothing is sent anywhere. */
-(function () {
+window.HVE_GUIDE_TRANSLATIONS_READY.then(function (messages) {
   'use strict';
 
+  if (!messages) return;
   var doc = document;
   var page = doc.body.getAttribute('data-page') || 'page';
   var PREFIX = 'hve-guide:v1:';
@@ -31,6 +32,17 @@
     } catch (e) { /* storage full or blocked: ignore */ }
   }
   function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+
+  /* ---------------------------------------------------------------- language links */
+  each(doc.querySelectorAll('[data-language-switch]'), function (link) {
+    var target = link.getAttribute('href').split('#')[0];
+    function updateLanguageLink() {
+      link.setAttribute('href', target + window.location.hash);
+    }
+    updateLanguageLink();
+    window.addEventListener('hashchange', updateLanguageLink);
+    link.addEventListener('click', updateLanguageLink);
+  });
 
   /* ---------------------------------------------------------------- mobile navigation */
   var toggle = doc.querySelector('.nav-toggle');
@@ -85,10 +97,10 @@
       var ok = false;
       try { ok = doc.execCommand('copy'); } catch (e) { ok = false; }
       doc.body.removeChild(ta);
-      flash(btn, ok ? 'Copied' : 'Copy failed');
+      flash(btn, ok ? messages.copied : messages.copyFailed);
     }
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(function () { flash(btn, 'Copied'); }, fallback);
+      navigator.clipboard.writeText(text).then(function () { flash(btn, messages.copied); }, fallback);
     } else {
       fallback();
     }
@@ -126,7 +138,7 @@
     var key = PREFIX + (tpl.getAttribute('data-store') || page + ':' + id);
     var cells = tpl.querySelectorAll('[contenteditable="true"]');
     var heading = tpl.querySelector('.tpl-head h3');
-    var title = heading ? heading.textContent.replace(/\s+/g, ' ').trim() : 'Template';
+    var title = heading ? heading.textContent.replace(/\s+/g, ' ').trim() : messages.template;
     var timer = null;
 
     try {
@@ -173,11 +185,11 @@
     if (clearBtn) {
       clearBtn.addEventListener('click', function () {
         var hasText = Array.prototype.some.call(cells, function (c) { return textOf(c).length > 0; });
-        if (!hasText) { flash(clearBtn, 'Empty'); return; }
-        if (!window.confirm('Clear everything typed in "' + title + '"?')) return;
+        if (!hasText) { flash(clearBtn, messages.empty); return; }
+        if (!window.confirm(messages.clearStart + title + messages.clearEnd)) return;
         each(cells, function (c) { c.innerHTML = ''; });
         setItem(key, null);
-        flash(clearBtn, 'Cleared');
+        flash(clearBtn, messages.cleared);
       });
     }
   });
@@ -214,8 +226,8 @@
       });
       if (count) {
         var n = doc.querySelectorAll('[data-res-item]:not([hidden])').length;
-        count.textContent = q ? n + (n === 1 ? ' match' : ' matches') : '';
+        count.textContent = q ? n + (n === 1 ? messages.match : messages.matches) : '';
       }
     });
   }
-})();
+});

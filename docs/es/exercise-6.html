@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ejercicio 6 · Reutilizad lo aprendido en la primera ejecución RPI · Guía del taller HVE</title>
+<meta name="description" content="Capturar una corrección real del ejercicio 5 y demostrar que la siguiente ejecución ya no la necesita.">
+<link rel="alternate" hreflang="en" href="../exercise-6.html">
+<link rel="alternate" hreflang="es" href="exercise-6.html">
+<link rel="alternate" hreflang="x-default" href="../exercise-6.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="translations.js"></script>
+<script src="../assets/translations-loader.js"></script>
+<script src="../assets/theme.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-6 kind-parallel" data-page="exercise-5">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Pasos</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Taller práctico · Guía de ejercicios</small></span></a>
+<nav class="toplinks" aria-label="Enlaces rápidos"><a href="index.html#guide">Guía</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Pausas</a><a href="scorecard.html">Evaluación</a><a href="resources.html" class="keep">Recursos</a><a class="keep top-action language-switch" data-language-switch href="../exercise-6.html" lang="en" hreflang="en" aria-label="Switch to English" title="English">EN</a><button type="button" class="top-action theme-toggle" data-theme-toggle hidden aria-label="Cambiar al modo oscuro"><svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13z"/></svg></button><a href="https://github.com/jmservera/hve-hol/issues/new" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="feedback-label">Comentarios</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a><a href="https://github.com/jmservera/hve-hol" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21v-4H7a4 4 0 0 1-4-4M15 21v-4c3-.5 5-2 5-5a6 6 0 0 0-1.5-4c.5-1.5.5-3 0-4-2 0-3.5 1-4 1.5a12 12 0 0 0-5 0C9 5 7.5 4 5.5 4c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/></svg><span class="sr-only">Repositorio de GitHub</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Guía de ejercicios">
+<a class="side-home" href="index.html">← Inicio de la guía</a>
+<div class="nav-group"><h2>Para empezar</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Agenda orientativa</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Acuerdos de trabajo y roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Inicio: acuerdo del equipo</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Tu caso</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cómo ejecutarlo</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Mientras trabajan los agentes</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Ejercicio 1: </span>Predecir el ciclo de vida</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Ejercicio 2: </span>Mapa de evidencias</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Ejercicio 3: </span>Comparativa de MVE</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Ejercicio 4: </span>De la petición al backlog aprobado</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Actividad de espera A · Canvas del PO</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Ejercicio 5: </span>Unidad de trabajo RPI acotada</span></a></li><li><a href="exercise-6.html" aria-current="page"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Ejercicio 6: </span>Reutilizar una lección</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Ejercicio 7: </span>Aprobaciones y controles</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Actividad de espera B · De la issue al parche</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Actividad de espera C · IA frente a script</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Ejercicio 8: </span>Revisión crítica y recuperación</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Ejercicio 9: </span>Plan de adopción</span></a></li></ul></div>
+<div class="nav-group"><h2>Cierre</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Puesta en común y cierre</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cuadro de evaluación común</span></a></li></ul></div>
+<div class="nav-group"><h2>Reserva</h2><ul><li><a href="exercise-10.html"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Ejercicio 10: </span>Comparar autonomía y coste (reserva)</span></a></li></ul></div>
+<div class="nav-group"><h2>Consulta</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Recursos</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Plantillas de entrega</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Ruta de navegación"><a href="index.html#guide">Guía</a><span aria-hidden="true">›</span><span>Laboratorio abierto 3</span></nav>
+<header class="page-head">
+<p class="eyebrow">Ejercicio 6 · Laboratorio abierto 3 · Tarea paralela · Tras la primera ejecución RPI</p>
+<h1>Reutilizad lo aprendido en la primera ejecución RPI</h1>
+<p class="tags"><span class="tag tag-parallel">Tarea en paralelo</span><span class="tag tag-group">Laboratorio abierto 3</span></p><nav class="jump" aria-label="En esta página"><span>En esta página</span><a href="#brief">Resumen</a><a href="#how-to-start">Cómo empezar</a><a href="#toolkit">Entrega y herramientas</a><a href="#tips">Consejos</a></nav></header>
+<section class="brief" id="brief" aria-label="Resumen">
+<div class="objective"><span class="label">Objetivo</span><p>Capturar una lección del ejercicio 5 como instrucción, habilidad o control que utilice la siguiente ejecución.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Material de partida</dt><dd>Correcciones y hallazgos de revisión del <a href="exercise-5.html">ejercicio 5</a>, más el registro del auditor</dd></div>
+<div class="meta-best"><dt>Uso recomendado</dt><dd>Tarea paralela, cuando el ejercicio 5 ya tenga una revisión</dd></div>
+<div class="meta-roles"><dt>Roles (sugeridos)</dt><dd>Arquitecto y una persona voluntaria</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Pasos"><h2 class="mini-head">Pasos</h2>
+<ol class="steps">
+<li><p>Buscad algo que tuvisteis que corregir, repetir o explicar al agente en el ejercicio 5.</p></li>
+<li><p>Elegid el componente más pequeño: archivo de instrucciones, instrucción de alcance limitado, prompt, habilidad, hook o conector.</p></li>
+<li><p>Definid cuándo se ejecuta, sus entradas, salidas, permisos y comportamiento ante fallos.</p></li>
+<li><p>Construidlo con <code>hve-builder</code> y repetid un paso RPI para comprobar que la corrección ya no hace falta.</p></li>
+<li><p>Explicad dónde se integra con HVE-Squad y dónde debe mantenerse independiente.</p></li>
+</ol></section>
+<section class="handin" aria-label="Entrega"><h2 class="handin-head">Entrega</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Especificación del componente o prototipo funcional</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Modelo de permisos y fallos</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Plan de reutilización y responsabilidad</span></label></li>
+<li><label><input type="checkbox" data-key="handin-3"><span>Evidencias de una nueva ejecución en la que no hizo falta la corrección original</span></label></li>
+</ul>
+<p class="handin-note">Marca los elementos a medida que tu equipo los entregue.</p></section>
+</div>
+<header class="section-head" id="how-to-start">
+<p class="eyebrow">Ejercicio 6 · Cómo empezar</p>
+<h2>Conseguid que la siguiente ejecución necesite menos correcciones</h2>
+</header>
+<h3>Empieza aquí</h3>
+<ol class="numbered compact"><li><span class="n" aria-hidden="true">1</span><div><p>Leed el registro del auditor y la revisión del <a href="exercise-5.html">ejercicio 5</a>: ¿qué corregisteis, repetisteis o explicasteis al agente?</p></div></li><li><span class="n" aria-hidden="true">2</span><div><p>Elegid una lección que se repetirá: una convención, cómo ejecutar vuestras pruebas, una plantilla o una lista de comprobación para la clasificación inicial.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><p>Elegid el componente más pequeño: una línea en <code>.github/copilot-instructions.md</code>, una instrucción de alcance limitado o una habilidad.</p></div></li><li><span class="n" aria-hidden="true">4</span><div><p>Creadlo y validadlo con <code>hve-builder</code>; después, repetid un paso, como <code>/rpi-plan</code>, y comprobad que la solución se mantiene.</p></div></li></ol>
+<aside class="tips" id="tips" aria-label="Consejos prácticos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos prácticos</p><ul><li>¿Una regla para todo el repositorio? <code>copilot-instructions.md</code>. ¿Una regla para algunos archivos? Una instrucción con un <code>applyTo</code> acotado.</li><li>¿Conocimiento práctico, listas de comprobación o plantillas? Una habilidad: un <code>SKILL.md</code> breve con el detalle en archivos de referencia.</li><li>¿Una regla que debe cumplirse siempre? Un hook o una comprobación de CI (<a href="exercise-7.html">ejercicio 7</a>), no más instrucciones.</li><li>Asignad responsable y versión para que otro equipo pueda instalarlo.</li></ul></aside>
+<aside class="tips" id="tips-2" aria-label="Errores que conviene evitar"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Errores que conviene evitar</p><ul><li>Consejos genéricos como «escribe código limpio»</li><li>Un agente grande cuando bastaría una línea de instrucción</li><li>No comprobar nunca si cambia la siguiente ejecución</li></ul></aside>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Ejercicio 6 · Entrega y herramientas</p>
+<h2>Elegid el componente más pequeño que funcione</h2>
+</header>
+<div class="static-table"><div class="table-wrap" role="region" aria-label="Tabla" tabindex="0">
+<table class="grid pick">
+<thead><tr><th scope="col">Si necesitáis…</th><th scope="col">→ Usad…</th></tr></thead>
+<tbody>
+<tr><td>Una regla que se aplique siempre a determinados archivos</td><td><strong>Instrucción</strong> (patrón <code>applyTo</code> acotado; mantenedla breve)</td></tr>
+<tr><td>Un flujo que alguien inicia bajo demanda</td><td><strong>Archivo de prompt o punto de entrada de habilidad</strong> (comando con barra)</td></tr>
+<tr><td>Conocimiento profundo, bancos de preguntas, plantillas o scripts</td><td><strong>Habilidad</strong> (<code>SKILL.md</code> breve; detalle en archivos de referencia)</td></tr>
+<tr><td>Un trabajo de varios pasos con herramientas, fases o traspasos</td><td><strong>Agente</strong> (restringid sus herramientas; delegad el relevo, no ampliéis sin límite)</td></tr>
+<tr><td>Una regla que se cumpla piense lo que piense el modelo</td><td><strong>Control</strong>: hook, permiso, esquema o comprobación de CI</td></tr>
+<tr><td>Contexto de Azure DevOps/GitHub con gobierno o evidencias autorizadas de SharePoint/Teams</td><td><strong>Conector autorizado</strong> (servidor MCP); reutilizad uno existente antes de construir otro</td></tr>
+</tbody>
+</table>
+</div></div>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Las celdas de las plantillas son editables: escribe en ellas y usa <strong>Copiar como Markdown</strong> para pegar el resultado en tu repositorio o wiki. Lo que escribas permanece únicamente en este navegador; no se sube nada.</span></p><div class="tpl" id="tpl-component-spec" data-tpl="component-spec">
+<div class="tpl-head"><h3>Especificación del componente</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Especificación del componente" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Especificación</th></tr></thead>
+<tbody>
+<tr><th scope="row">Nombre</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Nombre, Especificación"></td></tr>
+<tr><th scope="row">Activación: cuándo se ejecuta</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Activación: cuándo se ejecuta, Especificación"></td></tr>
+<tr><th scope="row">Entradas</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Entradas, Especificación"></td></tr>
+<tr><th scope="row">Salidas</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Salidas, Especificación"></td></tr>
+<tr><th scope="row">Permisos y herramientas</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Permisos y herramientas, Especificación"></td></tr>
+<tr><th scope="row">Ante un fallo</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ante un fallo, Especificación"></td></tr>
+<tr><th scope="row">Responsable y versión</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable y versión, Especificación"></td></tr>
+<tr><th scope="row">Se integra con HVE-Squad como… / se mantiene independiente porque…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Se integra con HVE-Squad como… / se mantiene independiente porque…, Especificación"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-correction-proof" data-tpl="correction-proof">
+<div class="tpl-head"><h3>Corrección y prueba de una nueva ejecución</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Corrección y prueba de una nueva ejecución" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Nuestra respuesta</th></tr></thead>
+<tbody>
+<tr><th scope="row">Corrección original del ejercicio 5 (enlace al registro o a la revisión)</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Corrección original del ejercicio 5 (enlace al registro o a la revisión), Nuestra respuesta"></td></tr>
+<tr><th scope="row">Instrucción, habilidad o control creado</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Instrucción, habilidad o control creado, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Paso RPI repetido, petición y commit inicial</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Paso RPI repetido, petición y commit inicial, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Resultado observado: ¿seguía haciendo falta la corrección?</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Resultado observado: ¿seguía haciendo falta la corrección?, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Enlace a las evidencias y limitaciones restantes</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Enlace a las evidencias y limitaciones restantes, Nuestra respuesta"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="box box-run"><p class="label">Ejecútalo con</p><p>La habilidad <strong>hve-builder</strong> de HVE Core (crear, validar, revisar con dictamen de aprobado / revisar / bloqueado y corregir). Empaquetadla y fijad su versión con <strong>APM</strong>: un manifiesto, un archivo de bloqueo de dependencias y una directiva de organización sobre qué puede instalarse.</p></div>
+<div class="links-block"><p class="label">Enlaces</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/reference/skills/hve-core/hve-builder/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · hve-builder<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/overview" target="_blank" rel="noopener noreferrer" class="ext">VS Code · Personalización de agentes<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/agent-skills" target="_blank" rel="noopener noreferrer" class="ext">Habilidades de agentes<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/custom-agents" target="_blank" rel="noopener noreferrer" class="ext">Agentes personalizados<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers" target="_blank" rel="noopener noreferrer" class="ext">Servidores MCP<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/hooks" target="_blank" rel="noopener noreferrer" class="ext">Hooks<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://microsoft.github.io/hve-core/docs/customization/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Personalización<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://microsoft.github.io/apm/" target="_blank" rel="noopener noreferrer" class="ext">APM<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Terminado cuando</span><p>Alguien ajeno al equipo podría instalarlo y ejecutarlo solo con la especificación, y la repetición de un paso RPI demuestra que la corrección original ya no hace falta.</p></div>
+<aside class="tips" id="tips-3" aria-label="Consejos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos</p><ul><li>Partid de una corrección observada, no de una idea genérica de componente. La prueba es el cambio de comportamiento en la siguiente ejecución, no el tamaño de la especificación.</li><li>Menos complejidad: una habilidad bien revisada es mejor que diez orquestaciones privadas.</li><li>Reutilizad <a href="https://learn.microsoft.com/en-us/azure/devops/mcp-server/mcp-server-overview?view=azure-devops" target="_blank" rel="noopener noreferrer" class="ext">Azure DevOps MCP<span class="sr-only"> (se abre en una pestaña nueva)</span></a> o <a href="https://github.com/github/github-mcp-server" target="_blank" rel="noopener noreferrer" class="ext">GitHub MCP server<span class="sr-only"> (se abre en una pestaña nueva)</span></a> autorizados para el contexto de entrega. <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/work-iq" target="_blank" rel="noopener noreferrer" class="ext">Work IQ<span class="sr-only"> (se abre en una pestaña nueva)</span></a> opcional recupera evidencias autorizadas de SharePoint/Teams; no sustituye la aprobación para escribir en el sistema de seguimiento.</li><li>Incluid el acceso a fuentes, las herramientas permitidas y el comportamiento ante fallos en la especificación del componente. No incrustéis extractos privados de Microsoft 365 ni credenciales en una habilidad pública reutilizable.</li><li>El gobierno del archivo de bloqueo de APM es estable; su motor de directivas (<code>apm-policy.yml</code>) está en una fase preliminar temprana, así que fijad la versión de APM.</li><li>Lecturas adicionales: <a href="https://agentskills.io/specification" target="_blank" rel="noopener noreferrer" class="ext">Especificación de Agent Skills<span class="sr-only"> (se abre en una pestaña nueva)</span></a> y <a href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer" class="ext">Model Context Protocol<span class="sr-only"> (se abre en una pestaña nueva)</span></a>.</li></ul></aside>
+<nav class="pager" aria-label="Paso anterior y siguiente"><a class="prev" href="exercise-5.html" rel="prev"><span class="dir">← Anterior</span><span class="ttl">Ejercicio 5 · Unidad de trabajo RPI acotada</span></a><a class="next" href="exercise-7.html" rel="next"><span class="dir">Siguiente →</span><span class="ttl">Ejercicio 7 · Aprobaciones y controles</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Taller práctico · Guía de ejercicios</p><p class="muted">Los enlaces remiten a documentación pública. HVE Core y HVE-Squad evolucionan rápidamente: utiliza las versiones instaladas para el taller.</p></footer>
+</body>
+</html>

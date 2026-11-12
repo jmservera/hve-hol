@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ejercicio 10 · Comparad autonomía, coste y resultado aceptado · Guía del taller HVE</title>
+<meta name="description" content="Cambiar una variable sobre el mismo elemento y commit; recomendar un enfoque según la fase y el contexto.">
+<link rel="alternate" hreflang="en" href="../exercise-10.html">
+<link rel="alternate" hreflang="es" href="exercise-10.html">
+<link rel="alternate" hreflang="x-default" href="../exercise-10.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="translations.js"></script>
+<script src="../assets/translations-loader.js"></script>
+<script src="../assets/theme.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-10 kind-backup" data-page="exercise-9">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Pasos</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Taller práctico · Guía de ejercicios</small></span></a>
+<nav class="toplinks" aria-label="Enlaces rápidos"><a href="index.html#guide">Guía</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Pausas</a><a href="scorecard.html">Evaluación</a><a href="resources.html" class="keep">Recursos</a><a class="keep top-action language-switch" data-language-switch href="../exercise-10.html" lang="en" hreflang="en" aria-label="Switch to English" title="English">EN</a><button type="button" class="top-action theme-toggle" data-theme-toggle hidden aria-label="Cambiar al modo oscuro"><svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13z"/></svg></button><a href="https://github.com/jmservera/hve-hol/issues/new" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="feedback-label">Comentarios</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a><a href="https://github.com/jmservera/hve-hol" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21v-4H7a4 4 0 0 1-4-4M15 21v-4c3-.5 5-2 5-5a6 6 0 0 0-1.5-4c.5-1.5.5-3 0-4-2 0-3.5 1-4 1.5a12 12 0 0 0-5 0C9 5 7.5 4 5.5 4c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/></svg><span class="sr-only">Repositorio de GitHub</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Guía de ejercicios">
+<a class="side-home" href="index.html">← Inicio de la guía</a>
+<div class="nav-group"><h2>Para empezar</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Agenda orientativa</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Acuerdos de trabajo y roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Inicio: acuerdo del equipo</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Tu caso</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cómo ejecutarlo</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Mientras trabajan los agentes</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Ejercicio 1: </span>Predecir el ciclo de vida</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Ejercicio 2: </span>Mapa de evidencias</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Ejercicio 3: </span>Comparativa de MVE</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Ejercicio 4: </span>De la petición al backlog aprobado</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Actividad de espera A · Canvas del PO</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Ejercicio 5: </span>Unidad de trabajo RPI acotada</span></a></li><li><a href="exercise-6.html"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Ejercicio 6: </span>Reutilizar una lección</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Ejercicio 7: </span>Aprobaciones y controles</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Actividad de espera B · De la issue al parche</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Actividad de espera C · IA frente a script</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Ejercicio 8: </span>Revisión crítica y recuperación</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Ejercicio 9: </span>Plan de adopción</span></a></li></ul></div>
+<div class="nav-group"><h2>Cierre</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Puesta en común y cierre</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cuadro de evaluación común</span></a></li></ul></div>
+<div class="nav-group"><h2>Reserva</h2><ul><li><a href="exercise-10.html" aria-current="page"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Ejercicio 10: </span>Comparar autonomía y coste (reserva)</span></a></li></ul></div>
+<div class="nav-group"><h2>Consulta</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Recursos</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Plantillas de entrega</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Ruta de navegación"><a href="index.html#guide">Guía</a><span aria-hidden="true">›</span><span>Reserva</span></nav>
+<header class="page-head">
+<p class="eyebrow">Reserva · Ejercicio 10 · Tarea paralela · Hacedlo si queda tiempo</p>
+<h1>Comparad autonomía, coste y resultado aceptado</h1>
+<p class="tags"><span class="tag tag-backup">Reserva</span><span class="tag tag-group">Reserva</span></p><nav class="jump" aria-label="En esta página"><span>En esta página</span><a href="#brief">Resumen</a><a href="#how-to-start">Cómo empezar</a><a href="#toolkit">Entrega y herramientas</a><a href="#tips">Consejos</a></nav></header>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">Ejercicio de reserva</p><p>Hacedlo antes del cierre solo si queda tiempo. Aparece después de la puesta en común y el cuadro de evaluación como sección de consulta, no como una franja adicional; la puesta en común sigue siendo de 17:10–17:30. Utilizad el <a href="scorecard.html">cuadro de evaluación común</a>.</p></div></div>
+<section class="brief" id="brief" aria-label="Resumen">
+<div class="objective"><span class="label">Objetivo</span><p>Comparar la utilidad cambiando una variable, no proclamando un ganador simbólico.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Material de partida</dt><dd>Vuestra ejecución registrada del <a href="exercise-5.html">ejercicio 5</a>, su commit inicial y su petición</dd></div>
+<div class="meta-best"><dt>Uso recomendado</dt><dd>Tarea opcional paralela o para los tiempos de espera antes del cierre</dd></div>
+<div class="meta-roles"><dt>Roles (sugeridos)</dt><dd>Auditor / observador con el operador de agentes</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Pasos"><h2 class="mini-head">Pasos</h2>
+<ol class="steps">
+<li><p>Elegid una comparación: dos modelos, HVE Core frente a HVE-Squad o HVE frente a otro entorno de ejecución (vuestro propio orquestador o el modo agente de Copilot sin más).</p></li>
+<li><p>Usad el ejercicio 5 como ejecución A. La ejecución B repite el mismo elemento, petición y definición de terminado desde el mismo commit, cambiando una sola variable. Fijad la misma instantánea de fuentes autorizadas y los mismos ámbitos de acceso para ambas ejecuciones.</p></li>
+<li><p>Comparad el tiempo hasta el primer resultado útil y hasta el resultado aceptado; contad preguntas, correcciones, aprobaciones, reintentos e intervenciones no planificadas.</p></li>
+<li><p>Revisad el consumo o los indicadores de coste disponibles junto con la calidad y el retrabajo, incluidas las ejecuciones fallidas y abandonadas.</p></li>
+<li><p>Identificad una mejora reutilizable y redactad una recomendación según la fase y el contexto.</p></li>
+</ol></section>
+<section class="handin" aria-label="Entrega"><h2 class="handin-head">Entrega</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Cuadro de evaluación de la comparación</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Una mejora reutilizable</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Recomendación según la fase y el contexto</span></label></li>
+</ul>
+<p class="handin-note">Marca los elementos a medida que tu equipo los entregue.</p></section>
+</div>
+<header class="section-head" id="how-to-start">
+<p class="eyebrow">Ejercicio 10 · Cómo empezar</p>
+<h2>Cambiad una cosa, medidlo todo</h2>
+</header>
+<h3>Empieza aquí</h3>
+<ol class="numbered compact"><li><span class="n" aria-hidden="true">1</span><div><p>Elegid una comparación: dos modelos, HVE Core frente a HVE-Squad o HVE frente a otro entorno de ejecución.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><p>La ejecución A suele ser la del <a href="exercise-5.html">ejercicio 5</a>, ya registrada. La ejecución B repite el mismo elemento con ese único cambio.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><p>Iniciad la ejecución B desde el mismo commit y petición. ¿Falta tiempo? Comparad solo investigación y planificación en ambos lados.</p></div></li><li><span class="n" aria-hidden="true">4</span><div><p>Rellenad la hoja de comparación sobre la marcha y después escribid la recomendación: fase, contexto, enfoque y motivo.</p></div></li></ol>
+<aside class="tips" id="tips" aria-label="Consejos prácticos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos prácticos</p><ul><li>Otro entorno de ejecución puede ser vuestro propio orquestador o el modo agente de GitHub Copilot sin HVE.</li><li>Tiempo: anotad el inicio, el primer resultado útil y el resultado aceptado. Contad todas las preguntas y correcciones.</li><li>Coste: <code>consumption.md</code> de HVE-Squad por cada tarea delegada; métricas de uso de GitHub Copilot y créditos de IA para el resto.</li><li>¿Dos equipos ejecutaron enfoques distintos sobre elementos similares? Comparad entre equipos en lugar de repetir las ejecuciones.</li></ul></aside>
+<aside class="tips" id="tips-2" aria-label="Errores que conviene evitar"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Errores que conviene evitar</p><ul><li>Cambiar a la vez el modelo y el entorno de ejecución</li><li>Comparar una ejecución completa con una parcial</li><li>Proclamar un ganador en lugar de recomendar una fase y un contexto</li></ul></aside>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">Mantened fijo también el contexto de Microsoft 365</p><p>Si las evidencias de SharePoint/Teams llegaron mediante Work IQ, fijad la misma instantánea de fuentes autorizadas, versiones y ámbitos de acceso para las ejecuciones A y B. Nuevos resultados de recuperación o permisos modificados son otra variable. Registrad por separado los indicadores de coste de recuperación disponibles; no deis por hecho que usar la versión preliminar de Work IQ API sea gratis.</p></div></div>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Reserva · Ejercicio 10 · Entrega y herramientas</p>
+<h2>Contadlo todo y después comparad la utilidad</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Las celdas de las plantillas son editables: escribe en ellas y usa <strong>Copiar como Markdown</strong> para pegar el resultado en tu repositorio o wiki. Lo que escribas permanece únicamente en este navegador; no se sube nada.</span></p><div class="tpl" id="tpl-comparison-setup" data-tpl="comparison-setup">
+<div class="tpl-head"><h3>Preparación de una comparación controlada</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Preparación de una comparación controlada" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Nuestra respuesta</th></tr></thead>
+<tbody>
+<tr><th scope="row">Comparación y única variable modificada</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Comparación y única variable modificada, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Ejecución A: commit inicial y enlace a las evidencias</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ejecución A: commit inicial y enlace a las evidencias, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Ejecución B: commit inicial y enlace a las evidencias</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ejecución B: commit inicial y enlace a las evidencias, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Mismo elemento, petición, instantánea de fuentes autorizadas, ámbitos de acceso y definición de terminado</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Mismo elemento, petición, instantánea de fuentes autorizadas, ámbitos de acceso y definición de terminado, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Fases comparadas en ambos lados</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Fases comparadas en ambos lados, Nuestra respuesta"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="formula"><p class="formula-main">Mejora neta = tiempo ahorrado − (coste de IA + esfuerzo adicional de revisión)</p><p>Contad también las ejecuciones fallidas y abandonadas.</p></div>
+<div class="tpl" id="tpl-comparison-sheet" data-tpl="comparison-sheet">
+<div class="tpl-head"><h3>Hoja de comparación</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Hoja de comparación" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Medida</th><th scope="col">Ejecución A</th><th scope="col">Ejecución B</th></tr></thead>
+<tbody>
+<tr><th scope="row">¿Mismo alcance y definición de terminado?</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="¿Mismo alcance y definición de terminado?, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="¿Mismo alcance y definición de terminado?, Ejecución B"></td></tr>
+<tr><th scope="row">Tiempo hasta el primer resultado útil</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Tiempo hasta el primer resultado útil, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Tiempo hasta el primer resultado útil, Ejecución B"></td></tr>
+<tr><th scope="row">Tiempo hasta el resultado aceptado</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Tiempo hasta el resultado aceptado, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Tiempo hasta el resultado aceptado, Ejecución B"></td></tr>
+<tr><th scope="row">Preguntas</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Preguntas, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Preguntas, Ejecución B"></td></tr>
+<tr><th scope="row">Correcciones</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Correcciones, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Correcciones, Ejecución B"></td></tr>
+<tr><th scope="row">Aprobaciones</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Aprobaciones, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Aprobaciones, Ejecución B"></td></tr>
+<tr><th scope="row">Reintentos</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Reintentos, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Reintentos, Ejecución B"></td></tr>
+<tr><th scope="row">Intervenciones no planificadas</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Intervenciones no planificadas, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Intervenciones no planificadas, Ejecución B"></td></tr>
+<tr><th scope="row">Consumo de IA / indicador de coste</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Consumo de IA / indicador de coste, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Consumo de IA / indicador de coste, Ejecución B"></td></tr>
+<tr><th scope="row">Calidad y retrabajo</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Calidad y retrabajo, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Calidad y retrabajo, Ejecución B"></td></tr>
+<tr><th scope="row">Total del cuadro de evaluación común</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Total del cuadro de evaluación común, Ejecución A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Total del cuadro de evaluación común, Ejecución B"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">Si solo comparáis investigación y planificación, puntuad ese mismo alcance en ambos lados y marcad como no aplicables las medidas de implementación o de resultado completo.</p></div>
+<div class="box box-run"><p class="label">De dónde salen las cifras</p><p>el registro del auditor · <code>consumption.md</code> de HVE-Squad (modelo, tokens y coste estimado por tarea delegada) y <code>decisions.md</code> · archivos de investigación, planificación, cambios y revisión de HVE Core · métricas de uso de GitHub Copilot y consumo de créditos de IA · Copilot Credits de Work IQ API, si se utiliza y están disponibles (mantened separadas las distintas unidades de crédito)</p></div>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">La comparación entre equipos es observacional</p><p>Elementos similares de equipos distintos pueden revelar patrones útiles, pero no aíslan una variable. Registrad las diferencias de alcance y contexto; no lo presentéis como una repetición controlada desde el mismo commit.</p></div></div>
+<div class="tpl" id="tpl-recommendation" data-tpl="recommendation">
+<div class="tpl-head"><h3>Formato de recomendación</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Formato de recomendación" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Recomendación</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Recomendación" data-ph="En la fase … y el contexto …, utilizad … porque …"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="links-block"><p class="label">Enlaces</p><ul class="links"><li><a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/organizations-and-enterprises/billing" target="_blank" rel="noopener noreferrer" class="ext">GitHub Copilot · Facturación por uso (créditos de IA)<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://docs.github.com/en/copilot/concepts/billing-and-usage/copilot-usage-metrics/copilot-metrics" target="_blank" rel="noopener noreferrer" class="ext">GitHub Copilot · Métricas de uso<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/usage.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Uso › Control de admisión por coste<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Terminado cuando</span><p>La recomendación identifica una fase y un contexto, no un ganador, y la comparación registra su variable, alcance y limitaciones.</p></div>
+<aside class="tips" id="tips-3" aria-label="Consejos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos</p><ul><li>Usad registros y archivos de estado, no la memoria.</li><li>Los modelos más baratos pueden costar más si necesitan más ciclos; mantened fijo el entorno de ejecución al comparar modelos y fijo el modelo al comparar entornos.</li><li>Medid el coste por resultado aceptado, no los tokens por ejecución.</li><li>Reutilizad la hoja de respuestas del <a href="exercise-1.html">ejercicio 1</a> para comparar las decisiones humanas previstas y reales, y el registro de modificaciones del PO de la <a href="intermission-a.html">actividad de espera A</a>.</li></ul></aside>
+<nav class="pager" aria-label="Paso anterior y siguiente"><a class="prev" href="scorecard.html" rel="prev"><span class="dir">← Anterior</span><span class="ttl">Cuadro de evaluación común</span></a><a class="next" href="resources.html" rel="next"><span class="dir">Siguiente →</span><span class="ttl">Recursos</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Taller práctico · Guía de ejercicios</p><p class="muted">Los enlaces remiten a documentación pública. HVE Core y HVE-Squad evolucionan rápidamente: utiliza las versiones instaladas para el taller.</p></footer>
+</body>
+</html>

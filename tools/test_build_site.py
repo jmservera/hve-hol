@@ -7,12 +7,158 @@ Run from the repository root with:
 import json
 import re
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
 import build_site as site
+from localization import UI_ES, interface
+
+
+class PageStructure(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.ids = []
+        self.storage = []
+        self.editable = 0
+        self.language_switch = None
+        self.scripts = []
+        self.labels = []
+        self.words = []
+        self.code_depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if "id" in attrs:
+            self.ids.append(attrs["id"])
+        for key in ("data-page", "data-tpl", "data-store", "data-key"):
+            if key in attrs:
+                self.storage.append((key, attrs[key]))
+        if attrs.get("contenteditable") == "true":
+            self.editable += 1
+        if "data-language-switch" in attrs:
+            self.language_switch = attrs
+        if tag == "script":
+            self.scripts.append(attrs.get("src"))
+        if tag in ("code", "pre"):
+            self.code_depth += 1
+        self.labels.extend(attrs[key] for key in ("aria-label", "placeholder")
+                           if key in attrs)
+
+    def handle_endtag(self, tag):
+        if tag in ("code", "pre"):
+            self.code_depth -= 1
+
+    def handle_data(self, data):
+        if not self.code_depth and data.strip():
+            self.words.append(data.strip())
 
 
 class WorkshopContentTests(unittest.TestCase):
+    def test_given_interface_translation_when_rendering_code_then_only_labels_change(self):
+        markup = '<p>Copy</p><pre><code>Copy</code></pre><a href="#Steps" aria-label="Steps">Steps</a>'
+
+        with site.language("es"):
+            rendered = interface(markup)
+
+        self.assertEqual(rendered,
+                         '<p>Copiar</p><pre><code>Copy</code></pre>'
+                         '<a href="#Steps" aria-label="Pasos">Pasos</a>')
+
+    def test_given_complete_translation_when_comparing_content_then_structure_and_links_remain(self):
+        import content_es
+
+        stable = {"slug", "storage_slug", "type", "id", "kind", "cls", "style", "num", "repo_url"}
+
+        def compare(english, spanish, location, field=None):
+            with self.subTest(content=location):
+                self.assertIs(type(english), type(spanish))
+                if isinstance(english, dict):
+                    self.assertEqual(english.keys(), spanish.keys())
+                    for key in english:
+                        compare(english[key], spanish[key], location + "." + key, key)
+                elif isinstance(english, (list, tuple)):
+                    self.assertEqual(len(english), len(spanish))
+                    for index, (en, es) in enumerate(zip(english, spanish)):
+                        compare(en, es, "%s[%s]" % (location, index), field)
+                elif isinstance(english, str):
+                    if field in stable or english.startswith(("https://", "http://")):
+                        self.assertEqual(english, spanish)
+                    self.assertEqual(re.findall(r"https?://[^\s)]+", english),
+                                     re.findall(r"https?://[^\s)]+", spanish))
+                    self.assertEqual(re.findall(r"`[^`]+`", english),
+                                     re.findall(r"`[^`]+`", spanish))
+                else:
+                    self.assertEqual(english, spanish)
+
+        for name in ("SITE", "HOME", "GROUPS", "PAGES", "RESOURCES", "ACCELERATORS", "SHARED_AB"):
+            compare(getattr(site.C, name), getattr(content_es, name), name)
+
+    def test_given_spanish_edition_when_switching_language_then_page_and_saved_work_match(self):
+        english = site.rendered_pages("en")
+        spanish = site.rendered_pages("es")
+
+        self.assertEqual(english.keys(), spanish.keys())
+        for filename in english:
+            with self.subTest(page=filename):
+                en, es = PageStructure(), PageStructure()
+                en.feed(english[filename])
+                es.feed(spanish[filename])
+
+                self.assertIn('<html lang="en">', english[filename])
+                self.assertIn('<html lang="es">', spanish[filename])
+                self.assertEqual(en.ids, es.ids)
+                self.assertEqual(en.storage, es.storage)
+                self.assertEqual(en.editable, es.editable)
+                self.assertEqual(en.language_switch["href"], "es/" + filename)
+                self.assertEqual(es.language_switch["href"], "../" + filename)
+                self.assertEqual(en.language_switch["hreflang"], "es")
+                self.assertEqual(es.language_switch["hreflang"], "en")
+                self.assertEqual(en.scripts, [
+                    "translations.js", "assets/translations-loader.js", "assets/theme.js", "assets/site.js",
+                ])
+                self.assertEqual(es.scripts, [
+                    "translations.js", "../assets/translations-loader.js", "../assets/theme.js", "../assets/site.js",
+                ])
+        self.assertEqual(site.current_language(), "en")
+
+    def test_given_spanish_pages_when_reading_interface_then_english_labels_are_absent(self):
+        english_labels = {source for source, translated in UI_ES.items()
+                          if source != translated and "%" not in source}
+        for filename, rendered in site.rendered_pages("es").items():
+            with self.subTest(page=filename):
+                page = PageStructure()
+                page.feed(rendered)
+
+                self.assertEqual(english_labels.intersection(page.words + page.labels), set())
+        home = site.rendered_pages("es")["index.html"]
+        self.assertIn("Cambiar al modo oscuro", home)
+        self.assertIn("Comentarios", home)
+        self.assertIn("Repositorio de GitHub", home)
+
+    def test_given_theme_preference_when_loading_pages_then_bootstrap_precedes_styles(self):
+        for locale in ("en", "es"):
+            for filename, rendered in site.rendered_pages(locale).items():
+                with self.subTest(language=locale, page=filename):
+                    self.assertLess(rendered.index("theme.js"), rendered.index('rel="stylesheet"'))
+                    self.assertLess(rendered.index("translations.js"), rendered.index("theme.js"))
+                    self.assertLess(rendered.index("translations-loader.js"), rendered.index("theme.js"))
+                    self.assertIn('data-theme-toggle hidden', rendered)
+
+    def test_given_language_catalogs_when_loading_then_each_covers_shared_script_messages(self):
+        used = set()
+        for script in ("site.js", "theme.js"):
+            source = Path(site.DOCS, "assets", script).read_text(encoding="utf-8")
+            used.update(re.findall(r"\bmessages\.([A-Za-z]+)", source))
+            used.update(re.findall(r"'(switchTo[A-Za-z]+)'", source))
+
+        for folder in (Path(site.DOCS), Path(site.DOCS, "es")):
+            with self.subTest(language=folder.name):
+                source = (folder / "translations.js").read_text(encoding="utf-8")
+                messages = json.loads(source[source.index("{"):source.rindex("}") + 1])
+
+                self.assertEqual(set(messages), used)
+                self.assertTrue(all(isinstance(value, str) and value for value in messages.values()))
+
     def test_given_any_page_when_rendered_then_header_links_to_repository_and_new_issue(self):
         rendered_pages = [site.render_home(), site.render_404()]
         rendered_pages.extend(site.render_page(i, page) for i, page in enumerate(site.PAGES))
@@ -161,9 +307,9 @@ class WorkshopContentTests(unittest.TestCase):
                 self.assertEqual(label, target)
 
     def test_given_canonical_content_when_building_then_committed_html_is_current(self):
-        expected = {"index.html": site.render_home(), "404.html": site.render_404()}
-        expected.update({site.href(page["slug"]): site.render_page(i, page)
-                         for i, page in enumerate(site.PAGES)})
+        expected = site.rendered_pages("en")
+        expected.update({str(Path("es", name)): rendered
+                         for name, rendered in site.rendered_pages("es").items()})
 
         for filename, rendered in expected.items():
             with self.subTest(page=filename):
@@ -243,6 +389,37 @@ class WorkshopContentTests(unittest.TestCase):
         self.assertIn("read operations only", evidence)
         self.assertIn("not a permission workaround", evidence)
         self.assertNotIn("work iq is read-only", setup)
+
+    def test_given_intermission_a_when_opened_then_workspace_uses_the_copilot_app(self):
+        for locale in ("en", "es"):
+            with self.subTest(language=locale):
+                pages = site.rendered_pages(locale)
+                rendered = pages["intermission-a.html"]
+
+                self.assertIn("Copilot Workspace", rendered)
+                self.assertIn('href="https://github.com/github/app"', rendered)
+                self.assertNotIn("Copilot CLI", rendered)
+                self.assertIn("Copilot CLI", pages["intermission-b.html"])
+        self.assertNotIn("espacio de trabajo de Copilot", "".join(site.rendered_pages("es").values()))
+
+    def test_given_spanish_canvas_content_when_rendered_then_canvas_remains_untranslated(self):
+        pages = site.rendered_pages("es")
+
+        self.assertIn("canvas", pages["intermission-a.html"])
+        self.assertIn("Canvas de adopción", pages["exercise-9.html"])
+        self.assertNotRegex("".join(pages.values()).lower(), r"\blienzos?\b")
+
+    def test_given_intermission_a_when_creating_canvas_then_guidance_is_interactive_and_scoped(self):
+        for locale in ("en", "es"):
+            with self.subTest(language=locale):
+                rendered = site.rendered_pages(locale)["intermission-a.html"]
+
+                self.assertIn("/create-canvas", rendered)
+                self.assertIn(".github/extensions", rendered)
+                self.assertIn('href="%s"' % site.C.U["copilot_canvases"], rendered)
+                self.assertIn('href="%s"' % site.C.U["copilot_canvas_docs"], rendered)
+                self.assertNotIn("one issue reached a draft PR", rendered)
+                self.assertNotIn("una incidencia ha llegado a una PR en borrador", rendered)
 
     def test_given_microsoft_controls_when_enforcing_then_product_boundaries_are_correct(self):
         controls = json.dumps(site.BY_SLUG["exercise-7"], ensure_ascii=False)

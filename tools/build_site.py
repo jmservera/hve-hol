@@ -19,6 +19,7 @@ sys.dont_write_bytecode = True
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import content as C  # noqa: E402
+from localization import catalog, current_language, interface, language, text  # noqa: E402
 
 DOCS = os.path.join(os.path.dirname(HERE), "docs")
 
@@ -45,6 +46,8 @@ ICONS = {
         'c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/>'
     ),
     "feedback": '<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    "sun": '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/>',
+    "moon": '<path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13z"/>',
 }
 
 
@@ -137,15 +140,15 @@ def nav_badge(page):
 def nav_label(page):
     label = esc(page["nav"])
     if page.get("num") and page["kind"] in ("core", "parallel", "backup"):
-        label = '<span class="sr-only">Exercise %s: </span>%s' % (esc(page["num"]), label)
+        label = '<span class="sr-only">%s</span>%s' % (text("Exercise %s: ") % esc(page["num"]), label)
     return label
 
 
 def full_title(page):
     if page.get("num") and page["kind"] in ("core", "parallel", "backup"):
-        return "Exercise %s · %s" % (page["num"], page["title"])
+        return text("Exercise %s · %s") % (page["num"], page["title"])
     if page["kind"] == "intermission":
-        return "Intermission %s · %s" % (page["num"], page["title"])
+        return text("Intermission %s · %s") % (page["num"], page["title"])
     return page["title"]
 
 
@@ -249,7 +252,7 @@ def storage_note(ctx):
     if not ctx.first_template:
         return ""
     ctx.first_template = False
-    return '<p class="storage-note">%s<span>%s</span></p>' % (icon("info"), fmt(C.SITE["storage_note"]))
+    return '<p class="storage-note">%s<span>%s</span></p>' % (icon("info"), fmt(catalog().SITE["storage_note"]))
 
 
 def tpl_actions():
@@ -422,11 +425,11 @@ def r_refcode(b, ctx):
 
 def r_intermissions(b, ctx):
     cards = []
-    for p in PAGES:
+    for p in catalog().PAGES:
         if p["kind"] not in ("intermission", "backup"):
             continue
         when = p["eyebrow"].split(" · ")[1] if p["kind"] == "intermission" else "Only if your team finishes early"
-        title = "Intermission %s" % p["num"] if p["kind"] == "intermission" else "Backup · Exercise %s" % p["num"]
+        title = text("Intermission %s") % p["num"] if p["kind"] == "intermission" else text("Backup · Exercise %s") % p["num"]
         cards.append(
             '<a class="int-card int-%s" href="%s"><span class="badge badge-%s" aria-hidden="true">%s</span>'
             '<span class="int-text"><span class="int-when">%s</span><strong>%s</strong><span>%s</span></span></a>'
@@ -440,36 +443,36 @@ def r_round(b, ctx):
     num = esc(b["num"])
     evidence = "".join("<li>%s</li>" % fmt(item) for item in b["evidence"])
     return (
-        '<section aria-labelledby="round-%s">\n<h3 id="round-%s">Round %s · %s</h3>\n'
+        '<section aria-labelledby="round-%s">\n<h3 id="round-%s">%s %s · %s</h3>\n'
         '<p class="lead">%s</p>\n'
         '<p>Write your answer in the <a href="#tpl-round-answers">answer sheet</a> or on paper. '
         'Take 90 seconds; wait for the facilitator before opening the reveal.</p>\n'
         '<details class="reveal" id="reveal-%s">\n'
-        '<summary>%s<span><strong>Reveal · %s</strong><span class="reveal-hint">'
+        '<summary>%s<span><strong>%s · %s</strong><span class="reveal-hint">'
         'Open after answering, then score your original answer.</span></span></summary>\n'
         '<div class="reveal-body"><p class="caveat">'
         'Illustrative example · fictional client and system · not a recorded run</p>\n'
         '<ul class="bullets">%s</ul>\n'
         '<p class="banner banner-soft"><strong>Human decision:</strong> %s</p></div>\n'
         '</details>\n</section>'
-        % (num, num, num, fmt(b["step"]), fmt(b["question"]), num, icon("eye", "icon reveal-icon"),
-           fmt(b["title"]), evidence, fmt(b["human"]))
+        % (num, num, text("Round"), num, fmt(b["step"]), fmt(b["question"]), num, icon("eye", "icon reveal-icon"),
+           text("Reveal"), fmt(b["title"]), evidence, fmt(b["human"]))
     )
 
 
 def r_shared_ab(b, ctx):
-    s = C.SHARED_AB
+    s = catalog().SHARED_AB
     parts = [
         r_section({"id": "toolkit", "eyebrow": s["eyebrow"], "title": s["title"]}, ctx),
         r_callout({"kind": "info", "title": "One hand-in for Intermissions A and B", "text": b["fill"] + " " +
                    s["shared_note"], "actions": []}, ctx),
         r_template(dict(s["trace"], id="trace", label="Template 1 · Trace from source to artefact"), ctx,
                    store="intermissions-ab:trace"),
-        r_runwith({"label": "Run it with", "items": [(None, s["run_with"])]}, ctx),
+        r_runwith({"label": "Run it with", "items": [(None, b.get("run_with", s["run_with"]))]}, ctx),
         r_rules({"items": s["rules"]}, ctx),
         r_template(dict(s["loop"], id="operations-loop", label="Template 2 · Operations loop",
                         note=s["loop_note"]), ctx, store="intermissions-ab:loop"),
-        r_done({"text": s["done"]}, ctx),
+        r_done({"text": b.get("done", s["done"])}, ctx),
     ]
     return "\n".join(parts)
 
@@ -607,14 +610,14 @@ def collect_templates(page):
 
 def step_name(p):
     if p.get("num") and p["kind"] in ("core", "parallel", "backup"):
-        return "Exercise %s · %s" % (p["num"], p["nav"])
+        return text("Exercise %s · %s") % (p["num"], p["nav"])
     return p["nav"]
 
 
 def render_resources_body():
     out = ['<p class="lead">Every link from the guide in one place. Links open in a new tab.</p>']
-    toc = [(s["id"], s["title"]) for s in C.RESOURCES] + [
-        (C.ACCELERATORS["id"], "Accelerators"), ("by-exercise", "Links by exercise"), ("templates", "Templates")]
+    toc = [(s["id"], s["title"]) for s in catalog().RESOURCES] + [
+        (catalog().ACCELERATORS["id"], "Accelerators"), ("by-exercise", "Links by exercise"), ("templates", "Templates")]
     out.append(
         '<div class="res-tools"><label for="res-filter">Filter links</label>'
         '<input id="res-filter" type="search" autocomplete="off" placeholder="Type to filter, e.g. Azure DevOps, Work IQ, squad">'
@@ -622,7 +625,7 @@ def render_resources_body():
     )
     out.append('<nav class="res-toc" aria-label="Resource sections"><ul>%s</ul></nav>' % "".join(
         '<li><a href="#%s">%s</a></li>' % (i, esc(t)) for i, t in toc))
-    for sec in C.RESOURCES:
+    for sec in catalog().RESOURCES:
         out.append('<section class="res-section" id="%s" data-res-section><h2>%s</h2>' % (sec["id"],
                                                                                         esc(sec["title"])))
         if "items" in sec:
@@ -631,7 +634,7 @@ def render_resources_body():
             out.append('<div class="res-group" data-res-group><h3>%s</h3>%s</div>' % (esc(grp["title"]),
                                                                                     res_items(grp["items"])))
         out.append("</section>")
-    a = C.ACCELERATORS
+    a = catalog().ACCELERATORS
     how = "".join('<li><p class="acc-step">%s</p><p>%s</p></li>' % (esc(t), fmt(d)) for t, d in a["how"])
     feat = "".join('<li data-res-item><p class="acc-name">%s</p><p>%s</p></li>' % (esc(n), fmt(d))
                    for n, d in a["featured"])
@@ -647,7 +650,7 @@ def render_resources_body():
            esc(pretty_url(a["featured_link"][1])), feat, fmt(a["in_workshop"]))
     )
     rows = []
-    for p in PAGES:
+    for p in catalog().PAGES:
         found = collect_links(p)
         if not found:
             continue
@@ -660,7 +663,7 @@ def render_resources_body():
         "</section>" % "".join(rows)
     )
     rows = []
-    for p in PAGES:
+    for p in catalog().PAGES:
         found = collect_templates(p)
         if not found:
             continue
@@ -672,7 +675,7 @@ def render_resources_body():
         "<p>%s</p>"
         '<div class="table-wrap" role="region" aria-label="Hand-in templates" tabindex="0"><table class="grid by-ex">'
         '<thead><tr><th scope="col">Step</th><th scope="col">Templates</th></tr></thead><tbody>%s</tbody></table>'
-        "</div></section>" % (fmt(C.SITE["storage_note"]), "".join(rows))
+        "</div></section>" % (fmt(catalog().SITE["storage_note"]), "".join(rows))
     )
     return "\n".join(out)
 
@@ -683,37 +686,61 @@ def render_resources_body():
 def head(title, description, page_id, body_cls):
     # Keep keys stable even when the browser has the previous site.js cached.
     storage_page = BY_SLUG.get(page_id, {}).get("storage_slug", page_id)
+    lang = current_language()
+    asset_base = "../assets/" if lang == "es" else "assets/"
+    english = "../" + href(page_id) if lang == "es" else href(page_id)
+    spanish = href(page_id) if lang == "es" else "es/" + href(page_id)
     return (
         "<!doctype html>\n"
-        '<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+        '<html lang="%s">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         '<meta name="color-scheme" content="light dark">\n'
         "<title>%s</title>\n"
         '<meta name="description" content="%s">\n'
-        '<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">\n'
-        '<link rel="stylesheet" href="assets/site.css">\n'
-        '<script src="assets/site.js" defer></script>\n'
+        '<link rel="alternate" hreflang="en" href="%s">\n'
+        '<link rel="alternate" hreflang="es" href="%s">\n'
+        '<link rel="alternate" hreflang="x-default" href="%s">\n'
+        '<link rel="icon" href="%sfavicon.svg" type="image/svg+xml">\n'
+        '<script src="translations.js"></script>\n'
+        '<script src="%stranslations-loader.js"></script>\n'
+        '<script src="%stheme.js"></script>\n'
+        '<link rel="stylesheet" href="%ssite.css">\n'
+        '<script src="%ssite.js" defer></script>\n'
         "</head>\n"
         '<body class="%s" data-page="%s">\n'
         '<a class="skip-link" href="#main">Skip to content</a>\n'
-        % (esc(title), esc(description), body_cls, esc(storage_page))
+        % (lang, esc(title), esc(description), english, spanish, english,
+           asset_base, asset_base, asset_base, asset_base, asset_base, body_cls, esc(storage_page))
     )
 
 
-def topbar(with_menu):
+def topbar(with_menu, page_id="index"):
     menu = (
         '<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false">%s'
         '<span>Steps</span></button>' % icon("menu")
     ) if with_menu else ""
     feedback = anchor(
-        C.SITE["repo_url"] + "/issues/new",
+        catalog().SITE["repo_url"] + "/issues/new",
         icon("feedback") + '<span class="feedback-label">Feedback</span>',
         "keep top-action",
     )
     repository = anchor(
-        C.SITE["repo_url"],
+        catalog().SITE["repo_url"],
         icon("github") + '<span class="sr-only">GitHub repository</span>',
         "keep top-action",
+    )
+    spanish = current_language() == "es"
+    switch = (
+        '<a class="keep top-action language-switch" data-language-switch href="%s" lang="%s" hreflang="%s" '
+        'aria-label="%s" title="%s">%s</a>'
+        % (("../" if spanish else "es/") + href(page_id), "en" if spanish else "es",
+           "en" if spanish else "es", "Switch to English" if spanish else "Cambiar a español",
+           "English" if spanish else "Español", "EN" if spanish else "ES")
+    )
+    theme = (
+        '<button type="button" class="top-action theme-toggle" data-theme-toggle hidden '
+        'aria-label="Switch to dark mode">%s%s</button>'
+        % (icon("sun", "icon theme-icon-light"), icon("moon", "icon theme-icon-dark"))
     )
     return (
         '<header class="topbar">\n%s'
@@ -722,16 +749,16 @@ def topbar(with_menu):
         '<nav class="toplinks" aria-label="Quick links">'
         '<a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a>'
         '<a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a>'
-        '<a href="resources.html" class="keep">Resources</a>%s%s</nav>\n</header>\n'
-        % (menu, esc(C.SITE["name"]), esc(C.SITE["tagline"]), feedback, repository)
+        '<a href="resources.html" class="keep">Resources</a>%s%s%s%s</nav>\n</header>\n'
+        % (menu, esc(catalog().SITE["name"]), esc(catalog().SITE["tagline"]), switch, theme, feedback, repository)
     )
 
 
 def sidebar(current):
     groups = []
-    for g in C.GROUPS:
+    for g in catalog().GROUPS:
         items = []
-        for p in PAGES:
+        for p in catalog().PAGES:
             if p["group"] != g["name"]:
                 continue
             cur = ' aria-current="page"' if p["slug"] == current else ""
@@ -751,7 +778,7 @@ def sidebar(current):
 def footer():
     return (
         '<footer class="site-footer"><p>%s</p><p class="muted">%s</p></footer>\n</body>\n</html>\n'
-        % (esc(C.SITE["footer"]), fmt(C.SITE["footer_note"]))
+        % (esc(catalog().SITE["footer"]), fmt(catalog().SITE["footer_note"]))
     )
 
 
@@ -774,8 +801,9 @@ def jump_nav(page):
 
 
 def pager(i):
-    prev_p = PAGES[i - 1] if i > 0 else None
-    next_p = PAGES[i + 1] if i + 1 < len(PAGES) else None
+    pages = catalog().PAGES
+    prev_p = pages[i - 1] if i > 0 else None
+    next_p = pages[i + 1] if i + 1 < len(pages) else None
     parts = []
     if prev_p:
         parts.append('<a class="prev" href="%s" rel="prev"><span class="dir">← Previous</span><span class="ttl">%s'
@@ -797,9 +825,9 @@ def render_page(i, page):
            % (kind, esc(KIND_LABEL[kind]), esc(page["group"]))) if KIND_LABEL.get(kind) else ""
     title = full_title(page)
     html_out = [
-        head("%s · HVE workshop guide" % plain(title), plain(page["summary"]), page["slug"],
+        head(text("%s · HVE workshop guide") % plain(title), plain(page["summary"]), page["slug"],
              "page page-%s kind-%s" % (page["slug"], kind)),
-        topbar(True),
+        topbar(True, page["slug"]),
         '<div class="layout">\n',
         sidebar(page["slug"]),
         '<main id="main" class="content" tabindex="-1">\n',
@@ -812,7 +840,7 @@ def render_page(i, page):
         "</main>\n</div>\n",
         footer(),
     ]
-    return "".join(html_out)
+    return interface("".join(html_out))
 
 
 HERO_ART = """<svg class="hero-art" viewBox="0 0 900 520" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
@@ -849,8 +877,8 @@ HERO_ART = """<svg class="hero-art" viewBox="0 0 900 520" preserveAspectRatio="x
 
 
 def render_home():
-    h = C.HOME
-    out = [head("%s · %s" % (C.SITE["name"], C.SITE["tagline"]), h["lead"], "index", "home"), topbar(False)]
+    h = catalog().HOME
+    out = [head("%s · %s" % (catalog().SITE["name"], catalog().SITE["tagline"]), h["lead"], "index", "home"), topbar(False)]
     out.append(
         '<header class="hero">\n%s\n<div class="hero-inner">\n<p class="kicker">%s</p>\n'
         '<h1>%s<span class="h1-sub">%s</span></h1>\n<p class="hero-lead">%s</p>\n'
@@ -873,11 +901,11 @@ def render_home():
     how = "".join('<li><p class="how-title">%s</p><p>%s</p></li>' % (fmt(t), fmt(d)) for t, d in h["how_to_use"])
     out.append('<section class="home-how" aria-labelledby="how-h"><h2 id="how-h">How to use this guide</h2>'
                '<ul class="how">%s</ul><p class="storage-note">%s<span>%s</span></p></section>\n'
-               % (how, icon("info"), fmt(C.SITE["storage_note"])))
+               % (how, icon("info"), fmt(catalog().SITE["storage_note"])))
     cards = []
-    for g in C.GROUPS:
+    for g in catalog().GROUPS:
         steps = []
-        for p in PAGES:
+        for p in catalog().PAGES:
             if p["group"] != g["name"]:
                 continue
             kind_txt = KIND_LABEL.get(p["kind"]) or ""
@@ -903,7 +931,7 @@ def render_home():
                "</a>.</p>%s</section>\n" % r_intermissions({}, None).replace(
                    '<h2 class="mini-head">Intermissions and backup</h2>', ""))
     res = "".join('<li><a href="resources.html#%s">%s</a></li>' % (i, esc(t)) for i, t in
-                  [(s["id"], s["title"]) for s in C.RESOURCES] +
+                  [(s["id"], s["title"]) for s in catalog().RESOURCES] +
                   [("accelerators", "Accelerators"), ("by-exercise", "Links by exercise"),
                    ("templates", "Hand-in templates")])
     out.append('<section class="home-res" aria-labelledby="res-h"><p class="eyebrow">Materials</p>'
@@ -911,16 +939,16 @@ def render_home():
                '<ul class="res-toc-home">%s</ul></section>\n' % res)
     out.append("</main>\n")
     out.append(footer())
-    return "".join(out)
+    return interface("".join(out))
 
 
 def render_404():
-    out = [head("Page not found · HVE workshop guide", "Page not found", "404", "page-404"), topbar(False)]
+    out = [head(text("Page not found · HVE workshop guide"), text("Page not found"), "404", "page-404"), topbar(False, "404")]
     out.append('<main id="main" class="content narrow" tabindex="-1"><p class="eyebrow">404</p><h1>Page not found</h1>'
                '<p>That page does not exist. Go back to the <a href="index.html">guide home</a> or the '
                '<a href="resources.html">resources</a>.</p></main>\n')
     out.append(footer())
-    return "".join(out)
+    return interface("".join(out))
 
 
 # ---------------------------------------------------------------------------
@@ -954,7 +982,7 @@ def check_links(files):
             if is_external(h) or h.startswith(("mailto:",)):
                 continue
             path, _, frag = h.partition("#")
-            target = path or name
+            target = os.path.normpath(os.path.join(os.path.dirname(name), path)) if path else name
             if not os.path.exists(os.path.join(DOCS, target)):
                 problems.append("%s: missing file %s" % (name, h))
             elif frag and target in parsed and frag not in parsed[target].ids:
@@ -967,17 +995,24 @@ def write(name, text):
         fh.write(text)
 
 
+def rendered_pages(locale="en"):
+    with language(locale):
+        pages = {"index.html": render_home(), "404.html": render_404()}
+        pages.update({href(page["slug"]): render_page(i, page)
+                      for i, page in enumerate(catalog().PAGES)})
+        return pages
+
+
 def main():
     os.makedirs(DOCS, exist_ok=True)
     files = []
-    write("index.html", render_home())
-    files.append("index.html")
-    for i, p in enumerate(PAGES):
-        name = href(p["slug"])
-        write(name, render_page(i, p))
-        files.append(name)
-    write("404.html", render_404())
-    files.append("404.html")
+    for locale in ("en", "es"):
+        prefix = "es" if locale == "es" else ""
+        os.makedirs(os.path.join(DOCS, prefix), exist_ok=True)
+        for filename, markup in rendered_pages(locale).items():
+            name = os.path.join(prefix, filename)
+            write(name, markup)
+            files.append(name)
     open(os.path.join(DOCS, ".nojekyll"), "w").close()
     problems = check_links(files)
     print("Built %d pages in %s" % (len(files), DOCS))

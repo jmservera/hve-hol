@@ -38,6 +38,9 @@ SITE = {
 # Links used across the guide
 # ---------------------------------------------------------------------------
 U = {
+    "copilot_app": "https://github.com/github/app",
+    "copilot_canvases": "https://github.blog/ai-and-ml/github-copilot/how-to-build-interactive-experiences-with-canvases/",
+    "copilot_canvas_docs": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/working-with-canvas-extensions",
     "hve_core": "https://microsoft.github.io/hve-core/",
     "first_workflow": "https://microsoft.github.io/hve-core/docs/getting-started/first-workflow/",
     "rpi": "https://microsoft.github.io/hve-core/docs/rpi/",
@@ -1085,39 +1088,55 @@ PAGES = [
         "nav": "Intermission A · PO canvas",
         "eyebrow": "Intermission A · While Exercise 4 agents run · Open lab 2 · Parallel task",
         "title": "Give the product owner a canvas into the HVE loop",
-        "summary": "Let a non-developer steer BRD, PRD and ADR generation without writing code.",
+        "summary": "Build an interactive product-owner canvas and use approved context to steer BRD, PRD and ADR drafts.",
         "blocks": [
-            brief("Let a non-developer steer BRD, PRD and ADR generation without writing code.",
-                  "An approved MCP-capable Copilot workspace, Azure Boards/GitHub context and optional "
+            brief("Build an interactive product-owner canvas and use approved context to steer BRD, PRD and ADR drafts.",
+                  "An approved MCP-capable Copilot Workspace, Azure Boards/GitHub context and optional "
                   "SharePoint/Teams evidence through Work IQ",
                   "Waiting-time task during [Ex 4](exercise-4.html)",
                   "Product owner leads; agent operator pairs; auditor logs prompts and edits"),
             work(
                 [
-                    "Open the workspace in Copilot CLI or a workshop-approved MCP-capable client. Verify approved "
+                    "Open Copilot Workspace in the [GitHub Copilot App](" + U["copilot_app"] + "). Verify approved "
                     "Azure DevOps/GitHub read tools and optional Work IQ; use fictional excerpts if unavailable.",
-                    "Ask Copilot to generate a product-owner canvas: goals, users, scope, open questions, decisions.",
-                    "Read the Azure Boards item or GitHub issue; optionally retrieve approved SharePoint rules "
-                    "and Teams notes through Work IQ, keeping citations. Look up a matching accelerator at "
+                    "Read the [canvas guide](" + U["copilot_canvases"] + "), then run `/create-canvas` in the agent "
+                    "session. Request an interactive PO canvas with editable goals, users, scope, open questions, "
+                    "source links and decision status; specify human controls and agent-callable actions. Choose "
+                    "repository scope (`.github/extensions`).",
+                    "Ask the agent to populate the canvas from the Azure Boards item or GitHub issue; optionally "
+                    "retrieve approved SharePoint rules and Teams notes through Work IQ, keeping citations. "
+                    "Look up a matching accelerator at "
                     "[accelerators.ms](" + U["accelerators"] + ").",
-                    "The PO approves the canvas; Copilot drafts BRD, PRD and ADR, citing sources. The ADR records: "
-                    "adopt, adapt or build.",
-                    "Tag each statement as sourced, assumed or PO-decided; log every PO correction.",
+                    "Edit a field and approve a decision in the canvas; ask the agent to read back the changes. "
+                    "Then ask it to draft BRD, PRD and ADR from that approved state, citing sources and recording "
+                    "adopt, adapt or build in the ADR.",
+                    "Save the approved canvas data, drafts and PO correction log in the repo. Tag each statement "
+                    "as sourced, assumed or PO-decided.",
                 ],
-                ["PO canvas committed to the repo", "BRD, PRD and ADR drafts traced to sources",
-                 "Log of PO edits, MCP sources and accelerator used"],
+                ["Team-shared canvas extension and approved canvas data saved in the repo",
+                 "BRD, PRD and ADR drafts traced to sources",
+                 "Log of PO edits, MCP sources, accelerator used and one verified canvas-to-agent update"],
             ),
             {"type": "shared_ab", "fill": "Intermission A fills the **BRD**, **PRD** and **ADR** columns of "
-                                          "Template 1."},
+                                          "Template 1.",
+             "run_with": "[GitHub Copilot App](" + U["copilot_app"] + ") · Azure DevOps/GitHub read integrations · "
+                         "optional Work IQ read tools for approved SharePoint/Teams evidence · accelerators.ms",
+             "done": "A team-shared canvas opens in the app, a PO edit is read back by the agent, saved data survives "
+                     "reopening, and approved BRD/PRD/ADR drafts cite sources. Any write or workflow action was "
+                     "explicitly approved."},
             links(("Microsoft AI Solution Accelerators", U["accelerators"]),
                   ("Work IQ MCP overview", U["workiq_mcp"]),
                   ("Work IQ · Retrieval and prerequisites", U["workiq_retrieve"]),
-                  ("Work IQ · Copilot CLI setup", U["workiq_setup"]),
+                  ("GitHub Copilot App", U["copilot_app"]),
+                  ("How to build interactive experiences with canvases - The GitHub Blog", U["copilot_canvases"]),
+                  ("GitHub Docs · Working with canvas extensions", U["copilot_canvas_docs"]),
                   ("Azure DevOps MCP", U["ado_mcp"]), ("GitHub MCP server", U["gh_mcp_server"]),
                   ("Accelerators: how they work", "resources.html#accelerators")),
             tips(
-                "The canvas can be a simple Markdown file or page in the repo that the PO edits in plain language; "
-                "Copilot regenerates the BRD, PRD and ADR from it.",
+                "A canvas is an interactive app surface, not just a Markdown file. Controls can update local state "
+                "or send work to the agent; explicitly request any draft-generation action and verify the result.",
+                "Ask for persisted canvas state and an explicit save/export action. Verify data survives closing "
+                "and reopening the canvas; the extension files alone do not prove that approved PO data was saved.",
                 "Use approved workshop data and read tools only for source gathering. Work IQ has broader "
                 "capabilities; keep its update/send actions disabled for this activity.",
                 "Compare the drafts with the [Exercise 4](exercise-4.html) outputs: what did the PO add that the "

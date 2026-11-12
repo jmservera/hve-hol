@@ -15,10 +15,14 @@ docs/                 the website (what GitHub Pages publishes)
   agenda.html …       one page per step: get started, exercises 1–10, intermissions A–C, playback, scorecard
   resources.html      every link grouped by topic, links by exercise and the template index
   404.html            "page not found"
+  translations.js     English browser messages
   assets/             site.css, site.js, favicon.svg
+  es/                 complete Spanish edition, including its own translations.js
   .nojekyll           tells GitHub Pages to serve the files as they are
 tools/
   content.py          all page text, steps, templates, tips and links
+  content_es.py       Spanish participant content, preserving the same IDs and template shapes
+  localization.py     translations of shared interface labels
   build_site.py       regenerates docs/*.html from content.py (Python 3.8+, standard library only)
 ```
 
@@ -42,6 +46,8 @@ tools/
 4. After a minute or two the site is live at `https://<your-account>.github.io/hve-workshop-guide/`.
 
 All links are relative, so the site works under any repository name or a custom domain.
+English remains the default at the site root. The **ES / EN** control opens the same page in the other
+language, retaining the current section. Spanish navigation stays within the Spanish edition.
 
 ## Preview locally
 
@@ -53,15 +59,17 @@ Then open <http://localhost:8000>. Opening `docs/index.html` directly in a brows
 
 ## Change the content
 
-1. Edit `tools/content.py`: page texts, steps, hand-ins, templates, tips and links. The suggested agenda is the
-   `agenda` entry.
+1. Edit `tools/content.py` and its Spanish counterpart, `tools/content_es.py`: page texts, steps, hand-ins,
+   templates, tips and links. The suggested agenda is the `agenda` entry. Keep page slugs, block IDs,
+   template IDs, and editable-cell order identical between languages so saved work stays compatible.
 2. Rebuild:
 
    ```bash
    python tools/build_site.py
    ```
 
-   The script rewrites `docs/*.html` and checks that every internal link and `#anchor` resolves. Run the
+   The script rewrites `docs/*.html` and `docs/es/*.html` and checks that every internal link and `#anchor`
+   resolves across both editions. Run the
    standard-library regression checks after rebuilding:
 
    ```bash
@@ -71,6 +79,16 @@ Then open <http://localhost:8000>. Opening `docs/index.html` directly in a brows
 
 Inline formatting in any text: `` `code` ``, `**bold**`, `[link text](url)`.
 Styles live in `docs/assets/site.css` and behaviour in `docs/assets/site.js`; both are edited directly.
+`docs/assets/theme.js` applies an explicit saved theme before styles load, avoiding a flash of the wrong
+theme. Shared interface translations are in `tools/localization.py`. Browser messages live in
+`docs/translations.js` for English and `docs/es/translations.js` for Spanish. Each page loads the file
+from its own folder before the shared scripts, including when opened directly without a server.
+If the catalog is missing, `docs/assets/translations-loader.js` logs an error and loads the external
+English catalog from the site root. Both shared scripts wait for that catalog before initializing.
+If English is also unavailable, it logs the failure and leaves interactive features disabled.
+Keep these files as an assignment of a JSON-compatible object to `window.HVE_GUIDE_TRANSLATIONS`.
+To add another language, put a `translations.js` file with the same keys in that language's site folder;
+the shared browser scripts do not need language-specific changes.
 The shared header links to the GitHub repository and its new-issue form for feedback. Both open in a new
 tab. To point them at a fork, update `SITE["repo_url"]` in `tools/content.py` and rebuild.
 
@@ -96,6 +114,8 @@ legacy browser values are left untouched.
 
 - One page per step, with previous / next buttons, a sidebar on desktop and a **Steps** menu on phones.
 - Top-right GitHub repository and Feedback links on every page, including on phones.
+- Complete English and Spanish editions, with an **ES / EN** switch on every page. Saved answers and
+  hand-in ticks are shared between editions in the same browser.
 - Each exercise has a brief (objective, input, best use, roles, steps, hand-in) and a toolkit. Exercises 2–10
   also have four numbered **How to start** steps, practical advice and **Watch out** traps. Exercise 5
   includes a named-role split panel so Exercise 7 starts while implementation runs.
@@ -109,4 +129,5 @@ legacy browser values are left untouched.
   research and plan on both sides; cross-team observations are labelled separately.
 - Links to Intermissions A–C from the exercises they run alongside, and an intermissions overview on the home page.
 - A resources page with a filter box, links by exercise and an index of all templates.
-- Light and dark mode follow the device setting, and pages print cleanly.
+- Light and dark mode initially follow the browser/device setting. The theme button lets participants
+  override it; the choice is saved in their browser across pages and languages. Pages print cleanly.

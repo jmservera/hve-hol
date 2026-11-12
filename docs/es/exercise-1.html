@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ejercicio 1 · Predecid el ciclo de vida antes de que lo hagan los agentes · Guía del taller HVE</title>
+<meta name="description" content="Seis preguntas guiadas: anticipad qué necesita cada paso de HVE, qué produce y qué deja para que decida una persona.">
+<link rel="alternate" hreflang="en" href="../exercise-1.html">
+<link rel="alternate" hreflang="es" href="exercise-1.html">
+<link rel="alternate" hreflang="x-default" href="../exercise-1.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="translations.js"></script>
+<script src="../assets/translations-loader.js"></script>
+<script src="../assets/theme.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-1 kind-core" data-page="exercise-1-appointments">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Pasos</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Taller práctico · Guía de ejercicios</small></span></a>
+<nav class="toplinks" aria-label="Enlaces rápidos"><a href="index.html#guide">Guía</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Pausas</a><a href="scorecard.html">Evaluación</a><a href="resources.html" class="keep">Recursos</a><a class="keep top-action language-switch" data-language-switch href="../exercise-1.html" lang="en" hreflang="en" aria-label="Switch to English" title="English">EN</a><button type="button" class="top-action theme-toggle" data-theme-toggle hidden aria-label="Cambiar al modo oscuro"><svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13z"/></svg></button><a href="https://github.com/jmservera/hve-hol/issues/new" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="feedback-label">Comentarios</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a><a href="https://github.com/jmservera/hve-hol" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21v-4H7a4 4 0 0 1-4-4M15 21v-4c3-.5 5-2 5-5a6 6 0 0 0-1.5-4c.5-1.5.5-3 0-4-2 0-3.5 1-4 1.5a12 12 0 0 0-5 0C9 5 7.5 4 5.5 4c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/></svg><span class="sr-only">Repositorio de GitHub</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Guía de ejercicios">
+<a class="side-home" href="index.html">← Inicio de la guía</a>
+<div class="nav-group"><h2>Para empezar</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Agenda orientativa</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Acuerdos de trabajo y roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Inicio: acuerdo del equipo</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Tu caso</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cómo ejecutarlo</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Mientras trabajan los agentes</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 1</h2><ul><li><a href="exercise-1.html" aria-current="page"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Ejercicio 1: </span>Predecir el ciclo de vida</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Ejercicio 2: </span>Mapa de evidencias</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Ejercicio 3: </span>Comparativa de MVE</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Ejercicio 4: </span>De la petición al backlog aprobado</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Actividad de espera A · Canvas del PO</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Ejercicio 5: </span>Unidad de trabajo RPI acotada</span></a></li><li><a href="exercise-6.html"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Ejercicio 6: </span>Reutilizar una lección</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Ejercicio 7: </span>Aprobaciones y controles</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Actividad de espera B · De la issue al parche</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Actividad de espera C · IA frente a script</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Ejercicio 8: </span>Revisión crítica y recuperación</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Ejercicio 9: </span>Plan de adopción</span></a></li></ul></div>
+<div class="nav-group"><h2>Cierre</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Puesta en común y cierre</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cuadro de evaluación común</span></a></li></ul></div>
+<div class="nav-group"><h2>Reserva</h2><ul><li><a href="exercise-10.html"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Ejercicio 10: </span>Comparar autonomía y coste (reserva)</span></a></li></ul></div>
+<div class="nav-group"><h2>Consulta</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Recursos</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Plantillas de entrega</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Ruta de navegación"><a href="index.html#guide">Guía</a><span aria-hidden="true">›</span><span>Laboratorio abierto 1</span></nav>
+<header class="page-head">
+<p class="eyebrow">Ejercicio 1 · Laboratorio abierto 1 · Calentamiento de toda la sala · Sin agentes</p>
+<h1>Predecid el ciclo de vida antes de que lo hagan los agentes</h1>
+<p class="tags"><span class="tag tag-core">Tarea principal</span><span class="tag tag-group">Laboratorio abierto 1</span></p><nav class="jump" aria-label="En esta página"><span>En esta página</span><a href="#brief">Resumen</a><a href="#case">Caso de uso</a><a href="#toolkit">Entrega y herramientas</a><a href="#reveal">Seis rondas</a><a href="#tips">Consejos</a></nav></header>
+<section class="brief" id="brief" aria-label="Resumen">
+<div class="objective"><span class="label">Objetivo</span><p>Entender cada paso de HVE: qué necesita, qué produce y dónde decide una persona.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Material de partida</dt><dd>La misma petición ficticia de cambio de cita ciudadana para todos los equipos</dd></div>
+<div class="meta-best"><dt>Uso recomendado</dt><dd>Ejercicio de reflexión guiado por quien facilita el taller; sin agentes</dd></div>
+<div class="meta-roles"><dt>Roles</dt><dd>Todo el equipo; el auditor escribe las respuestas; quien facilita el taller guía a la sala</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Pasos"><h2 class="mini-head">Pasos</h2>
+<ol class="steps">
+<li><p>Quien facilita el taller presenta el caso de uso ficticio que aparece a continuación.</p></li>
+<li><p>Para cada uno de los seis pasos de HVE, escuchad una pregunta guiada.</p></li>
+<li><p>Escribid una respuesta breve del equipo en 90 segundos, en papel o en la hoja de respuestas web.</p></li>
+<li><p>Solo entonces abrid la solución de esa ronda con quien facilita el taller: ¿qué se produce y quién decide?</p></li>
+<li><p>Puntuad vuestra respuesta original: ✓ lo teníamos · ½ en parte · ✗ se nos pasó.</p></li>
+</ol></section>
+<section class="handin" aria-label="Entrega"><h2 class="handin-head">Entrega</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Hoja de respuestas puntuada</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Vuestra mayor omisión</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Una pregunta que el agente debería hacer siempre en vuestros proyectos</span></label></li>
+</ul>
+<p class="handin-note">Marca los elementos a medida que tu equipo los entregue.</p></section>
+</div>
+<div class="callout callout-info"><svg class="icon callout-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><div class="callout-body"><p class="callout-title">Cómo funciona</p><p>Unos 30 minutos: una introducción breve, seis rondas de respuesta y solución y un repaso final. Usad la hoja web o papel, pero no preguntéis a un agente. Conservad las respuestas originales tras descubrir las soluciones; una respuesta distinta pero defendible es otro criterio, no necesariamente un error.</p></div></div>
+<header class="section-head" id="case">
+<p class="eyebrow">El caso de uso compartido</p>
+<h2>Cita Previa: cambiar una cita</h2>
+</header>
+<p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<div class="static-table"><div class="table-wrap" role="region" aria-label="Tabla" tabindex="0">
+<table class="grid">
+<thead><tr><th scope="col">Evidencias iniciales</th><th scope="col">Lo que sabéis</th></tr></thead>
+<tbody>
+<tr><th scope="row">Elemento de trabajo 482 de Azure Boards</th><td>Como ciudadano, quiero cambiar la fecha de mi cita por internet para no tener que llamar a la oficina.</td></tr>
+<tr><th scope="row">Documento de reglas de SharePoint</th><td>Franjas de 15 minutos; reservas con hasta 30 días de antelación; confirmación por correo electrónico y SMS</td></tr>
+<tr><th scope="row">Nota del responsable del servicio en Teams</th><td>El objetivo es reducir las llamadas. Los límites de cambios, la antelación mínima y los traslados entre oficinas siguen sin decidirse; esta nota no aprueba los requisitos.</td></tr>
+<tr><th scope="row">Sistema</th><td>Portal de cita previa ciudadana de una administración autonómica ficticia</td></tr>
+<tr><th scope="row">Tecnologías</th><td>Backend Java / Spring Boot; frontend Angular; repositorio GitHub</td></tr>
+<tr><th scope="row">Contexto de herramientas</th><td>HVE Core en VS Code con GitHub Copilot; herramientas de lectura autorizadas de Azure DevOps/GitHub, con recuperación opcional de evidencias de SharePoint y Teams mediante Work IQ MCP. Este recorrido ficticio no necesita conexión real al inquilino.</td></tr>
+<tr><th scope="row">Resultado deseado</th><td>Cambiar la fecha respetando las reglas aprobadas por el responsable de negocio, liberar la franja anterior, notificar al ciudadano y dejar un cambio revisado y probado con evidencias para la publicación</td></tr>
+</tbody>
+</table>
+</div></div>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Ejercicio 1 · Entrega y herramientas</p>
+<h2>Una casilla por ronda, puntuada tras descubrir cada solución</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Las celdas de las plantillas son editables: escribe en ellas y usa <strong>Copiar como Markdown</strong> para pegar el resultado en tu repositorio o wiki. Lo que escribas permanece únicamente en este navegador; no se sube nada.</span></p><div class="tpl" id="tpl-round-team" data-tpl="round-team">
+<div class="tpl-head"><h3>Equipo y auditor</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Equipo y auditor" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Nuestra respuesta</th></tr></thead>
+<tbody>
+<tr><th scope="row">Equipo</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Equipo, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Auditor</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Auditor, Nuestra respuesta"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-round-answers" data-tpl="round-answers">
+<div class="tpl-head"><h3>Hoja de respuestas de seis rondas</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Hoja de respuestas de seis rondas" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Ronda</th><th scope="col">Paso</th><th scope="col">Nuestra respuesta</th><th scope="col">Puntuación</th></tr></thead>
+<tbody>
+<tr><th scope="row">1</th><td>Evidencias</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Nuestra respuesta"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="1, Puntuación"></td></tr>
+<tr><th scope="row">2</th><td>Requisitos</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Nuestra respuesta"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="2, Puntuación"></td></tr>
+<tr><th scope="row">3</th><td>Investigación</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Nuestra respuesta"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="3, Puntuación"></td></tr>
+<tr><th scope="row">4</th><td>Planificación</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Nuestra respuesta"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="4, Puntuación"></td></tr>
+<tr><th scope="row">5</th><td>Implementación</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="5, Nuestra respuesta"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="5, Puntuación"></td></tr>
+<tr><th scope="row">6</th><td>Revisión y traspaso</td><td class="fill" contenteditable="true" spellcheck="true" aria-label="6, Nuestra respuesta"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="6, Puntuación"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">✓ = 1 (lo teníamos) · ½ = 0.5 (en parte) · ✗ = 0 (se nos pasó). Puntuad tras descubrir cada solución.</p></div>
+<div class="tpl" id="tpl-round-reflection" data-tpl="round-reflection">
+<div class="tpl-head"><h3>Reflexión</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Reflexión" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">Nuestra respuesta</th></tr></thead>
+<tbody>
+<tr><th scope="row">Total sobre 6 (solo por diversión)</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Total sobre 6 (solo por diversión), Nuestra respuesta"></td></tr>
+<tr><th scope="row">Nuestra mayor omisión</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Nuestra mayor omisión, Nuestra respuesta"></td></tr>
+<tr><th scope="row">Una pregunta que el agente debería hacer siempre en vuestros proyectos</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Una pregunta que el agente debería hacer siempre en vuestros proyectos, Nuestra respuesta"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<header class="section-head" id="reveal">
+<p class="eyebrow">Seis rondas guiadas</p>
+<h2>Responded primero; después, descubrid cada paso por separado</h2>
+</header>
+<section aria-labelledby="round-1">
+<h3 id="round-1">Ronda 1 · Evidencias</h3>
+<p class="lead">Antes de que nadie escriba código, ¿qué debería leer el agente y qué debería devolveros?</p>
+<p>Escribe tu respuesta en la <a href="#tpl-round-answers">hoja de respuestas</a> o en papel. Dedica 90 segundos; espera al facilitador antes de abrir el ejemplo.</p>
+<details class="reveal" id="reveal-1">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Ver ejemplo · Leer antes de escribir</strong><span class="reveal-hint">Ábrelo después de responder y puntúa tu respuesta original.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<ul class="bullets"><li>Resumen de evidencias: reducir las llamadas (elemento de trabajo 482 de Azure Boards y nota de Teams); franjas de 15 minutos, reservas con 30 días de antelación y confirmación por correo y SMS (SharePoint).</li><li>Cinco preguntas abiertas: ¿cuántos cambios por ciudadano?, ¿con cuántas horas de antelación?, ¿también a otra oficina?, ¿a quién se notifica?, ¿citas del mismo día?</li></ul>
+<p class="banner banner-soft"><strong>Decisión humana:</strong> El responsable de negocio confirma las fuentes y que estén completas. Aún no se ha aprobado nada.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-2">
+<h3 id="round-2">Ronda 2 · Requisitos</h3>
+<p class="lead">El agente redacta los requisitos. Indicad 3 cosas que debe PREGUNTAR al responsable de negocio en lugar de decidir por su cuenta.</p>
+<p>Escribe tu respuesta en la <a href="#tpl-round-answers">hoja de respuestas</a> o en papel. Dedica 90 segundos; espera al facilitador antes de abrir el ejemplo.</p>
+<details class="reveal" id="reveal-2">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Ver ejemplo · El agente pregunta; el responsable decide</strong><span class="reveal-hint">Ábrelo después de responder y puntúa tu respuesta original.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<ul class="bullets"><li>Requisitos v0.2: R3 permite como máximo 2 cambios (respuesta 1 del responsable); R4 cierra los cambios 24 horas antes (respuesta 2 del responsable); R5 libera inmediatamente la franja anterior (SharePoint).</li><li>AC-7: con menos de 24 horas, Cambiar fecha está deshabilitado y se muestra el teléfono de la oficina. Requisito de accesibilidad: WCAG 2.1 AA para el ejemplo de sector público.</li><li>Las reglas sin respuesta y los criterios de aceptación que dependen de ellas siguen bloqueados.</li></ul>
+<p class="banner banner-soft"><strong>Decisión humana:</strong> El responsable de negocio responde a un formulario de opciones/sin decidir y aprueba los requisitos.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-3">
+<h3 id="round-3">Ronda 3 · Investigación</h3>
+<p class="lead">Antes de planificar, ¿qué 3 hechos debe averiguar el agente en el código?</p>
+<p>Escribe tu respuesta en la <a href="#tpl-round-answers">hoja de respuestas</a> o en papel. Dedica 90 segundos; espera al facilitador antes de abrir el ejemplo.</p>
+<details class="reveal" id="reveal-3">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Ver ejemplo · Comprobar el código antes de confiar en la documentación</strong><span class="reveal-hint">Ábrelo después de responder y puntúa tu respuesta original.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<ul class="bullets"><li>La lógica de reservas está en <code>AppointmentService</code>; la cancelación ya libera una franja.</li><li>Existe un servicio de mensajería compartido, pero hace falta un nuevo texto de SMS. No hay pruebas automatizadas de <code>AppointmentService</code>.</li><li>SharePoint dice 30 días; el código de GitHub permite 60. Ese conflicto se convierte en una nueva pregunta al responsable de negocio, no en una decisión del agente.</li></ul>
+<p class="banner banner-soft"><strong>Decisión humana:</strong> Aún no hay aprobación. Las evidencias y el conflicto entre documentación y código vuelven al responsable.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-4">
+<h3 id="round-4">Ronda 4 · Planificación</h3>
+<p class="lead">El agente propone un plan. ¿Qué os haría RECHAZARLO?</p>
+<p>Escribe tu respuesta en la <a href="#tpl-round-answers">hoja de respuestas</a> o en papel. Dedica 90 segundos; espera al facilitador antes de abrir el ejemplo.</p>
+<details class="reveal" id="reveal-4">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Ver ejemplo · Rechazar el plan antes de que exista código</strong><span class="reveal-hint">Ábrelo después de responder y puntúa tu respuesta original.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<ul class="bullets"><li>Plan: 1 pruebas de protección del comportamiento actual de reservas; 2 reglas R3/R4; 3 reutilizar la liberación de franjas R5; 4 textos de SMS/correo; 5 deshabilitar el botón con menos de 24 horas (AC-7); 6 comprobaciones de accesibilidad.</li><li>Crítica: una franja mostrada puede ocuparse antes de confirmar. Añadir la tarea 2b para reservar la franja al confirmar.</li></ul>
+<p class="banner banner-soft"><strong>Decisión humana:</strong> El responsable técnico o el arquitecto aprueba el plan antes de que se escriba código.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-5">
+<h3 id="round-5">Ronda 5 · Implementación</h3>
+<p class="lead">¿Cuánta libertad daríais aquí al agente y qué demuestra que el trabajo está terminado?</p>
+<p>Escribe tu respuesta en la <a href="#tpl-round-answers">hoja de respuestas</a> o en papel. Dedica 90 segundos; espera al facilitador antes de abrir el ejemplo.</p>
+<details class="reveal" id="reveal-5">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Ver ejemplo · Ajustar la autonomía al riesgo</strong><span class="reveal-hint">Ábrelo después de responder y puntúa tu respuesta original.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<ul class="bullets"><li>Las tareas 1–6 y 2b están terminadas; pasan las nuevas pruebas de <code>AppointmentService</code>; los cambios enlazan con R3–R5 y AC-7.</li><li>Como el servicio no tenía pruebas, el responsable de ingeniería elige una comprobación tras cada tarea. El modo manual es el predeterminado; la autonomía total solo se activa si se solicita.</li></ul>
+<p class="banner banner-soft"><strong>Decisión humana:</strong> El responsable de ingeniería elige el nivel de autonomía y comprueba el avance con evidencias.</p></div>
+</details>
+</section>
+<section aria-labelledby="round-6">
+<h3 id="round-6">Ronda 6 · Revisión y traspaso</h3>
+<p class="lead">¿Qué puede revisar el agente por sí solo y qué debe comprobar aún una persona antes de publicar?</p>
+<p>Escribe tu respuesta en la <a href="#tpl-round-answers">hoja de respuestas</a> o en papel. Dedica 90 segundos; espera al facilitador antes de abrir el ejemplo.</p>
+<details class="reveal" id="reveal-6">
+<summary><svg class="icon reveal-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Ver ejemplo · Terminado no significa aceptado</strong><span class="reveal-hint">Ábrelo después de responder y puntúa tu respuesta original.</span></span></summary>
+<div class="reveal-body"><p class="caveat">Ejemplo ilustrativo · cliente y sistema ficticios · no es una ejecución grabada</p>
+<ul class="bullets"><li>Se han verificado las pruebas de aceptación salvo el anuncio manual de la nueva fecha mediante lector de pantalla. Se detectó y corrigió un texto de SMS que superaba los 160 caracteres.</li><li>El responsable aún tiene que probar el entorno de pruebas. Se propone un elemento de backlog para mostrar los cambios restantes, pero no se crea.</li></ul>
+<p class="banner banner-soft"><strong>Decisión humana:</strong> El responsable de negocio acepta; una persona identificada aprueba la pull request de GitHub; se sigue aplicando el proceso habitual de publicación.</p></div>
+</details>
+</section>
+<p class="banner banner-soft">Seis pasos, cinco decisiones humanas: fuentes confirmadas · requisitos aprobados · plan aprobado · autonomía elegida · merge aprobado.</p>
+<div class="links-block"><p class="label">Enlaces</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/hve-guide/lifecycle/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Ciclo de vida del proyecto asistido por IA<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://microsoft.github.io/hve-core/docs/rpi/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Flujo RPI<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Terminado cuando</span><p>Cada ronda tiene una respuesta y una puntuación, y la mayor omisión está anotada.</p></div>
+<aside class="tips" id="tips" aria-label="Consejos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos</p><ul><li>Esperad a quien facilita el taller antes de abrir cada solución. Son ejemplos ficticios, no mediciones ni una ejecución grabada.</li><li>Guardad la hoja de respuestas para el <a href="exercise-10.html">ejercicio 10</a> (reserva): comparad las decisiones humanas que predijisteis con el esfuerzo que exigió vuestra ejecución real.</li><li>El carrito que respeta las existencias es un <a href="scenario.html">caso alternativo</a> distinto, no el caso de citas de este ejercicio.</li></ul></aside>
+<nav class="pager" aria-label="Paso anterior y siguiente"><a class="prev" href="while-agents-run.html" rel="prev"><span class="dir">← Anterior</span><span class="ttl">Mientras trabajan los agentes</span></a><a class="next" href="exercise-2.html" rel="next"><span class="dir">Siguiente →</span><span class="ttl">Ejercicio 2 · Mapa de evidencias</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Taller práctico · Guía de ejercicios</p><p class="muted">Los enlaces remiten a documentación pública. HVE Core y HVE-Squad evolucionan rápidamente: utiliza las versiones instaladas para el taller.</p></footer>
+</body>
+</html>

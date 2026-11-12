@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ejercicio 7 · Puntos de aprobación humana y controles deterministas · Guía del taller HVE</title>
+<meta name="description" content="Separar las recomendaciones de los controles obligatorios y decidir dónde siguen respondiendo las personas.">
+<link rel="alternate" hreflang="en" href="../exercise-7.html">
+<link rel="alternate" hreflang="es" href="exercise-7.html">
+<link rel="alternate" hreflang="x-default" href="../exercise-7.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="translations.js"></script>
+<script src="../assets/translations-loader.js"></script>
+<script src="../assets/theme.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-7 kind-core" data-page="exercise-7">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Pasos</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Taller práctico · Guía de ejercicios</small></span></a>
+<nav class="toplinks" aria-label="Enlaces rápidos"><a href="index.html#guide">Guía</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Pausas</a><a href="scorecard.html">Evaluación</a><a href="resources.html" class="keep">Recursos</a><a class="keep top-action language-switch" data-language-switch href="../exercise-7.html" lang="en" hreflang="en" aria-label="Switch to English" title="English">EN</a><button type="button" class="top-action theme-toggle" data-theme-toggle hidden aria-label="Cambiar al modo oscuro"><svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13z"/></svg></button><a href="https://github.com/jmservera/hve-hol/issues/new" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="feedback-label">Comentarios</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a><a href="https://github.com/jmservera/hve-hol" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21v-4H7a4 4 0 0 1-4-4M15 21v-4c3-.5 5-2 5-5a6 6 0 0 0-1.5-4c.5-1.5.5-3 0-4-2 0-3.5 1-4 1.5a12 12 0 0 0-5 0C9 5 7.5 4 5.5 4c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/></svg><span class="sr-only">Repositorio de GitHub</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Guía de ejercicios">
+<a class="side-home" href="index.html">← Inicio de la guía</a>
+<div class="nav-group"><h2>Para empezar</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Agenda orientativa</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Acuerdos de trabajo y roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Inicio: acuerdo del equipo</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Tu caso</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cómo ejecutarlo</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Mientras trabajan los agentes</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Ejercicio 1: </span>Predecir el ciclo de vida</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Ejercicio 2: </span>Mapa de evidencias</span></a></li><li><a href="exercise-3.html"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Ejercicio 3: </span>Comparativa de MVE</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Ejercicio 4: </span>De la petición al backlog aprobado</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Actividad de espera A · Canvas del PO</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Ejercicio 5: </span>Unidad de trabajo RPI acotada</span></a></li><li><a href="exercise-6.html"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Ejercicio 6: </span>Reutilizar una lección</span></a></li><li><a href="exercise-7.html" aria-current="page"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Ejercicio 7: </span>Aprobaciones y controles</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Actividad de espera B · De la issue al parche</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Actividad de espera C · IA frente a script</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Ejercicio 8: </span>Revisión crítica y recuperación</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Ejercicio 9: </span>Plan de adopción</span></a></li></ul></div>
+<div class="nav-group"><h2>Cierre</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Puesta en común y cierre</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cuadro de evaluación común</span></a></li></ul></div>
+<div class="nav-group"><h2>Reserva</h2><ul><li><a href="exercise-10.html"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Ejercicio 10: </span>Comparar autonomía y coste (reserva)</span></a></li></ul></div>
+<div class="nav-group"><h2>Consulta</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Recursos</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Plantillas de entrega</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Ruta de navegación"><a href="index.html#guide">Guía</a><span aria-hidden="true">›</span><span>Laboratorio abierto 3</span></nav>
+<header class="page-head">
+<p class="eyebrow">Ejercicio 7 · Laboratorio abierto 3 · Tarea principal · Empezad mientras se ejecuta el ejercicio 5</p>
+<h1>Puntos de aprobación humana y controles deterministas</h1>
+<p class="tags"><span class="tag tag-core">Tarea principal</span><span class="tag tag-group">Laboratorio abierto 3</span></p><nav class="jump" aria-label="En esta página"><span>En esta página</span><a href="#brief">Resumen</a><a href="#how-to-start">Cómo empezar</a><a href="#toolkit">Entrega y herramientas</a><a href="#tips">Consejos</a></nav></header>
+<section class="brief" id="brief" aria-label="Resumen">
+<div class="objective"><span class="label">Objetivo</span><p>Separar las recomendaciones de los controles obligatorios y decidir dónde siguen respondiendo las personas.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Material de partida</dt><dd>Resultados del <a href="exercise-4.html">ejercicio 4</a> y del <a href="exercise-5.html">ejercicio 5</a> mientras se ejecuta</dd></div>
+<div class="meta-best"><dt>Uso recomendado</dt><dd>Tarea principal</dd></div>
+<div class="meta-roles"><dt>Roles (sugeridos)</dt><dd>Responsable de calidad y gobierno y arquitecto</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Pasos"><h2 class="mini-head">Pasos</h2>
+<ol class="steps">
+<li><p>Enumerad todas las transiciones con consecuencias: aprobación de requisitos, elección de arquitectura, implementación, merge y publicación.</p></li>
+<li><p>Asignad un responsable y las evidencias necesarias para cada punto de aprobación.</p></li>
+<li><p>Clasificad cada regla: recomendación, aprobación humana o control determinista.</p></li>
+<li><p>Implementad o describid un control determinista: validación de esquema, comprobación de CI, límite de permisos o prueba.</p></li>
+<li><p>Simulad un punto de aprobación bloqueado y decidid qué evidencias hacen falta para continuar.</p></li>
+</ol></section>
+<section class="handin" aria-label="Entrega"><h2 class="handin-head">Entrega</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Mapa de puntos de aprobación</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Matriz de controles</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Un caso de bloqueo / excepción probado</span></label></li>
+</ul>
+<p class="handin-note">Marca los elementos a medida que tu equipo los entregue.</p></section>
+</div>
+<header class="section-head" id="how-to-start">
+<p class="eyebrow">Ejercicio 7 · Cómo empezar</p>
+<h2>Dibujad los puntos de aprobación y haced efectivo un control</h2>
+</header>
+<h3>Empieza aquí</h3>
+<ol class="numbered compact"><li><span class="n" aria-hidden="true">1</span><div><p>Empezad en cuanto se esté ejecutando el <a href="exercise-5.html">ejercicio 5</a>; utilizad como entrada vuestros artefactos de los ejercicios 4 y 5.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><p>Dibujad el recorrido: aprobación de requisitos, plan, implementación, merge y publicación. Una fila del mapa de puntos de aprobación para cada uno.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><p>Clasificad cada regla: recomendación (por escrito), aprobación humana o control determinista.</p></div></li><li><span class="n" aria-hidden="true">4</span><div><p>Haced efectivo un control, como la <a href="#code-merge-check">comprobación de merge</a>, y mostrad cómo falla de forma intencionada.</p></div></li></ol>
+<aside class="tips" id="tips" aria-label="Consejos prácticos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos prácticos</p><ul><li>Para cada punto de aprobación, preguntad: ¿qué pasa hoy si alguien se lo salta? Si no pasa nada, es una recomendación.</li><li>Utilizad la CI que ya tenéis: Azure Pipelines o GitHub Actions.</li><li>Asignad una persona, no un rol, a cada punto de aprobación; indicad también quién puede autorizar una excepción y con qué evidencias.</li><li>Los agentes a veces se saltarán un paso: diseñad el control para ese caso.</li></ul></aside>
+<aside class="tips" id="tips-2" aria-label="Errores que conviene evitar"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Errores que conviene evitar</p><ul><li>Responder a todos los riesgos con más instrucciones</li><li>Una comprobación que avisa, pero no bloquea</li><li>Un punto de aprobación sin responsable identificado</li></ul></aside>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Ejercicio 7 · Entrega y herramientas</p>
+<h2>Las reglas escritas recomiendan. Los controles obligan.</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Las celdas de las plantillas son editables: escribe en ellas y usa <strong>Copiar como Markdown</strong> para pegar el resultado en tu repositorio o wiki. Lo que escribas permanece únicamente en este navegador; no se sube nada.</span></p><div class="tpl" id="tpl-gate-map" data-tpl="gate-map">
+<div class="tpl-head"><h3>Mapa de puntos de aprobación</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Mapa de puntos de aprobación" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Transición</th><th scope="col">Responsable</th><th scope="col">Evidencias necesarias</th><th scope="col">Dónde se registra</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Transición" data-ph="aprobación de requisitos"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Evidencias necesarias"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Dónde se registra"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Transición" data-ph="elección de arquitectura"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Evidencias necesarias"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Dónde se registra"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Transición" data-ph="implementación"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Evidencias necesarias"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Dónde se registra"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Transición" data-ph="merge"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Evidencias necesarias"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Dónde se registra"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Transición" data-ph="publicación"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Evidencias necesarias"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Dónde se registra"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-control-matrix" data-tpl="control-matrix">
+<div class="tpl-head"><h3>Matriz de controles</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Matriz de controles" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Regla</th><th scope="col">Recomendación · aprobación humana · determinista</th><th scope="col">Aplicado por</th><th scope="col">Responsable</th><th scope="col">Ante un fallo o una excepción</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Regla"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Recomendación · aprobación humana · determinista"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Aplicado por"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ante un fallo o una excepción"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Regla"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Recomendación · aprobación humana · determinista"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Aplicado por"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ante un fallo o una excepción"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Regla"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Recomendación · aprobación humana · determinista"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Aplicado por"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ante un fallo o una excepción"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Regla"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Recomendación · aprobación humana · determinista"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Aplicado por"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Responsable"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Ante un fallo o una excepción"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<figure class="code"><div class="code-head"><figcaption>Ejemplo: exigid esta comprobación mediante conjuntos de reglas de GitHub o validación de compilación de Azure Repos; el script se ejecuta en GitHub Actions o Azure Pipelines</figcaption><button type="button" class="btn btn-small" data-copy-code="code-merge-check">Copiar</button></div><pre id="code-merge-check"><code># tracking-free merge: block agent working notes from main
+if [ -n "$(git ls-files .copilot-tracking)" ]; then
+  echo "Remove .copilot-tracking/ and promote decisions before merge."
+  exit 1
+fi</code></pre></figure>
+<div class="chips chips-plain"><p class="label">Otras opciones deterministas</p><ul><li>Conjuntos de reglas de GitHub con revisiones/comprobaciones de estado obligatorias</li><li>Directivas de rama de Azure Repos con validación de compilación obligatoria</li><li>GitHub CODEOWNERS para documentación y ADR</li><li>Revisores obligatorios de Azure Repos con filtros de ruta</li><li>Validación de esquemas / metadatos de cabecera de los artefactos</li><li>Herramientas de solo lectura para investigación y revisión</li><li>Hooks de agentes que bloquean escrituras</li><li>Una directiva de APM sobre qué paquetes de agentes pueden instalarse</li></ul></div>
+<div class="static-table"><div class="table-wrap" role="region" aria-label="Tabla" tabindex="0">
+<table class="grid">
+<thead><tr><th scope="col">Plataforma</th><th scope="col">Un control que bloquee de verdad</th></tr></thead>
+<tbody>
+<tr><td>GitHub</td><td>Exigid revisiones/comprobaciones de estado en un conjunto de reglas o en la protección de ramas; usad CODEOWNERS cuando sea obligatoria la aprobación del propietario del código</td></tr>
+<tr><td>Azure Repos</td><td>Configurad revisores obligatorios/filtros de ruta y validación de compilación o comprobaciones de estado obligatorias en las directivas de rama; CODEOWNERS no es una función de Azure Repos</td></tr>
+<tr><td>Azure Pipelines</td><td>Utilizad aprobaciones y comprobaciones de recursos/entornos donde sea necesario; una persona identificada responde de las decisiones de excepción</td></tr>
+</tbody>
+</table>
+</div></div>
+<div class="links-block"><p class="label">Enlaces</p><ul class="links"><li><a href="https://learn.microsoft.com/en-us/azure/devops/repos/git/branch-policies?view=azure-devops" target="_blank" rel="noopener noreferrer" class="ext">Azure Repos · Directivas de rama<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops" target="_blank" rel="noopener noreferrer" class="ext">Azure Pipelines · Aprobaciones y comprobaciones<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets" target="_blank" rel="noopener noreferrer" class="ext">GitHub · Conjuntos de reglas<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener noreferrer" class="ext">GitHub Actions<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://code.visualstudio.com/docs/agent-customization/hooks" target="_blank" rel="noopener noreferrer" class="ext">VS Code · Hooks de agentes<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://github.com/microsoft/apm/blob/main/docs/src/content/docs/enterprise/governance-guide.md" target="_blank" rel="noopener noreferrer" class="ext">APM · Gobierno<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Terminado cuando</span><p>Un control bloquea algo de verdad, y el procedimiento de excepción identifica quién puede autorizarla y qué evidencias necesita.</p></div>
+<aside class="tips" id="tips-3" aria-label="Consejos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos</p><ul><li>Preguntad: «¿Qué pasa hoy si alguien se salta este punto de aprobación?». Si la respuesta es «nada», la regla es una recomendación, diga lo que diga el documento de proceso.</li><li>Los agentes a veces se saltarán un paso; diseñad pensando en ello.</li><li>Una entrada de gitignore es una comodidad, no un control; el control es la comprobación obligatoria. Marcadla como obligatoria en las reglas de GitHub o las directivas de rama de Azure Repos.</li><li>Pedid a un administrador autorizado del repositorio/proyecto que configure las directivas obligatorias y gobierne los permisos para omitirlas. Un archivo YAML, una anotación de herramienta MCP o una instrucción por sí solos no hacen obligatorio el punto de aprobación.</li><li>El motor de directivas de APM está en una fase preliminar temprana.</li><li>Reutilizad el ciclo de operaciones de la <a href="intermission-b.html">actividad de espera B</a> y el verificador de pasos de la <a href="intermission-c.html">actividad de espera C</a> como entradas de vuestra matriz de controles.</li></ul></aside>
+<nav class="pager" aria-label="Paso anterior y siguiente"><a class="prev" href="exercise-6.html" rel="prev"><span class="dir">← Anterior</span><span class="ttl">Ejercicio 6 · Reutilizar una lección</span></a><a class="next" href="intermission-b.html" rel="next"><span class="dir">Siguiente →</span><span class="ttl">Actividad de espera B · De la issue al parche</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Taller práctico · Guía de ejercicios</p><p class="muted">Los enlaces remiten a documentación pública. HVE Core y HVE-Squad evolucionan rápidamente: utiliza las versiones instaladas para el taller.</p></footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Ejercicio 3 · Comparativa de experimentos mínimos viables · Guía del taller HVE</title>
+<meta name="description" content="Usar experimentos de bajo coste para decidir la arquitectura o la dirección del producto con evidencias.">
+<link rel="alternate" hreflang="en" href="../exercise-3.html">
+<link rel="alternate" hreflang="es" href="exercise-3.html">
+<link rel="alternate" hreflang="x-default" href="../exercise-3.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script src="translations.js"></script>
+<script src="../assets/translations-loader.js"></script>
+<script src="../assets/theme.js"></script>
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/site.js" defer></script>
+</head>
+<body class="page page-exercise-3 kind-parallel" data-page="exercise-3">
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<header class="topbar">
+<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Pasos</span></button><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span><span class="brand-text">HyperVelocity Engineering<small>Taller práctico · Guía de ejercicios</small></span></a>
+<nav class="toplinks" aria-label="Enlaces rápidos"><a href="index.html#guide">Guía</a><a href="agenda.html">Agenda</a><a href="index.html#intermissions">Pausas</a><a href="scorecard.html">Evaluación</a><a href="resources.html" class="keep">Recursos</a><a class="keep top-action language-switch" data-language-switch href="../exercise-3.html" lang="en" hreflang="en" aria-label="Switch to English" title="English">EN</a><button type="button" class="top-action theme-toggle" data-theme-toggle hidden aria-label="Cambiar al modo oscuro"><svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/></svg><svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13z"/></svg></button><a href="https://github.com/jmservera/hve-hol/issues/new" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="feedback-label">Comentarios</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a><a href="https://github.com/jmservera/hve-hol" target="_blank" rel="noopener noreferrer" class="keep top-action ext"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21v-4H7a4 4 0 0 1-4-4M15 21v-4c3-.5 5-2 5-5a6 6 0 0 0-1.5-4c.5-1.5.5-3 0-4-2 0-3.5 1-4 1.5a12 12 0 0 0-5 0C9 5 7.5 4 5.5 4c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/></svg><span class="sr-only">Repositorio de GitHub</span><span class="sr-only"> (se abre en una pestaña nueva)</span></a></nav>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<nav class="side-nav" aria-label="Guía de ejercicios">
+<a class="side-home" href="index.html">← Inicio de la guía</a>
+<div class="nav-group"><h2>Para empezar</h2><ul><li><a href="agenda.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Agenda orientativa</span></a></li><li><a href="agreements-and-roles.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Acuerdos de trabajo y roles</span></a></li><li><a href="team-charter.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Inicio: acuerdo del equipo</span></a></li><li><a href="scenario.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Tu caso</span></a></li><li><a href="how-you-run-it.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cómo ejecutarlo</span></a></li><li><a href="while-agents-run.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Mientras trabajan los agentes</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 1</h2><ul><li><a href="exercise-1.html"><span class="badge badge-core" aria-hidden="true">1</span><span class="nav-label"><span class="sr-only">Ejercicio 1: </span>Predecir el ciclo de vida</span></a></li><li><a href="exercise-2.html"><span class="badge badge-core" aria-hidden="true">2</span><span class="nav-label"><span class="sr-only">Ejercicio 2: </span>Mapa de evidencias</span></a></li><li><a href="exercise-3.html" aria-current="page"><span class="badge badge-parallel" aria-hidden="true">3</span><span class="nav-label"><span class="sr-only">Ejercicio 3: </span>Comparativa de MVE</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 2</h2><ul><li><a href="exercise-4.html"><span class="badge badge-core" aria-hidden="true">4</span><span class="nav-label"><span class="sr-only">Ejercicio 4: </span>De la petición al backlog aprobado</span></a></li><li><a href="intermission-a.html"><span class="badge badge-intermission" aria-hidden="true">A</span><span class="nav-label">Actividad de espera A · Canvas del PO</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 3</h2><ul><li><a href="exercise-5.html"><span class="badge badge-core" aria-hidden="true">5</span><span class="nav-label"><span class="sr-only">Ejercicio 5: </span>Unidad de trabajo RPI acotada</span></a></li><li><a href="exercise-6.html"><span class="badge badge-parallel" aria-hidden="true">6</span><span class="nav-label"><span class="sr-only">Ejercicio 6: </span>Reutilizar una lección</span></a></li><li><a href="exercise-7.html"><span class="badge badge-core" aria-hidden="true">7</span><span class="nav-label"><span class="sr-only">Ejercicio 7: </span>Aprobaciones y controles</span></a></li><li><a href="intermission-b.html"><span class="badge badge-intermission" aria-hidden="true">B</span><span class="nav-label">Actividad de espera B · De la issue al parche</span></a></li><li><a href="intermission-c.html"><span class="badge badge-intermission" aria-hidden="true">C</span><span class="nav-label">Actividad de espera C · IA frente a script</span></a></li></ul></div>
+<div class="nav-group"><h2>Laboratorio abierto 4</h2><ul><li><a href="exercise-8.html"><span class="badge badge-core" aria-hidden="true">8</span><span class="nav-label"><span class="sr-only">Ejercicio 8: </span>Revisión crítica y recuperación</span></a></li><li><a href="exercise-9.html"><span class="badge badge-core" aria-hidden="true">9</span><span class="nav-label"><span class="sr-only">Ejercicio 9: </span>Plan de adopción</span></a></li></ul></div>
+<div class="nav-group"><h2>Cierre</h2><ul><li><a href="playback.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Puesta en común y cierre</span></a></li><li><a href="scorecard.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Cuadro de evaluación común</span></a></li></ul></div>
+<div class="nav-group"><h2>Reserva</h2><ul><li><a href="exercise-10.html"><span class="badge badge-backup" aria-hidden="true">10</span><span class="nav-label"><span class="sr-only">Ejercicio 10: </span>Comparar autonomía y coste (reserva)</span></a></li></ul></div>
+<div class="nav-group"><h2>Consulta</h2><ul><li><a href="resources.html"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Recursos</span></a></li><li><a href="resources.html#templates"><span class="badge badge-dot" aria-hidden="true"></span><span class="nav-label">Plantillas de entrega</span></a></li></ul></div>
+</nav>
+</aside>
+<div class="scrim" hidden></div>
+<main id="main" class="content" tabindex="-1">
+<nav class="crumbs" aria-label="Ruta de navegación"><a href="index.html#guide">Guía</a><span aria-hidden="true">›</span><span>Laboratorio abierto 1</span></nav>
+<header class="page-head">
+<p class="eyebrow">Ejercicio 3 · Laboratorio abierto 1 (los agentes pueden continuar durante la pausa) · En paralelo a una ejecución larga</p>
+<h1>Comparativa de experimentos mínimos viables</h1>
+<p class="tags"><span class="tag tag-parallel">Tarea en paralelo</span><span class="tag tag-group">Laboratorio abierto 1</span></p><nav class="jump" aria-label="En esta página"><span>En esta página</span><a href="#brief">Resumen</a><a href="#how-to-start">Cómo empezar</a><a href="#toolkit">Entrega y herramientas</a><a href="#tips">Consejos</a></nav></header>
+<section class="brief" id="brief" aria-label="Resumen">
+<div class="objective"><span class="label">Objetivo</span><p>Usar experimentos de bajo coste para decidir la arquitectura o la dirección del producto con evidencias.</p></div>
+<dl class="meta">
+<div class="meta-input"><dt>Material de partida</dt><dd>Una incertidumbre técnica o de producto de alto riesgo</dd></div>
+<div class="meta-best"><dt>Uso recomendado</dt><dd>Tarea paralela o para los tiempos de espera</dd></div>
+<div class="meta-roles"><dt>Roles (sugeridos)</dt><dd>Arquitecto y responsable de calidad; los agentes generan</dd></div>
+</dl>
+</section>
+<div class="work">
+<section class="steps-wrap" aria-label="Pasos"><h2 class="mini-head">Pasos</h2>
+<ol class="steps">
+<li><p>Identificad los tres supuestos de mayor riesgo que podrían cambiar sustancialmente el plan.</p></li>
+<li><p>Diseñad dos experimentos mínimos viables (MVE) deliberadamente distintos.</p></li>
+<li><p>Definid los umbrales de éxito, fracaso y resultado no concluyente antes de construir.</p></li>
+<li><p>Dejad que los agentes generen investigación o prototipos mientras preparáis la matriz de evaluación.</p></li>
+<li><p>Comparad los experimentos e incorporad lo aprendido al siguiente ciclo RPI (<a href="exercise-5.html">ejercicio 5</a>).</p></li>
+</ol></section>
+<section class="handin" aria-label="Entrega"><h2 class="handin-head">Entrega</h2>
+<ul>
+<li><label><input type="checkbox" data-key="handin-0"><span>Dos fichas de MVE</span></label></li>
+<li><label><input type="checkbox" data-key="handin-1"><span>Matriz de decisión</span></label></li>
+<li><label><input type="checkbox" data-key="handin-2"><span>Motivos registrados de la selección y del descarte</span></label></li>
+</ul>
+<p class="handin-note">Marca los elementos a medida que tu equipo los entregue.</p></section>
+</div>
+<header class="section-head" id="how-to-start">
+<p class="eyebrow">Ejercicio 3 · Cómo empezar</p>
+<h2>Escribid los umbrales antes de arrancar los agentes</h2>
+</header>
+<h3>Empieza aquí</h3>
+<ol class="numbered compact"><li><span class="n" aria-hidden="true">1</span><div><p>Elegid el supuesto o la pregunta abierta de mayor riesgo de vuestro mapa de evidencias.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><p>Diseñad dos MVE realmente distintos, por ejemplo una exploración técnica de solo lectura y un prototipo desechable.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><p>Rellenad ambas fichas de MVE con umbrales numéricos de éxito, fracaso y resultado no concluyente antes de ejecutar ningún agente.</p></div></li><li><span class="n" aria-hidden="true">4</span><div><p>Iniciad dos sesiones de agente en ramas separadas, una por MVE; pueden seguir trabajando durante la pausa.</p></div></li></ol>
+<aside class="tips" id="tips" aria-label="Consejos prácticos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos prácticos</p><ul><li>El agente <a href="https://microsoft.github.io/hve-core/docs/agents/#experimental" target="_blank" rel="noopener noreferrer" class="ext">Experiment Designer<span class="sr-only"> (se abre en una pestaña nueva)</span></a> de HVE Core puede ayudaros a preparar vuestro MVE: formular la hipótesis y planificar el experimento.</li><li>Exploración técnica: <code>/rpi-research</code> para una pregunta técnica de solo lectura. Concepto: DT Coach para un prototipo de baja fidelidad.</li><li>Limitad cada MVE a 20–30 minutos y preparad la matriz de decisión mientras se ejecutan.</li><li>¿No hay dudas de producto? Probad una técnica: una biblioteca, una vía de integración o un enfoque de migración.</li><li>Un resultado no concluyente es válido: registrad qué permitiría resolverlo y llevadlo al ejercicio 5.</li></ul></aside>
+<aside class="tips" id="tips-2" aria-label="Errores que conviene evitar"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Errores que conviene evitar</p><ul><li>Escribir los umbrales después de ver el resultado</li><li>Dos MVE que solo son variantes de una misma idea</li><li>Pulir un prototipo que debería desecharse</li></ul></aside>
+<header class="section-head" id="toolkit">
+<p class="eyebrow">Ejercicio 3 · Entrega y herramientas</p>
+<h2>Fijad primero los umbrales y después dejad que decidan las evidencias</h2>
+</header>
+<p class="storage-note"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span>Las celdas de las plantillas son editables: escribe en ellas y usa <strong>Copiar como Markdown</strong> para pegar el resultado en tu repositorio o wiki. Lo que escribas permanece únicamente en este navegador; no se sube nada.</span></p><div class="tpl" id="tpl-mve-card" data-tpl="mve-card">
+<div class="tpl-head"><h3>Ficha de MVE</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Ficha de MVE" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><td class="corner"></td><th scope="col">MVE A</th><th scope="col">MVE B</th></tr></thead>
+<tbody>
+<tr><th scope="row">Supuesto que se prueba</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Supuesto que se prueba, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Supuesto que se prueba, MVE B"></td></tr>
+<tr><th scope="row">Experimento: qué construimos o probamos</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Experimento: qué construimos o probamos, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Experimento: qué construimos o probamos, MVE B"></td></tr>
+<tr><th scope="row">Esfuerzo y tiempo máximo</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Esfuerzo y tiempo máximo, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Esfuerzo y tiempo máximo, MVE B"></td></tr>
+<tr><th scope="row">Éxito si…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Éxito si…, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Éxito si…, MVE B"></td></tr>
+<tr><th scope="row">Fracaso si…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Fracaso si…, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Fracaso si…, MVE B"></td></tr>
+<tr><th scope="row">No concluyente si…</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="No concluyente si…, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="No concluyente si…, MVE B"></td></tr>
+<tr><th scope="row">Resultado</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Resultado, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Resultado, MVE B"></td></tr>
+<tr><th scope="row">Decisión</th><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decisión, MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="Decisión, MVE B"></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="tpl" id="tpl-decision-matrix" data-tpl="decision-matrix">
+<div class="tpl-head"><h3>Matriz de decisión</h3><div class="tpl-actions"><button type="button" class="btn" data-action="copy-md">Copiar como Markdown</button><button type="button" class="btn btn-quiet" data-action="clear">Borrar</button></div></div>
+<div class="table-wrap" role="region" aria-label="Matriz de decisión" tabindex="0">
+<table class="grid tpl-table">
+<thead><tr><th scope="col">Criterio</th><th scope="col">MVE A</th><th scope="col">MVE B</th></tr></thead>
+<tbody>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Criterio" data-ph="p. ej., solidez de las evidencias"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE B"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Criterio" data-ph="p. ej., riesgo eliminado"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE B"></td></tr>
+<tr><td class="fill" contenteditable="true" spellcheck="true" aria-label="Criterio" data-ph="p. ej., esfuerzo, coste y encaje"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE A"></td><td class="fill" contenteditable="true" spellcheck="true" aria-label="MVE B"></td></tr>
+</tbody>
+</table>
+</div>
+<p class="tpl-note">Después registrad: Elegido … porque …  ·  Descartado … porque …</p></div>
+<div class="box box-run"><p class="label">Ejecútalo con</p><ul class="run-list"><li><strong>HVE Core:</strong> Experiment Designer para orientación sobre MVE; DT Coach para conceptos del espacio de solución y prototipos de baja fidelidad; <code>/rpi-research</code> para una exploración técnica de solo lectura.</li><li>Ejecutad dos sesiones de agente en paralelo, una por MVE, en ramas separadas.</li><li><strong>HVE-Squad:</strong> el punto de control de descubrimiento ofrece una lluvia de ideas cuando aún no hay nada escrito; un equipo de producto convierte un caso de negocio en requisitos, un experimento para el supuesto de mayor riesgo y un backlog.</li></ul></div>
+<div class="box box-example"><p class="label">Ejemplo</p><p>Ejemplo sintético (Northwind Traders, taller de HVE-Squad): una reclamación debe hacer referencia a líneas de pedido, pero el sistema de pedidos no tiene API y el acceso directo a la base de datos está prohibido. MVE: 30 casos, 3 empleados, solo en papel y en local. Criterios propuestos: ≥ 90% en menos de 2 minutos; licencia y coste de ejecución ≤ EUR 900 al mes. Límite reconocido: el experimento es un plan, no un resultado.</p></div>
+<div class="links-block"><p class="label">Enlaces</p><ul class="links"><li><a href="https://microsoft.github.io/hve-core/docs/agents/#experimental" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Experiment Designer<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://microsoft.github.io/hve-core/docs/design-thinking/" target="_blank" rel="noopener noreferrer" class="ext">HVE Core · Design Thinking<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li><li><a href="https://peter-n91.github.io/hve-squad/usage.html" target="_blank" rel="noopener noreferrer" class="ext">HVE-Squad · Uso<span class="sr-only"> (se abre en una pestaña nueva)</span></a></li></ul></div>
+<div class="done"><span class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Terminado cuando</span><p>Los umbrales se escribieron antes de ver cualquier resultado de los agentes, y la opción descartada tiene un motivo registrado.</p></div>
+<aside class="tips" id="tips-3" aria-label="Consejos"><p class="label"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2h5c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg>Consejos</p><ul><li>Los agentes abaratan los prototipos lo suficiente para desecharlos: construid dos apuestas deliberadamente distintas, conservad lo aprendido y descartad el concepto.</li><li>Escribid los umbrales antes de ver cualquier resultado de los agentes; de lo contrario, acabaréis justificando lo que recibáis.</li><li>¿No hay incertidumbre de producto? Usad una técnica: elección de biblioteca, vía de integración o enfoque de migración.</li><li>Llevad el aprendizaje de la opción ganadora al <a href="exercise-5.html">ejercicio 5</a> como entrada explícita del plan.</li></ul></aside>
+<nav class="pager" aria-label="Paso anterior y siguiente"><a class="prev" href="exercise-2.html" rel="prev"><span class="dir">← Anterior</span><span class="ttl">Ejercicio 2 · Mapa de evidencias</span></a><a class="next" href="exercise-4.html" rel="next"><span class="dir">Siguiente →</span><span class="ttl">Ejercicio 4 · De la petición al backlog aprobado</span></a></nav>
+</main>
+</div>
+<footer class="site-footer"><p>HyperVelocity Engineering · Taller práctico · Guía de ejercicios</p><p class="muted">Los enlaces remiten a documentación pública. HVE Core y HVE-Squad evolucionan rápidamente: utiliza las versiones instaladas para el taller.</p></footer>
+</body>
+</html>
