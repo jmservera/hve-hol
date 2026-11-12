@@ -71,6 +71,8 @@ Then open <http://localhost:8000>. Opening `docs/index.html` directly in a brows
 
 Inline formatting in any text: `` `code` ``, `**bold**`, `[link text](url)`.
 Styles live in `docs/assets/site.css` and behaviour in `docs/assets/site.js`; both are edited directly.
+The shared header links to the GitHub repository and its new-issue form for feedback. Both open in a new
+tab. To point them at a fork, update `SITE["repo_url"]` in `tools/content.py` and rebuild.
 
 Keep public content organization-neutral. Do not publish source presentations, customer-branded images,
 private source paths or facilitator-only answer keys.
@@ -93,6 +95,7 @@ legacy browser values are left untouched.
 ## What participants get
 
 - One page per step, with previous / next buttons, a sidebar on desktop and a **Steps** menu on phones.
+- Top-right GitHub repository and Feedback links on every page, including on phones.
 - Each exercise has a brief (objective, input, best use, roles, steps, hand-in) and a toolkit. Exercises 2–10
   also have four numbered **How to start** steps, practical advice and **Watch out** traps. Exercise 5
   includes a named-role split panel so Exercise 7 starts while implementation runs.

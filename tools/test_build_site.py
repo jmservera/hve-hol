@@ -13,6 +13,29 @@ import build_site as site
 
 
 class WorkshopContentTests(unittest.TestCase):
+    def test_given_any_page_when_rendered_then_header_links_to_repository_and_new_issue(self):
+        rendered_pages = [site.render_home(), site.render_404()]
+        rendered_pages.extend(site.render_page(i, page) for i, page in enumerate(site.PAGES))
+
+        for rendered in rendered_pages:
+            with self.subTest(page=re.search(r"<title>(.*?)</title>", rendered).group(1)):
+                header = rendered.split('<header class="topbar">', 1)[1].split("</header>", 1)[0]
+                for url, label in (
+                        ("https://github.com/jmservera/hve-hol", "GitHub repository"),
+                        ("https://github.com/jmservera/hve-hol/issues/new", "Feedback")):
+                    with self.subTest(link=label):
+                        link = re.search(r'<a href="%s"([^>]*)>(.*?)</a>' % re.escape(url), header)
+
+                        self.assertIsNotNone(link)
+                        attrs, body = link.groups()
+                        self.assertIn('target="_blank"', attrs)
+                        self.assertIn('rel="noopener noreferrer"', attrs)
+                        self.assertRegex(attrs, r'class="[^"]*\bkeep\b')
+                        self.assertIn(label, body)
+                        self.assertIn('(opens in a new tab)', body)
+                        self.assertIn('<svg ', body)
+                        self.assertIn('aria-hidden="true"', body)
+
     def test_given_updated_workshop_when_listing_exercises_then_order_matches_labs(self):
         exercises = [(page["num"], page["group"]) for page in site.PAGES
                      if page["kind"] in ("core", "parallel", "backup")]

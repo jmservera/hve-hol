@@ -39,6 +39,12 @@ ICONS = {
     "clock": '<circle cx="12" cy="12" r="9.5"/><path d="M12 7v5l3.5 2"/>',
     "menu": '<path d="M4 7h16M4 12h16M4 17h16"/>',
     "check": '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    "github": (
+        '<path d="M9 21v-4H7a4 4 0 0 1-4-4M15 21v-4c3-.5 5-2 5-5a6 6 0 0 0-1.5-4'
+        'c.5-1.5.5-3 0-4-2 0-3.5 1-4 1.5a12 12 0 0 0-5 0C9 5 7.5 4 5.5 4'
+        'c-.5 1-.5 2.5 0 4A6 6 0 0 0 4 12c0 3 2 4.5 5 5"/>'
+    ),
+    "feedback": '<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
 }
 
 
@@ -699,6 +705,16 @@ def topbar(with_menu):
         '<button type="button" class="nav-toggle" aria-controls="sidebar" aria-expanded="false">%s'
         '<span>Steps</span></button>' % icon("menu")
     ) if with_menu else ""
+    feedback = anchor(
+        C.SITE["repo_url"] + "/issues/new",
+        icon("feedback") + '<span class="feedback-label">Feedback</span>',
+        "keep top-action",
+    )
+    repository = anchor(
+        C.SITE["repo_url"],
+        icon("github") + '<span class="sr-only">GitHub repository</span>',
+        "keep top-action",
+    )
     return (
         '<header class="topbar">\n%s'
         '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">HVE</span>'
@@ -706,8 +722,8 @@ def topbar(with_menu):
         '<nav class="toplinks" aria-label="Quick links">'
         '<a href="index.html#guide">Guide</a><a href="agenda.html">Agenda</a>'
         '<a href="index.html#intermissions">Intermissions</a><a href="scorecard.html">Scorecard</a>'
-        '<a href="resources.html" class="keep">Resources</a></nav>\n</header>\n'
-        % (menu, esc(C.SITE["name"]), esc(C.SITE["tagline"]))
+        '<a href="resources.html" class="keep">Resources</a>%s%s</nav>\n</header>\n'
+        % (menu, esc(C.SITE["name"]), esc(C.SITE["tagline"]), feedback, repository)
     )
 
 
