@@ -22,6 +22,7 @@ Template cells:
 SITE = {
     "name": "HyperVelocity Engineering",
     "tagline": "Hands-on workshop · Exercise guide",
+    "repo_url": "https://github.com/jmservera/hve-hol",
     "footer": "HyperVelocity Engineering · Hands-on workshop · Exercise guide",
     "footer_note": (
         "Links point to public documentation. HVE Core and HVE-Squad change quickly: "
